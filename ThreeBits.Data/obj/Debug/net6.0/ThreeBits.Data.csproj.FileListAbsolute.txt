@@ -1,0 +1,17 @@
+C:\Users\juliocmartinezz\source\repos\ThreeBits.Data\bin\Debug\net6.0\ThreeBits.Data.deps.json
+C:\Users\juliocmartinezz\source\repos\ThreeBits.Data\bin\Debug\net6.0\ThreeBits.Data.dll
+C:\Users\juliocmartinezz\source\repos\ThreeBits.Data\bin\Debug\net6.0\ThreeBits.Data.pdb
+C:\Users\juliocmartinezz\source\repos\ThreeBits.Data\bin\Debug\net6.0\ThreeBits.Entities.dll
+C:\Users\juliocmartinezz\source\repos\ThreeBits.Data\bin\Debug\net6.0\ThreeBits.Interfaces.dll
+C:\Users\juliocmartinezz\source\repos\ThreeBits.Data\bin\Debug\net6.0\ThreeBits.Entities.pdb
+C:\Users\juliocmartinezz\source\repos\ThreeBits.Data\bin\Debug\net6.0\ThreeBits.Interfaces.pdb
+C:\Users\juliocmartinezz\source\repos\ThreeBits.Data\obj\Debug\net6.0\ThreeBits.Data.csproj.AssemblyReference.cache
+C:\Users\juliocmartinezz\source\repos\ThreeBits.Data\obj\Debug\net6.0\ThreeBits.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\juliocmartinezz\source\repos\ThreeBits.Data\obj\Debug\net6.0\ThreeBits.Data.AssemblyInfoInputs.cache
+C:\Users\juliocmartinezz\source\repos\ThreeBits.Data\obj\Debug\net6.0\ThreeBits.Data.AssemblyInfo.cs
+C:\Users\juliocmartinezz\source\repos\ThreeBits.Data\obj\Debug\net6.0\ThreeBits.Data.csproj.CoreCompileInputs.cache
+C:\Users\juliocmartinezz\source\repos\ThreeBits.Data\obj\Debug\net6.0\ThreeBits.Data.csproj.CopyComplete
+C:\Users\juliocmartinezz\source\repos\ThreeBits.Data\obj\Debug\net6.0\ThreeBits.Data.dll
+C:\Users\juliocmartinezz\source\repos\ThreeBits.Data\obj\Debug\net6.0\refint\ThreeBits.Data.dll
+C:\Users\juliocmartinezz\source\repos\ThreeBits.Data\obj\Debug\net6.0\ThreeBits.Data.pdb
+C:\Users\juliocmartinezz\source\repos\ThreeBits.Data\obj\Debug\net6.0\ref\ThreeBits.Data.dll

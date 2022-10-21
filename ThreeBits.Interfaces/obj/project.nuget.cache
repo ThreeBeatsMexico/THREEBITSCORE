@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "rr/m6WrA+VKpllh/rotx0DKDpdgACRblm2YxawwEFSckt6Sx/anNXwgIm0SsXLg1hezPZ4h834lHjKVs5tJfpQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\juliocmartinezz\\source\\repos\\ThreeBits.Interfaces\\ThreeBits.Interfaces.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\juliocmartinezz\\.nuget\\packages\\restsharp\\108.0.2\\restsharp.108.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}
