@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\juliocmartinezz\\source\\repos\\ThreeBits.Shared\\ThreeBits.Shared.csproj": {}
+    "C:\\Users\\JULIO CESAR\\Documents\\GitHub\\THREEBITSCORE\\ThreeBits.Shared\\ThreeBits.Shared.csproj": {}
   },
   "projects": {
-    "C:\\Users\\juliocmartinezz\\source\\repos\\ThreeBits.Entities\\ThreeBits.Entities.csproj": {
+    "C:\\Users\\JULIO CESAR\\Documents\\GitHub\\THREEBITSCORE\\ThreeBits.Entities\\ThreeBits.Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\juliocmartinezz\\source\\repos\\ThreeBits.Entities\\ThreeBits.Entities.csproj",
+        "projectUniqueName": "C:\\Users\\JULIO CESAR\\Documents\\GitHub\\THREEBITSCORE\\ThreeBits.Entities\\ThreeBits.Entities.csproj",
         "projectName": "ThreeBits.Entities",
-        "projectPath": "C:\\Users\\juliocmartinezz\\source\\repos\\ThreeBits.Entities\\ThreeBits.Entities.csproj",
-        "packagesPath": "C:\\Users\\juliocmartinezz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\juliocmartinezz\\source\\repos\\ThreeBits.Entities\\obj\\",
+        "projectPath": "C:\\Users\\JULIO CESAR\\Documents\\GitHub\\THREEBITSCORE\\ThreeBits.Entities\\ThreeBits.Entities.csproj",
+        "packagesPath": "C:\\Users\\JULIO CESAR\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\JULIO CESAR\\Documents\\GitHub\\THREEBITSCORE\\ThreeBits.Entities\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\juliocmartinezz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "H:\\JCAPPDATA\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -50,8 +50,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -60,25 +59,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.106\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\juliocmartinezz\\source\\repos\\ThreeBits.Interfaces\\ThreeBits.Interfaces.csproj": {
+    "C:\\Users\\JULIO CESAR\\Documents\\GitHub\\THREEBITSCORE\\ThreeBits.Interfaces\\ThreeBits.Interfaces.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\juliocmartinezz\\source\\repos\\ThreeBits.Interfaces\\ThreeBits.Interfaces.csproj",
+        "projectUniqueName": "C:\\Users\\JULIO CESAR\\Documents\\GitHub\\THREEBITSCORE\\ThreeBits.Interfaces\\ThreeBits.Interfaces.csproj",
         "projectName": "ThreeBits.Interfaces",
-        "projectPath": "C:\\Users\\juliocmartinezz\\source\\repos\\ThreeBits.Interfaces\\ThreeBits.Interfaces.csproj",
-        "packagesPath": "C:\\Users\\juliocmartinezz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\juliocmartinezz\\source\\repos\\ThreeBits.Interfaces\\obj\\",
+        "projectPath": "C:\\Users\\JULIO CESAR\\Documents\\GitHub\\THREEBITSCORE\\ThreeBits.Interfaces\\ThreeBits.Interfaces.csproj",
+        "packagesPath": "C:\\Users\\JULIO CESAR\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\JULIO CESAR\\Documents\\GitHub\\THREEBITSCORE\\ThreeBits.Interfaces\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\juliocmartinezz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "H:\\JCAPPDATA\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -93,8 +92,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\juliocmartinezz\\source\\repos\\ThreeBits.Entities\\ThreeBits.Entities.csproj": {
-                "projectPath": "C:\\Users\\juliocmartinezz\\source\\repos\\ThreeBits.Entities\\ThreeBits.Entities.csproj"
+              "C:\\Users\\JULIO CESAR\\Documents\\GitHub\\THREEBITSCORE\\ThreeBits.Entities\\ThreeBits.Entities.csproj": {
+                "projectPath": "C:\\Users\\JULIO CESAR\\Documents\\GitHub\\THREEBITSCORE\\ThreeBits.Entities\\ThreeBits.Entities.csproj"
               }
             }
           }
@@ -120,8 +119,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -130,25 +128,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.106\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\juliocmartinezz\\source\\repos\\ThreeBits.Shared\\ThreeBits.Shared.csproj": {
+    "C:\\Users\\JULIO CESAR\\Documents\\GitHub\\THREEBITSCORE\\ThreeBits.Shared\\ThreeBits.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\juliocmartinezz\\source\\repos\\ThreeBits.Shared\\ThreeBits.Shared.csproj",
+        "projectUniqueName": "C:\\Users\\JULIO CESAR\\Documents\\GitHub\\THREEBITSCORE\\ThreeBits.Shared\\ThreeBits.Shared.csproj",
         "projectName": "ThreeBits.Shared",
-        "projectPath": "C:\\Users\\juliocmartinezz\\source\\repos\\ThreeBits.Shared\\ThreeBits.Shared.csproj",
-        "packagesPath": "C:\\Users\\juliocmartinezz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\juliocmartinezz\\source\\repos\\ThreeBits.Shared\\obj\\",
+        "projectPath": "C:\\Users\\JULIO CESAR\\Documents\\GitHub\\THREEBITSCORE\\ThreeBits.Shared\\ThreeBits.Shared.csproj",
+        "packagesPath": "C:\\Users\\JULIO CESAR\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\JULIO CESAR\\Documents\\GitHub\\THREEBITSCORE\\ThreeBits.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\juliocmartinezz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "H:\\JCAPPDATA\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -163,11 +161,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\juliocmartinezz\\source\\repos\\ThreeBits.Entities\\ThreeBits.Entities.csproj": {
-                "projectPath": "C:\\Users\\juliocmartinezz\\source\\repos\\ThreeBits.Entities\\ThreeBits.Entities.csproj"
+              "C:\\Users\\JULIO CESAR\\Documents\\GitHub\\THREEBITSCORE\\ThreeBits.Entities\\ThreeBits.Entities.csproj": {
+                "projectPath": "C:\\Users\\JULIO CESAR\\Documents\\GitHub\\THREEBITSCORE\\ThreeBits.Entities\\ThreeBits.Entities.csproj"
               },
-              "C:\\Users\\juliocmartinezz\\source\\repos\\ThreeBits.Interfaces\\ThreeBits.Interfaces.csproj": {
-                "projectPath": "C:\\Users\\juliocmartinezz\\source\\repos\\ThreeBits.Interfaces\\ThreeBits.Interfaces.csproj"
+              "C:\\Users\\JULIO CESAR\\Documents\\GitHub\\THREEBITSCORE\\ThreeBits.Interfaces\\ThreeBits.Interfaces.csproj": {
+                "projectPath": "C:\\Users\\JULIO CESAR\\Documents\\GitHub\\THREEBITSCORE\\ThreeBits.Interfaces\\ThreeBits.Interfaces.csproj"
               }
             }
           }
@@ -197,8 +195,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -207,7 +204,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.106\\RuntimeIdentifierGraph.json"
         }
       }
     }

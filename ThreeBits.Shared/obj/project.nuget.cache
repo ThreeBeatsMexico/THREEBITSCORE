@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "aJGKRcDZ1J2OWD0Xt+Mm40FzQXN6LFWrGGAxDtI5j5+yhdPxgz1XjaOWHWgFa7GNxvlfPNRPIYqIN7mi71snXg==",
+  "dgSpecHash": "kPqxvoYKSYv85h72Y2nngDrQN0lmOnq4FH9kl1VgfF/d8puXtUXGFmhd6XUiS/ugje2DcN9uy1iPQrheJCBNrQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\juliocmartinezz\\source\\repos\\ThreeBits.Shared\\ThreeBits.Shared.csproj",
+  "projectFilePath": "C:\\Users\\JULIO CESAR\\Documents\\GitHub\\THREEBITSCORE\\ThreeBits.Shared\\ThreeBits.Shared.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\juliocmartinezz\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
-    "C:\\Users\\juliocmartinezz\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.2\\microsoft.extensions.logging.abstractions.6.0.2.nupkg.sha512",
-    "C:\\Users\\juliocmartinezz\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
-    "C:\\Users\\juliocmartinezz\\.nuget\\packages\\restsharp\\108.0.2\\restsharp.108.0.2.nupkg.sha512",
-    "C:\\Users\\juliocmartinezz\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    "C:\\Users\\JULIO CESAR\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\JULIO CESAR\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.2\\microsoft.extensions.logging.abstractions.6.0.2.nupkg.sha512",
+    "C:\\Users\\JULIO CESAR\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\JULIO CESAR\\.nuget\\packages\\restsharp\\108.0.2\\restsharp.108.0.2.nupkg.sha512",
+    "C:\\Users\\JULIO CESAR\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }

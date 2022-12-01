@@ -13,3 +13,18 @@ C:\Users\juliocmartinezz\source\repos\ThreeBits.Interfaces\obj\Debug\net6.0\Thre
 C:\Users\juliocmartinezz\source\repos\ThreeBits.Interfaces\obj\Debug\net6.0\refint\ThreeBits.Interfaces.dll
 C:\Users\juliocmartinezz\source\repos\ThreeBits.Interfaces\obj\Debug\net6.0\ThreeBits.Interfaces.pdb
 C:\Users\juliocmartinezz\source\repos\ThreeBits.Interfaces\obj\Debug\net6.0\ref\ThreeBits.Interfaces.dll
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Interfaces\bin\Debug\net6.0\ThreeBits.Interfaces.deps.json
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Interfaces\bin\Debug\net6.0\ThreeBits.Interfaces.dll
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Interfaces\bin\Debug\net6.0\ref\ThreeBits.Interfaces.dll
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Interfaces\bin\Debug\net6.0\ThreeBits.Interfaces.pdb
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Interfaces\bin\Debug\net6.0\ThreeBits.Entities.dll
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Interfaces\bin\Debug\net6.0\ThreeBits.Entities.pdb
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Interfaces\obj\Debug\net6.0\ThreeBits.Interfaces.csproj.AssemblyReference.cache
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Interfaces\obj\Debug\net6.0\ThreeBits.Interfaces.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Interfaces\obj\Debug\net6.0\ThreeBits.Interfaces.AssemblyInfoInputs.cache
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Interfaces\obj\Debug\net6.0\ThreeBits.Interfaces.AssemblyInfo.cs
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Interfaces\obj\Debug\net6.0\ThreeBits.Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Interfaces\obj\Debug\net6.0\ThreeBits.Interfaces.csproj.CopyComplete
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Interfaces\obj\Debug\net6.0\ThreeBits.Interfaces.dll
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Interfaces\obj\Debug\net6.0\ref\ThreeBits.Interfaces.dll
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Interfaces\obj\Debug\net6.0\ThreeBits.Interfaces.pdb

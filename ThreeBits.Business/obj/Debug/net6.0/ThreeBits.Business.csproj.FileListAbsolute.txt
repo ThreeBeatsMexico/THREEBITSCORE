@@ -17,3 +17,22 @@ C:\Users\juliocmartinezz\source\repos\ThreeBits.Business\obj\Debug\net6.0\ThreeB
 C:\Users\juliocmartinezz\source\repos\ThreeBits.Business\obj\Debug\net6.0\refint\ThreeBits.Business.dll
 C:\Users\juliocmartinezz\source\repos\ThreeBits.Business\obj\Debug\net6.0\ThreeBits.Business.pdb
 C:\Users\juliocmartinezz\source\repos\ThreeBits.Business\obj\Debug\net6.0\ref\ThreeBits.Business.dll
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Business\bin\Debug\net6.0\ThreeBits.Business.deps.json
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Business\bin\Debug\net6.0\ThreeBits.Business.dll
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Business\bin\Debug\net6.0\ref\ThreeBits.Business.dll
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Business\bin\Debug\net6.0\ThreeBits.Business.pdb
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Business\bin\Debug\net6.0\ThreeBits.Data.dll
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Business\bin\Debug\net6.0\ThreeBits.Entities.dll
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Business\bin\Debug\net6.0\ThreeBits.Interfaces.dll
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Business\bin\Debug\net6.0\ThreeBits.Data.pdb
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Business\bin\Debug\net6.0\ThreeBits.Entities.pdb
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Business\bin\Debug\net6.0\ThreeBits.Interfaces.pdb
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Business\obj\Debug\net6.0\ThreeBits.Business.csproj.AssemblyReference.cache
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Business\obj\Debug\net6.0\ThreeBits.Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Business\obj\Debug\net6.0\ThreeBits.Business.AssemblyInfoInputs.cache
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Business\obj\Debug\net6.0\ThreeBits.Business.AssemblyInfo.cs
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Business\obj\Debug\net6.0\ThreeBits.Business.csproj.CoreCompileInputs.cache
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Business\obj\Debug\net6.0\ThreeBits.Business.csproj.CopyComplete
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Business\obj\Debug\net6.0\ThreeBits.Business.dll
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Business\obj\Debug\net6.0\ref\ThreeBits.Business.dll
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Business\obj\Debug\net6.0\ThreeBits.Business.pdb

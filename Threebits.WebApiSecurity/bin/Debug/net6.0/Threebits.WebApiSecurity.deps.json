@@ -11,6 +11,7 @@
           "Microsoft.Extensions.Logging.Log4Net.AspNetCore": "6.1.0",
           "RestSharp": "108.0.2",
           "Swashbuckle.AspNetCore": "6.4.0",
+          "ThreeBits.Interfaces": "1.0.0",
           "ThreeBits.Services": "1.0.0"
         },
         "runtime": {

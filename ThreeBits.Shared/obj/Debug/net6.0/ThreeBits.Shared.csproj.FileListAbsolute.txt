@@ -15,3 +15,20 @@ C:\Users\juliocmartinezz\source\repos\ThreeBits.Shared\obj\Debug\net6.0\ThreeBit
 C:\Users\juliocmartinezz\source\repos\ThreeBits.Shared\obj\Debug\net6.0\refint\ThreeBits.Shared.dll
 C:\Users\juliocmartinezz\source\repos\ThreeBits.Shared\obj\Debug\net6.0\ThreeBits.Shared.pdb
 C:\Users\juliocmartinezz\source\repos\ThreeBits.Shared\obj\Debug\net6.0\ref\ThreeBits.Shared.dll
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Shared\bin\Debug\net6.0\ThreeBits.Shared.deps.json
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Shared\bin\Debug\net6.0\ThreeBits.Shared.dll
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Shared\bin\Debug\net6.0\ref\ThreeBits.Shared.dll
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Shared\bin\Debug\net6.0\ThreeBits.Shared.pdb
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Shared\bin\Debug\net6.0\ThreeBits.Entities.dll
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Shared\bin\Debug\net6.0\ThreeBits.Interfaces.dll
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Shared\bin\Debug\net6.0\ThreeBits.Entities.pdb
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Shared\bin\Debug\net6.0\ThreeBits.Interfaces.pdb
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Shared\obj\Debug\net6.0\ThreeBits.Shared.csproj.AssemblyReference.cache
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Shared\obj\Debug\net6.0\ThreeBits.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Shared\obj\Debug\net6.0\ThreeBits.Shared.AssemblyInfoInputs.cache
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Shared\obj\Debug\net6.0\ThreeBits.Shared.AssemblyInfo.cs
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Shared\obj\Debug\net6.0\ThreeBits.Shared.csproj.CoreCompileInputs.cache
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Shared\obj\Debug\net6.0\ThreeBits.Shared.csproj.CopyComplete
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Shared\obj\Debug\net6.0\ThreeBits.Shared.dll
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Shared\obj\Debug\net6.0\ref\ThreeBits.Shared.dll
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Shared\obj\Debug\net6.0\ThreeBits.Shared.pdb

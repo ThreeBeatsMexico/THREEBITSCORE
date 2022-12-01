@@ -13,7 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ThreeBits.Services\ThreeBits.Services.csproj" />
+    <ProjectReference Include="..\ThreeBits.Services\ThreeBits.Services.csproj" />
+    <ProjectReference Include="..\ThreeBits.Interfaces\ThreeBits.Interfaces.csproj" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>

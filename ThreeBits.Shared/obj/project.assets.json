@@ -8,27 +8,19 @@
           "Microsoft.Extensions.Primitives": "6.0.0"
         },
         "compile": {
-          "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll": {}
         }
       },
       "Microsoft.Extensions.Logging.Abstractions/6.0.2": {
         "type": "package",
         "compile": {
-          "lib/net6.0/Microsoft.Extensions.Logging.Abstractions.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/Microsoft.Extensions.Logging.Abstractions.dll": {}
         },
         "runtime": {
-          "lib/net6.0/Microsoft.Extensions.Logging.Abstractions.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/Microsoft.Extensions.Logging.Abstractions.dll": {}
         },
         "build": {
           "build/Microsoft.Extensions.Logging.Abstractions.targets": {},
@@ -41,14 +33,10 @@
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
         },
         "compile": {
-          "lib/net6.0/Microsoft.Extensions.Primitives.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/Microsoft.Extensions.Primitives.dll": {}
         },
         "runtime": {
-          "lib/net6.0/Microsoft.Extensions.Primitives.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/Microsoft.Extensions.Primitives.dll": {}
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
@@ -57,27 +45,19 @@
       "RestSharp/108.0.2": {
         "type": "package",
         "compile": {
-          "lib/net6.0/RestSharp.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/RestSharp.dll": {}
         },
         "runtime": {
-          "lib/net6.0/RestSharp.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/RestSharp.dll": {}
         }
       },
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {
         "type": "package",
         "compile": {
-          "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll": {}
         },
         "runtime": {
-          "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll": {
-            "related": ".xml"
-          }
+          "lib/net6.0/System.Runtime.CompilerServices.Unsafe.dll": {}
         },
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
@@ -269,25 +249,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\juliocmartinezz\\.nuget\\packages\\": {},
+    "C:\\Users\\JULIO CESAR\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\juliocmartinezz\\source\\repos\\ThreeBits.Shared\\ThreeBits.Shared.csproj",
+      "projectUniqueName": "C:\\Users\\JULIO CESAR\\Documents\\GitHub\\THREEBITSCORE\\ThreeBits.Shared\\ThreeBits.Shared.csproj",
       "projectName": "ThreeBits.Shared",
-      "projectPath": "C:\\Users\\juliocmartinezz\\source\\repos\\ThreeBits.Shared\\ThreeBits.Shared.csproj",
-      "packagesPath": "C:\\Users\\juliocmartinezz\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\juliocmartinezz\\source\\repos\\ThreeBits.Shared\\obj\\",
+      "projectPath": "C:\\Users\\JULIO CESAR\\Documents\\GitHub\\THREEBITSCORE\\ThreeBits.Shared\\ThreeBits.Shared.csproj",
+      "packagesPath": "C:\\Users\\JULIO CESAR\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\JULIO CESAR\\Documents\\GitHub\\THREEBITSCORE\\ThreeBits.Shared\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\juliocmartinezz\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "H:\\JCAPPDATA\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -302,11 +282,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\juliocmartinezz\\source\\repos\\ThreeBits.Entities\\ThreeBits.Entities.csproj": {
-              "projectPath": "C:\\Users\\juliocmartinezz\\source\\repos\\ThreeBits.Entities\\ThreeBits.Entities.csproj"
+            "C:\\Users\\JULIO CESAR\\Documents\\GitHub\\THREEBITSCORE\\ThreeBits.Entities\\ThreeBits.Entities.csproj": {
+              "projectPath": "C:\\Users\\JULIO CESAR\\Documents\\GitHub\\THREEBITSCORE\\ThreeBits.Entities\\ThreeBits.Entities.csproj"
             },
-            "C:\\Users\\juliocmartinezz\\source\\repos\\ThreeBits.Interfaces\\ThreeBits.Interfaces.csproj": {
-              "projectPath": "C:\\Users\\juliocmartinezz\\source\\repos\\ThreeBits.Interfaces\\ThreeBits.Interfaces.csproj"
+            "C:\\Users\\JULIO CESAR\\Documents\\GitHub\\THREEBITSCORE\\ThreeBits.Interfaces\\ThreeBits.Interfaces.csproj": {
+              "projectPath": "C:\\Users\\JULIO CESAR\\Documents\\GitHub\\THREEBITSCORE\\ThreeBits.Interfaces\\ThreeBits.Interfaces.csproj"
             }
           }
         }
@@ -336,8 +316,7 @@
           "net47",
           "net471",
           "net472",
-          "net48",
-          "net481"
+          "net48"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -346,7 +325,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.106\\RuntimeIdentifierGraph.json"
       }
     }
   }

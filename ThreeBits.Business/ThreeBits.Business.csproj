@@ -7,8 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ThreeBits.Data\ThreeBits.Data.csproj" />
     <ProjectReference Include="..\ThreeBits.Entities\ThreeBits.Entities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="PVLSECVB">
+      <HintPath>..\..\..\..\Desktop\PVLSECVB.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
