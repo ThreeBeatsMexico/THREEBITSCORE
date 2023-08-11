@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace ThreeBits.Entities.User
 {
-    [DataContract]
+    
     public class RolesXUsuarioBE
     {
         private Int64 iIDROLXUSUARIO;
-        [DataMember]
+        
         public Int64 IDROLXUSUARIO
         {
             get { return iIDROLXUSUARIO; }
@@ -19,7 +19,7 @@ namespace ThreeBits.Entities.User
         }
 
         private Int64 iIDROL;
-        [DataMember]
+        
         public Int64 IDROL
         {
             get { return iIDROL; }
@@ -27,7 +27,7 @@ namespace ThreeBits.Entities.User
         }
 
         private String sROL;
-        [DataMember]
+        
         public String ROL
         {
             get { return sROL; }
@@ -35,7 +35,7 @@ namespace ThreeBits.Entities.User
         }
 
         private String sDESCROL;
-        [DataMember]
+        
         public String DESCROL
         {
             get { return sDESCROL; }
@@ -43,7 +43,7 @@ namespace ThreeBits.Entities.User
         }
 
         private Int64 iIDUSUARIO;
-        [DataMember]
+        
         public Int64 IDUSUARIO
         {
             get { return iIDUSUARIO; }
@@ -51,7 +51,7 @@ namespace ThreeBits.Entities.User
         }
 
         private Int64 iIDESTACIONXAPP;
-        [DataMember]
+        
         public Int64 IDESTACIONXAPP
         {
             get { return iIDESTACIONXAPP; }
@@ -59,7 +59,7 @@ namespace ThreeBits.Entities.User
         }
 
         private bool bACTIVO;
-        [DataMember]
+        
         public bool ACTIVO
         {
             get { return bACTIVO; }
@@ -67,7 +67,7 @@ namespace ThreeBits.Entities.User
         }
 
         private string sIdAplicacion;
-        [DataMember]
+        
         public string IDAPLICACION
         {
             get { return sIdAplicacion; }
@@ -75,14 +75,14 @@ namespace ThreeBits.Entities.User
         }
 
         private string sAplicacion;
-        [DataMember]
+        
         public string APLICACION
         {
             get { return sAplicacion; }
             set { sAplicacion = value; }
         }
 
-        [DataMember]
+        
         public string RowIndex { get; set; }
     }
 }

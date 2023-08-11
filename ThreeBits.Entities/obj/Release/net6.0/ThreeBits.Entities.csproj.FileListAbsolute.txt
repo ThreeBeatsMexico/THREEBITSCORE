@@ -1,0 +1,12 @@
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Entities\bin\Release\net6.0\ThreeBits.Entities.deps.json
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Entities\bin\Release\net6.0\ThreeBits.Entities.dll
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Entities\bin\Release\net6.0\ref\ThreeBits.Entities.dll
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Entities\bin\Release\net6.0\ThreeBits.Entities.pdb
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Entities\obj\Release\net6.0\ThreeBits.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Entities\obj\Release\net6.0\ThreeBits.Entities.AssemblyInfoInputs.cache
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Entities\obj\Release\net6.0\ThreeBits.Entities.AssemblyInfo.cs
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Entities\obj\Release\net6.0\ThreeBits.Entities.csproj.CoreCompileInputs.cache
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Entities\obj\Release\net6.0\ThreeBits.Entities.dll
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Entities\obj\Release\net6.0\ref\ThreeBits.Entities.dll
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Entities\obj\Release\net6.0\ThreeBits.Entities.pdb
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Entities\obj\Release\net6.0\ThreeBits.Entities.csproj.AssemblyReference.cache

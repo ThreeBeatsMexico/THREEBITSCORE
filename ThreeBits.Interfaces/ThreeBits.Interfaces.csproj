@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Security\Common\ICatalogosBR.cs" />
+    <Compile Remove="Security\Common\IConfiguracionBR.cs" />
+    <Compile Remove="Security\Common\IUtils.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="RestSharp" Version="108.0.2" />
   </ItemGroup>
 

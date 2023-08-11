@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace ThreeBits.Entities.User
 {
-    [DataContract]
+   
     public class ContactoBE
     {
         //Propiedades de Domicilio:
         private Int64 iIDCONTACTO;
-        [DataMember]
+        
         public Int64 IDCONTACTO
         {
             get { return iIDCONTACTO; }
@@ -20,7 +20,7 @@ namespace ThreeBits.Entities.User
         }
 
         private Int64 iIDUSUARIO;
-        [DataMember]
+        
         public Int64 IDUSUARIO
         {
             get { return iIDUSUARIO; }
@@ -28,7 +28,7 @@ namespace ThreeBits.Entities.User
         }
 
         private Int32 iIDTIPOCONTACTO;
-        [DataMember]
+        
         public Int32 IDTIPOCONTACTO
         {
             get { return iIDTIPOCONTACTO; }
@@ -36,7 +36,7 @@ namespace ThreeBits.Entities.User
         }
 
         private string sTIPOCONTACTO;
-        [DataMember]
+        
         public string TIPOCONTACTO
         {
             get { return sTIPOCONTACTO; }
@@ -45,7 +45,7 @@ namespace ThreeBits.Entities.User
 
 
         private String sVALOR;
-        [DataMember]
+        
         public String VALOR
         {
             get { return sVALOR; }
@@ -53,7 +53,7 @@ namespace ThreeBits.Entities.User
         }
 
         private DateTime dtFECHAALTA;
-        [DataMember]
+        
         public DateTime FECHAALTA
         {
             get { return dtFECHAALTA; }
@@ -61,7 +61,7 @@ namespace ThreeBits.Entities.User
         }
 
         private bool bACTIVO;
-        [DataMember]
+        
         public bool ACTIVO
         {
             get { return bACTIVO; }
@@ -69,9 +69,9 @@ namespace ThreeBits.Entities.User
         }
 
 
-        [DataMember]
+        
         public string RowIndex { get; set; }
-        [DataMember]
+        
         public bool Actualizado { get; set; }
 
     }

@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace ThreeBits.Entities.Security
 {
-   public class Credential
+   
+    public class Credential
     {
         private string sUSER;
         public string userName
@@ -14,7 +17,7 @@ namespace ThreeBits.Entities.Security
             get { return sUSER; }
             set { sUSER = value; }
         }
-
+        
         private string sPASSWORD;
         public string password
         {
@@ -28,8 +31,9 @@ namespace ThreeBits.Entities.Security
             get { return sXAPPID; }
             set { sXAPPID = value; }
         }
-
+       
         private string sNAME;
+       
         public string name
         {
             get { return sNAME; }

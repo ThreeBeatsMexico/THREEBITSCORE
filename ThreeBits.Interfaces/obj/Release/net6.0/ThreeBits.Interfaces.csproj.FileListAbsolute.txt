@@ -1,0 +1,15 @@
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Interfaces\bin\Release\net6.0\ThreeBits.Interfaces.deps.json
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Interfaces\bin\Release\net6.0\ThreeBits.Interfaces.dll
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Interfaces\bin\Release\net6.0\ref\ThreeBits.Interfaces.dll
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Interfaces\bin\Release\net6.0\ThreeBits.Interfaces.pdb
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Interfaces\bin\Release\net6.0\ThreeBits.Entities.dll
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Interfaces\bin\Release\net6.0\ThreeBits.Entities.pdb
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Interfaces\obj\Release\net6.0\ThreeBits.Interfaces.csproj.AssemblyReference.cache
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Interfaces\obj\Release\net6.0\ThreeBits.Interfaces.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Interfaces\obj\Release\net6.0\ThreeBits.Interfaces.AssemblyInfoInputs.cache
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Interfaces\obj\Release\net6.0\ThreeBits.Interfaces.AssemblyInfo.cs
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Interfaces\obj\Release\net6.0\ThreeBits.Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Interfaces\obj\Release\net6.0\ThreeBits.Interfaces.csproj.CopyComplete
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Interfaces\obj\Release\net6.0\ThreeBits.Interfaces.dll
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Interfaces\obj\Release\net6.0\ref\ThreeBits.Interfaces.dll
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Interfaces\obj\Release\net6.0\ThreeBits.Interfaces.pdb

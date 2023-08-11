@@ -34,6 +34,22 @@ namespace ThreeBits.Entities.User
             get { return iIDESTACION; }
             set { iIDESTACION = value; }
         }
+        private Int32 iIDESTACIONPARTICULAR;
+        [DataMember]
+        public Int32 IDESTACIONPARTICULAR
+        {
+            get { return iIDESTACIONPARTICULAR; }
+            set { iIDESTACIONPARTICULAR = value; }
+        }
+
+        private string sDESCRIPCION;
+
+        public string  DESCRIPCION
+        {
+            get { return sDESCRIPCION; }
+            set { sDESCRIPCION = value; }
+        }
+
 
         private bool bACTIVO;
         [DataMember]

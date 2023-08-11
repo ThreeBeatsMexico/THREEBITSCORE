@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "kPqxvoYKSYv85h72Y2nngDrQN0lmOnq4FH9kl1VgfF/d8puXtUXGFmhd6XUiS/ugje2DcN9uy1iPQrheJCBNrQ==",
+  "dgSpecHash": "yDILziQxJZ2A63/V9Kue6DqrxK91TkUrvxjcIM5ih3K6viFk9U6AXEM9IluoL1qP2GPRd9Ty5COtU/CAO6oBMw==",
   "success": true,
   "projectFilePath": "C:\\Users\\JULIO CESAR\\Documents\\GitHub\\THREEBITSCORE\\ThreeBits.Shared\\ThreeBits.Shared.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\JULIO CESAR\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\JULIO CESAR\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.2\\microsoft.extensions.logging.abstractions.6.0.2.nupkg.sha512",
     "C:\\Users\\JULIO CESAR\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\JULIO CESAR\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\JULIO CESAR\\.nuget\\packages\\restsharp\\108.0.2\\restsharp.108.0.2.nupkg.sha512",
     "C:\\Users\\JULIO CESAR\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
   ],

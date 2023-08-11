@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "UWycrDS+NpJZxqUcLiTBLM1oRZH24DF5eADkhG8sqMo=",
+  "Source": "ThreeBits.Api.Security",
+  "BasePath": "_content/ThreeBits.Api.Security",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

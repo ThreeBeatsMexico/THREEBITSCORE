@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace ThreeBits.Entities.Common
 {
-    [DataContract]
+   
     public class ReglasBE
     {
         private bool bACTIVO;
-        [DataMember]
+        
         public bool ACTIVO
         {
             get { return bACTIVO; }
@@ -19,7 +19,7 @@ namespace ThreeBits.Entities.Common
         }
 
         private string sUSUARIO;
-        [DataMember]
+        
         public string USUARIO
         {
             get { return sUSUARIO; }
@@ -27,7 +27,7 @@ namespace ThreeBits.Entities.Common
         }
 
         private Int32 iTIPOBUSQUEDA;
-        [DataMember]
+        
         public Int32 TIPOBUSQUEDA
         {
             get { return iTIPOBUSQUEDA; }
@@ -35,7 +35,7 @@ namespace ThreeBits.Entities.Common
         }
 
         private Int64 iIDUSRMODIF;
-        [DataMember]
+        
         public Int64 IDUSRMODIF
         {
             get { return iIDUSRMODIF; }
@@ -43,7 +43,7 @@ namespace ThreeBits.Entities.Common
         }
 
         private Int64 iIDAPP;
-        [DataMember]
+        
         public Int64 IDAPP
         {
             get { return iIDAPP; }

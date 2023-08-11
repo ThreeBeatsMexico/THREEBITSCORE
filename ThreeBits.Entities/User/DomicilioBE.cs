@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace ThreeBits.Entities.User
 {
-    [DataContract]
+   
     public class DomicilioBE
     {
         //Propiedades de Domicilio:
         private Int64 iIDDOMICILIO;
-        [DataMember]
+        
         public Int64 IDDOMICILIO
         {
             get { return iIDDOMICILIO; }
@@ -20,7 +20,7 @@ namespace ThreeBits.Entities.User
         }
 
         private Int64 iIDUSUARIO;
-        [DataMember]
+        
         public Int64 IDUSUARIO
         {
             get { return iIDUSUARIO; }
@@ -28,7 +28,7 @@ namespace ThreeBits.Entities.User
         }
 
         private String sCALLE;
-        [DataMember]
+        
         public String CALLE
         {
             get { return sCALLE; }
@@ -36,7 +36,7 @@ namespace ThreeBits.Entities.User
         }
 
         private String sNUMEXT;
-        [DataMember]
+        
         public String NUMEXT
         {
             get { return sNUMEXT; }
@@ -44,7 +44,7 @@ namespace ThreeBits.Entities.User
         }
 
         private String sNUMINT;
-        [DataMember]
+        
         public String NUMINT
         {
             get { return sNUMINT; }
@@ -52,7 +52,7 @@ namespace ThreeBits.Entities.User
         }
 
         private string iDESTADO;
-        [DataMember]
+        
         public string IDESTADO
         {
             get { return iDESTADO; }
@@ -60,7 +60,7 @@ namespace ThreeBits.Entities.User
         }
 
         private String sESTADO;
-        [DataMember]
+        
         public String ESTADO
         {
             get { return sESTADO; }
@@ -68,7 +68,7 @@ namespace ThreeBits.Entities.User
         }
 
         private string iIDMUNICIPIO;
-        [DataMember]
+        
         public string IDMUNICIPIO
         {
             get { return iIDMUNICIPIO; }
@@ -76,7 +76,7 @@ namespace ThreeBits.Entities.User
         }
 
         private string sMUNICIPIO;
-        [DataMember]
+        
         public string MUNICIPIO
         {
             get { return sMUNICIPIO; }
@@ -84,7 +84,7 @@ namespace ThreeBits.Entities.User
         }
 
         private string iIDCOLONIA;
-        [DataMember]
+        
         public string IDCOLONIA
         {
             get { return iIDCOLONIA; }
@@ -92,7 +92,7 @@ namespace ThreeBits.Entities.User
         }
 
         private String sCOLONIA;
-        [DataMember]
+        
         public String COLONIA
         {
             get { return sCOLONIA; }
@@ -100,7 +100,7 @@ namespace ThreeBits.Entities.User
         }
 
         private String sCP;
-        [DataMember]
+        
         public String CP
         {
             get { return sCP; }
@@ -108,7 +108,7 @@ namespace ThreeBits.Entities.User
         }
 
         private DateTime dtFECHAALTA;
-        [DataMember]
+        
         public DateTime FECHAALTA
         {
             get { return dtFECHAALTA; }
@@ -116,7 +116,7 @@ namespace ThreeBits.Entities.User
         }
 
         private bool bACTIVO;
-        [DataMember]
+        
         public bool ACTIVO
         {
             get { return bACTIVO; }
@@ -124,9 +124,9 @@ namespace ThreeBits.Entities.User
         }
 
 
-        [DataMember]
+        
         public string RowIndex { get; set; }
-        [DataMember]
+        
         public bool Actualizado { get; set; }
     }
 }

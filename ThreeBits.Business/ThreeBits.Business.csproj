@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -7,18 +7,26 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <Compile Remove="Filters\AddChallengeOnUnauthorizedResult.cs" />
+    <Compile Remove="Filters\AuthenticationFailureResult.cs" />
+    <Compile Remove="Filters\HttpAuthenticationChallengeContextExtensions.cs" />
+    <Compile Remove="Filters\JwtAuthenticationAttribute.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.VisualBasic" Version="10.3.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.5.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.29.0" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ThreeBits.Data\ThreeBits.Data.csproj" />
     <ProjectReference Include="..\ThreeBits.Entities\ThreeBits.Entities.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="PVLSECVB">
-      <HintPath>..\..\..\..\Desktop\PVLSECVB.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>

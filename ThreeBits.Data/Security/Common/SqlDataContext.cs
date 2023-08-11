@@ -219,6 +219,36 @@ namespace ThreeBits.Data.Common
         //    }
         //}
 
+        public bool ExecuteReaderCustom(ref SqlCommand command, out SqlDataReader reader, out string dbException, CommandBehavior behavior = CommandBehavior.Default, string TableName = "tabla", int commandTimeout = COMMANDTIMEOUT)
+        {
+            reader = null;
+            try
+            {
+                if (Connect(out dbException))
+                {
+                    command.Connection = _sqlConnection;
+                    command.CommandTimeout = commandTimeout;
+                    SqlDataReader DataReader = command.ExecuteReader(behavior);
+                    //reader = new DataTable(TableName);
+                    //reader.Load(DataReader);
+                    DataReader.Close();
+                    Disconnect();
+                    command.Dispose();
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception excp)
+            {
+                Disconnect();
+                command.Dispose();
+                dbException = excp.Message;
+                return false;
+            }
+        }
+
+
+
         public class DbDataContextException : Exception
         {
             public DbDataContextException(string message) : base(message) { }

@@ -21,6 +21,11 @@ C:\Users\juliocmartinezz\source\repos\ThreeBits.Services\obj\Debug\net6.0\ThreeB
 C:\Users\juliocmartinezz\source\repos\ThreeBits.Services\obj\Debug\net6.0\refint\ThreeBits.Services.dll
 C:\Users\juliocmartinezz\source\repos\ThreeBits.Services\obj\Debug\net6.0\ThreeBits.Services.pdb
 C:\Users\juliocmartinezz\source\repos\ThreeBits.Services\obj\Debug\net6.0\ref\ThreeBits.Services.dll
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Services\obj\Debug\net6.0\ThreeBits.Services.csproj.AssemblyReference.cache
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Services\obj\Debug\net6.0\ThreeBits.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Services\obj\Debug\net6.0\ThreeBits.Services.AssemblyInfoInputs.cache
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Services\obj\Debug\net6.0\ThreeBits.Services.AssemblyInfo.cs
+C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Services\obj\Debug\net6.0\ThreeBits.Services.csproj.CoreCompileInputs.cache
 C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Services\bin\Debug\net6.0\ThreeBits.Services.deps.json
 C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Services\bin\Debug\net6.0\ThreeBits.Services.dll
 C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Services\bin\Debug\net6.0\ref\ThreeBits.Services.dll
@@ -35,11 +40,6 @@ C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Services\bin\Debug
 C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Services\bin\Debug\net6.0\ThreeBits.Interfaces.pdb
 C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Services\bin\Debug\net6.0\ThreeBits.Shared.pdb
 C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Services\bin\Debug\net6.0\ThreeBits.Data.pdb
-C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Services\obj\Debug\net6.0\ThreeBits.Services.csproj.AssemblyReference.cache
-C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Services\obj\Debug\net6.0\ThreeBits.Services.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Services\obj\Debug\net6.0\ThreeBits.Services.AssemblyInfoInputs.cache
-C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Services\obj\Debug\net6.0\ThreeBits.Services.AssemblyInfo.cs
-C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Services\obj\Debug\net6.0\ThreeBits.Services.csproj.CoreCompileInputs.cache
 C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Services\obj\Debug\net6.0\ThreeBits.Services.csproj.CopyComplete
 C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Services\obj\Debug\net6.0\ThreeBits.Services.dll
 C:\Users\JULIO CESAR\Documents\GitHub\THREEBITSCORE\ThreeBits.Services\obj\Debug\net6.0\ref\ThreeBits.Services.dll

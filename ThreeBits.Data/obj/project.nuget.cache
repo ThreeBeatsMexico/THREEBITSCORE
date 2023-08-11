@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "V5WyA36tf3Ca/5i2rJVCtzetRPKupKC9wEHaes5Jf6K0KTeHP2dM6YXWUlgWcgtoU9Qfy34Pcm7uhDSZuGPlJg==",
+  "dgSpecHash": "7V7d605mzsux7oQ1JIplrcgQ0iRPvO4D1GGcH7w/jDPLv9TSJ13ZPmAYOmnjuGIDcbbh6mJM9Bws84Hu5Gyekw==",
   "success": true,
   "projectFilePath": "C:\\Users\\JULIO CESAR\\Documents\\GitHub\\THREEBITSCORE\\ThreeBits.Data\\ThreeBits.Data.csproj",
   "expectedPackageFiles": [
@@ -31,6 +31,7 @@
     "C:\\Users\\JULIO CESAR\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "C:\\Users\\JULIO CESAR\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\JULIO CESAR\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
+    "C:\\Users\\JULIO CESAR\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\JULIO CESAR\\.nuget\\packages\\nuget.common\\6.3.1\\nuget.common.6.3.1.nupkg.sha512",
     "C:\\Users\\JULIO CESAR\\.nuget\\packages\\nuget.configuration\\6.3.1\\nuget.configuration.6.3.1.nupkg.sha512",
     "C:\\Users\\JULIO CESAR\\.nuget\\packages\\nuget.frameworks\\6.3.1\\nuget.frameworks.6.3.1.nupkg.sha512",

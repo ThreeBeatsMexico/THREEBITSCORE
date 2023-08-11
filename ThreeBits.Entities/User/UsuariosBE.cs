@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace ThreeBits.Entities.User
 {
-    [DataContract]
+    
     public class UsuariosBE
     {
         private Int64 iIDUSUARIO;
-        [DataMember]
+        
         public Int64 IDUSUARIO
         {
             get { return iIDUSUARIO; }
@@ -19,7 +19,7 @@ namespace ThreeBits.Entities.User
         }
 
         private Int64 iIDAPLICACION;
-        [DataMember]
+        
         public Int64 IDAPLICACION
         {
             get { return iIDAPLICACION; }
@@ -27,7 +27,7 @@ namespace ThreeBits.Entities.User
         }
 
         private Int32 iIDSEXO;
-        [DataMember]
+        
         public Int32 IDSEXO
         {
             get { return iIDSEXO; }
@@ -35,7 +35,7 @@ namespace ThreeBits.Entities.User
         }
 
         private Int32 iIDTIPOPERSONA;
-        [DataMember]
+        
         public Int32 IDTIPOPERSONA
         {
             get { return iIDTIPOPERSONA; }
@@ -43,7 +43,7 @@ namespace ThreeBits.Entities.User
         }
 
         private Int32 iIDESTADOCIVIL;
-        [DataMember]
+        
         public Int32 IDESTADOCIVIL
         {
             get { return iIDESTADOCIVIL; }
@@ -51,7 +51,7 @@ namespace ThreeBits.Entities.User
         }
 
         private Int32 iIDAREA;
-        [DataMember]
+        
         public Int32 IDAREA
         {
             get { return iIDAREA; }
@@ -59,7 +59,7 @@ namespace ThreeBits.Entities.User
         }
 
         private String sDESCAREA;
-        [DataMember]
+        
         public String DESCAREA
         {
             get { return sDESCAREA; }
@@ -67,7 +67,7 @@ namespace ThreeBits.Entities.User
         }
 
         private Int32 iIDTIPOUSUARIO;
-        [DataMember]
+        
         public Int32 IDTIPOUSUARIO
         {
             get { return iIDTIPOUSUARIO; }
@@ -75,7 +75,7 @@ namespace ThreeBits.Entities.User
         }
 
         private String sDESCTIPOUSUARIO;
-        [DataMember]
+        
         public String DESCTIPOUSUARIO
         {
             get { return sDESCTIPOUSUARIO; }
@@ -83,7 +83,7 @@ namespace ThreeBits.Entities.User
         }
 
         private String sIDUSUARIOAPP;
-        [DataMember]
+        
         public String IDUSUARIOAPP
         {
             get { return sIDUSUARIOAPP; }
@@ -91,7 +91,7 @@ namespace ThreeBits.Entities.User
         }
 
         private String sAPATERNO;
-        [DataMember]
+        
         public String APATERNO
         {
             get { return sAPATERNO; }
@@ -99,7 +99,7 @@ namespace ThreeBits.Entities.User
         }
 
         private String sAMATERNO;
-        [DataMember]
+        
         public String AMATERNO
         {
             get { return sAMATERNO; }
@@ -107,7 +107,7 @@ namespace ThreeBits.Entities.User
         }
 
         private String sNOMBRE;
-        [DataMember]
+        
         public String NOMBRE
         {
             get { return sNOMBRE; }
@@ -115,7 +115,7 @@ namespace ThreeBits.Entities.User
         }
 
         private DateTime? dtFECHANACCONST;
-        [DataMember]
+        
         public DateTime? FECHANACCONST
         {
             get { return dtFECHANACCONST; }
@@ -123,7 +123,7 @@ namespace ThreeBits.Entities.User
         }
 
         private String sUSUARIO;
-        [DataMember]
+        
         public String USUARIO
         {
             get { return sUSUARIO; }
@@ -131,7 +131,7 @@ namespace ThreeBits.Entities.User
         }
 
         private String sPASSWORD;
-        [DataMember]
+        
         public String PASSWORD
         {
             get { return sPASSWORD; }
@@ -139,7 +139,7 @@ namespace ThreeBits.Entities.User
         }
 
         private String sRUTAFOTOPERFIL;
-        [DataMember]
+        
         public String RUTAFOTOPERFIL
         {
             get { return sRUTAFOTOPERFIL; }
@@ -147,7 +147,7 @@ namespace ThreeBits.Entities.User
         }
 
         private DateTime dtFECHAALTA;
-        [DataMember]
+        
         public DateTime FECHAALTA
         {
             get { return dtFECHAALTA; }
@@ -155,7 +155,7 @@ namespace ThreeBits.Entities.User
         }
 
         private bool bACTIVO;
-        [DataMember]
+        
         public bool ACTIVO
         {
             get { return bACTIVO; }
