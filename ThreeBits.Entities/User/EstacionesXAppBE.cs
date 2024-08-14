@@ -7,41 +7,97 @@ using System.Threading.Tasks;
 
 namespace ThreeBits.Entities.User
 {
-    [DataContract]
-    public class EstacionesXAppBE
-    {
-        //Propiedades de Domicilio:
-        private Int64 iIDESTACIONXAPP;
-        [DataMember]
-        public Int64 IDESTACIONXAPP
-        {
-            get { return iIDESTACIONXAPP; }
-            set { iIDESTACIONXAPP = value; }
-        }
+	[DataContract]
+	public class EstacionesXAppBE
+	{
+		private long iIDESTACIONXAPP;
 
-        private Int64 iIDAPLICACION;
-        [DataMember]
-        public Int64 IDAPLICACION
-        {
-            get { return iIDAPLICACION; }
-            set { iIDAPLICACION = value; }
-        }
+		private long iIDAPLICACION;
 
-        private Int32 iIDESTACION;
-        [DataMember]
-        public Int32 IDESTACION
-        {
-            get { return iIDESTACION; }
-            set { iIDESTACION = value; }
-        }
+		private int iIDESTACION;
 
-        private bool bACTIVO;
-        [DataMember]
-        public bool ACTIVO
-        {
-            get { return bACTIVO; }
-            set { bACTIVO = value; }
-        }
+		private int iIDESTACIONPARTICULAR;
 
-    }
+		private string sDESCRIPCION;
+
+		private bool bACTIVO;
+
+		[DataMember]
+		public long IDESTACIONXAPP
+		{
+			get
+			{
+				return iIDESTACIONXAPP;
+			}
+			set
+			{
+				iIDESTACIONXAPP = value;
+			}
+		}
+
+		[DataMember]
+		public long IDAPLICACION
+		{
+			get
+			{
+				return iIDAPLICACION;
+			}
+			set
+			{
+				iIDAPLICACION = value;
+			}
+		}
+
+		[DataMember]
+		public int IDESTACION
+		{
+			get
+			{
+				return iIDESTACION;
+			}
+			set
+			{
+				iIDESTACION = value;
+			}
+		}
+
+		[DataMember]
+		public int IDESTACIONPARTICULAR
+		{
+			get
+			{
+				return iIDESTACIONPARTICULAR;
+			}
+			set
+			{
+				iIDESTACIONPARTICULAR = value;
+			}
+		}
+
+		public string DESCRIPCION
+		{
+			get
+			{
+				return sDESCRIPCION;
+			}
+			set
+			{
+				sDESCRIPCION = value;
+			}
+		}
+
+		[DataMember]
+		public bool ACTIVO
+		{
+			get
+			{
+				return bACTIVO;
+			}
+			set
+			{
+				bACTIVO = value;
+			}
+		}
+	}
+
 }

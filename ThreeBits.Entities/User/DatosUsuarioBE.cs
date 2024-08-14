@@ -4,23 +4,95 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using ThreeBits.Entities.Common;
 
 namespace ThreeBits.Entities.User
 {
     [DataContract]
-    public class DatosUsuarioBE
-    {
-        [DataMember]
-        public UsuariosBE Usuario = new UsuariosBE();
-        [DataMember]
-        public List<DomicilioBE> Domicilios = new List<DomicilioBE>();
-        [DataMember]
-        public List<ContactoBE> Contactos = new List<ContactoBE>();
-        [DataMember]
-        public List<RolesXUsuarioBE> RolesXUsuario = new List<RolesXUsuarioBE>();
-        [DataMember]
-        public List<RolesXUsuarioBE> RolesVSUsuario = new List<RolesXUsuarioBE>();
-        [DataMember]
-        public List<UsuariosBE> Usuarios = new List<UsuariosBE>();
-    }
+	public class DatosUsuarioBE
+	{
+		private UsuariosBE oUsuarios;
+
+		private List<DomicilioBE> oDomicilios;
+
+		private List<ContactoBE> oContactos;
+
+		private List<RolesXUsuarioBE> oRolesXUsuario;
+
+		private ReglasBE oReglas;
+
+		private long lApp;
+
+		public UsuariosBE Usuario
+		{
+			get
+			{
+				return oUsuarios;
+			}
+			set
+			{
+				oUsuarios = value;
+			}
+		}
+
+		public List<DomicilioBE> Domicilios
+		{
+			get
+			{
+				return oDomicilios;
+			}
+			set
+			{
+				oDomicilios = value;
+			}
+		}
+
+		public List<ContactoBE> Contactos
+		{
+			get
+			{
+				return oContactos;
+			}
+			set
+			{
+				oContactos = value;
+			}
+		}
+
+		public List<RolesXUsuarioBE> RolesXUsuario
+		{
+			get
+			{
+				return oRolesXUsuario;
+			}
+			set
+			{
+				oRolesXUsuario = value;
+			}
+		}
+
+		public ReglasBE Reglas
+		{
+			get
+			{
+				return oReglas;
+			}
+			set
+			{
+				oReglas = value;
+			}
+		}
+
+		public long App
+		{
+			get
+			{
+				return lApp;
+			}
+			set
+			{
+				lApp = value;
+			}
+		}
+	}
 }

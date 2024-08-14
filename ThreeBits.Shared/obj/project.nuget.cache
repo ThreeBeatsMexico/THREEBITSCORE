@@ -1,14 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "aJGKRcDZ1J2OWD0Xt+Mm40FzQXN6LFWrGGAxDtI5j5+yhdPxgz1XjaOWHWgFa7GNxvlfPNRPIYqIN7mi71snXg==",
+  "dgSpecHash": "QEXWNeSdm/2TCBC8JcV3IsrSjY6bZzfMoiwqZJovI3bes07XFOr3OgjAJlH8tC5ini+9NndP7WR3QHxL+035UA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\juliocmartinezz\\source\\repos\\ThreeBits.Shared\\ThreeBits.Shared.csproj",
+  "projectFilePath": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Shared\\ThreeBits.Shared.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\juliocmartinezz\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
-    "C:\\Users\\juliocmartinezz\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.2\\microsoft.extensions.logging.abstractions.6.0.2.nupkg.sha512",
-    "C:\\Users\\juliocmartinezz\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
-    "C:\\Users\\juliocmartinezz\\.nuget\\packages\\restsharp\\108.0.2\\restsharp.108.0.2.nupkg.sha512",
-    "C:\\Users\\juliocmartinezz\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    "C:\\Users\\JULIO CESAR\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\JULIO CESAR\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.2\\microsoft.extensions.logging.abstractions.6.0.2.nupkg.sha512",
+    "C:\\Users\\JULIO CESAR\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\JULIO CESAR\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.1\\microsoft.netcore.platforms.1.1.1.nupkg.sha512",
+    "C:\\Users\\JULIO CESAR\\.nuget\\packages\\microsoft.netcore.targets\\1.1.3\\microsoft.netcore.targets.1.1.3.nupkg.sha512",
+    "C:\\Users\\JULIO CESAR\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\JULIO CESAR\\.nuget\\packages\\restsharp\\108.0.2\\restsharp.108.0.2.nupkg.sha512",
+    "C:\\Users\\JULIO CESAR\\.nuget\\packages\\system.runtime\\4.3.1\\system.runtime.4.3.1.nupkg.sha512",
+    "C:\\Users\\JULIO CESAR\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }

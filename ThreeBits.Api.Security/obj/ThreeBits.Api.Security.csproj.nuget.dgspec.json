@@ -1,0 +1,564 @@
+{
+  "format": 1,
+  "restore": {
+    "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Api.Security\\ThreeBits.Api.Security.csproj": {}
+  },
+  "projects": {
+    "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Api.Security\\ThreeBits.Api.Security.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Api.Security\\ThreeBits.Api.Security.csproj",
+        "projectName": "ThreeBits.Api.Security",
+        "projectPath": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Api.Security\\ThreeBits.Api.Security.csproj",
+        "packagesPath": "C:\\Users\\JULIO CESAR\\.nuget\\packages\\",
+        "outputPath": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Api.Security\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "H:\\JCAPPDATA\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Interfaces\\ThreeBits.Interfaces.csproj": {
+                "projectPath": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Interfaces\\ThreeBits.Interfaces.csproj"
+              },
+              "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Services\\ThreeBits.Services.csproj": {
+                "projectPath": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Services\\ThreeBits.Services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[109.0.1, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.29.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.418\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Business\\ThreeBits.Business.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Business\\ThreeBits.Business.csproj",
+        "projectName": "ThreeBits.Business",
+        "projectPath": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Business\\ThreeBits.Business.csproj",
+        "packagesPath": "C:\\Users\\JULIO CESAR\\.nuget\\packages\\",
+        "outputPath": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Business\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "H:\\JCAPPDATA\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Data\\ThreeBits.Data.csproj": {
+                "projectPath": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Data\\ThreeBits.Data.csproj"
+              },
+              "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Entities\\ThreeBits.Entities.csproj": {
+                "projectPath": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Entities\\ThreeBits.Entities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.VisualBasic": {
+              "target": "Package",
+              "version": "[10.3.0, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerGen": {
+              "target": "Package",
+              "version": "[6.7.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.29.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.418\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Data\\ThreeBits.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Data\\ThreeBits.Data.csproj",
+        "projectName": "ThreeBits.Data",
+        "projectPath": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Data\\ThreeBits.Data.csproj",
+        "packagesPath": "C:\\Users\\JULIO CESAR\\.nuget\\packages\\",
+        "outputPath": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "H:\\JCAPPDATA\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Entities\\ThreeBits.Entities.csproj": {
+                "projectPath": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Entities\\ThreeBits.Entities.csproj"
+              },
+              "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Interfaces\\ThreeBits.Interfaces.csproj": {
+                "projectPath": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Interfaces\\ThreeBits.Interfaces.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
+            "Microsoft.Extensions.Hosting.Abstractions": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[6.0.2, )"
+            },
+            "NuGet.Configuration": {
+              "target": "Package",
+              "version": "[6.3.1, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.418\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Entities\\ThreeBits.Entities.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Entities\\ThreeBits.Entities.csproj",
+        "projectName": "ThreeBits.Entities",
+        "projectPath": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Entities\\ThreeBits.Entities.csproj",
+        "packagesPath": "C:\\Users\\JULIO CESAR\\.nuget\\packages\\",
+        "outputPath": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Entities\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "H:\\JCAPPDATA\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "System.Runtime": {
+              "target": "Package",
+              "version": "[4.3.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.418\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Interfaces\\ThreeBits.Interfaces.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Interfaces\\ThreeBits.Interfaces.csproj",
+        "projectName": "ThreeBits.Interfaces",
+        "projectPath": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Interfaces\\ThreeBits.Interfaces.csproj",
+        "packagesPath": "C:\\Users\\JULIO CESAR\\.nuget\\packages\\",
+        "outputPath": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Interfaces\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "H:\\JCAPPDATA\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Entities\\ThreeBits.Entities.csproj": {
+                "projectPath": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Entities\\ThreeBits.Entities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "RestSharp": {
+              "target": "Package",
+              "version": "[108.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.418\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Services\\ThreeBits.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Services\\ThreeBits.Services.csproj",
+        "projectName": "ThreeBits.Services",
+        "projectPath": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Services\\ThreeBits.Services.csproj",
+        "packagesPath": "C:\\Users\\JULIO CESAR\\.nuget\\packages\\",
+        "outputPath": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "H:\\JCAPPDATA\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Business\\ThreeBits.Business.csproj": {
+                "projectPath": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Business\\ThreeBits.Business.csproj"
+              },
+              "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Entities\\ThreeBits.Entities.csproj": {
+                "projectPath": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Entities\\ThreeBits.Entities.csproj"
+              },
+              "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Interfaces\\ThreeBits.Interfaces.csproj": {
+                "projectPath": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Interfaces\\ThreeBits.Interfaces.csproj"
+              },
+              "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Shared\\ThreeBits.Shared.csproj": {
+                "projectPath": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Shared\\ThreeBits.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.418\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Shared\\ThreeBits.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Shared\\ThreeBits.Shared.csproj",
+        "projectName": "ThreeBits.Shared",
+        "projectPath": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Shared\\ThreeBits.Shared.csproj",
+        "packagesPath": "C:\\Users\\JULIO CESAR\\.nuget\\packages\\",
+        "outputPath": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Shared\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "H:\\JCAPPDATA\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Entities\\ThreeBits.Entities.csproj": {
+                "projectPath": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Entities\\ThreeBits.Entities.csproj"
+              },
+              "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Interfaces\\ThreeBits.Interfaces.csproj": {
+                "projectPath": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Interfaces\\ThreeBits.Interfaces.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[6.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.418\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
