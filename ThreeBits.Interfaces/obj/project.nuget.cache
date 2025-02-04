@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "d44MDYB83zsBaswutyu3JKVhK0mMeN6mARChZ7VIJcD0bZzMpqJ1LMKjhuuxaOf7KtPExdEG8BUW51XChXbjOw==",
+  "dgSpecHash": "fL5Py+5osOc=",
   "success": true,
   "projectFilePath": "H:\\Projectos2022\\THREEBITSCORENUEVO\\ThreeBits.Interfaces\\ThreeBits.Interfaces.csproj",
   "expectedPackageFiles": [
@@ -10,5 +10,16 @@
     "C:\\Users\\JULIO CESAR\\.nuget\\packages\\restsharp\\108.0.2\\restsharp.108.0.2.nupkg.sha512",
     "C:\\Users\\JULIO CESAR\\.nuget\\packages\\system.runtime\\4.3.1\\system.runtime.4.3.1.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "El paquete \"RestSharp\" 108.0.2 tiene una vulnerabilidad de gravedad moderada conocida, https://github.com/advisories/GHSA-4rr6-2v9v-wcpc",
+      "libraryId": "RestSharp",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

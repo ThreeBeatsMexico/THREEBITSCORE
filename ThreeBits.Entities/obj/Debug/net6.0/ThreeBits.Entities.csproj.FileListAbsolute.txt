@@ -21,3 +21,4 @@ H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Entities\obj\Debug\net6.0\ThreeBit
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Entities\obj\Debug\net6.0\ThreeBits.Entities.dll
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Entities\obj\Debug\net6.0\ref\ThreeBits.Entities.dll
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Entities\obj\Debug\net6.0\ThreeBits.Entities.pdb
+H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Entities\obj\Debug\net6.0\ThreeBits.Entities.csproj.AssemblyReference.cache

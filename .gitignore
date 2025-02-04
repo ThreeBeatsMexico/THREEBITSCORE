@@ -1,0 +1,24 @@
+/ThreeBits.Api.Security/bin/Debug
+/ThreeBits.Api.School/obj
+/ThreeBits.Shared/obj
+/ThreeBits.Interfaces/obj
+/ThreeBits.Services/bin
+*.dll
+*.pdb
+*.xml
+*.dll.config
+*.datasource
+*.svcinfo
+/.vs
+/packages
+/THREEBITSCORENUEVO/bin
+/THREEBITSCORENUEVO/obj
+/THREEBITSCORENUEVO/Service References
+/THREEBITSCORENUEVO/ThreeBits.Api.Security/obj/*
+/THREEBITSCORENUEVO/ThreeBits.Api.School/obj/*
+!/obj/*
+*/bin/Debug/
+*/*/obj/
+
+/ThreeBits.Api.School/obj
+ThreeBits.Api.School/obj/Debug/net6.0/ThreeBits.Api.School.GeneratedMSBuildEditorConfig.editorconfig
