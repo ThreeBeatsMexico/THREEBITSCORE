@@ -15,7 +15,6 @@ C:\Users\juliocmartinezz\source\repos\ThreeBits.Interfaces\obj\Debug\net6.0\Thre
 C:\Users\juliocmartinezz\source\repos\ThreeBits.Interfaces\obj\Debug\net6.0\ref\ThreeBits.Interfaces.dll
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Interfaces\bin\Debug\net6.0\ThreeBits.Interfaces.deps.json
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Interfaces\bin\Debug\net6.0\ThreeBits.Interfaces.dll
-H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Interfaces\bin\Debug\net6.0\ref\ThreeBits.Interfaces.dll
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Interfaces\bin\Debug\net6.0\ThreeBits.Interfaces.pdb
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Interfaces\bin\Debug\net6.0\ThreeBits.Entities.dll
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Interfaces\bin\Debug\net6.0\ThreeBits.Entities.pdb
@@ -24,7 +23,9 @@ H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Interfaces\obj\Debug\net6.0\ThreeB
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Interfaces\obj\Debug\net6.0\ThreeBits.Interfaces.AssemblyInfoInputs.cache
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Interfaces\obj\Debug\net6.0\ThreeBits.Interfaces.AssemblyInfo.cs
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Interfaces\obj\Debug\net6.0\ThreeBits.Interfaces.csproj.CoreCompileInputs.cache
-H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Interfaces\obj\Debug\net6.0\ThreeBits.Interfaces.csproj.CopyComplete
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Interfaces\obj\Debug\net6.0\ThreeBits.Interfaces.dll
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Interfaces\obj\Debug\net6.0\ref\ThreeBits.Interfaces.dll
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Interfaces\obj\Debug\net6.0\ThreeBits.Interfaces.pdb
+H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Interfaces\obj\Debug\net6.0\ThreeBits.Interfaces.sourcelink.json
+H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Interfaces\obj\Debug\net6.0\ThreeBit.2349150E.Up2Date
+H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Interfaces\obj\Debug\net6.0\refint\ThreeBits.Interfaces.dll

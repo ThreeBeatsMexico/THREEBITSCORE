@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,11 +17,11 @@ using ThreeBits.Data.Common;
 using ThreeBits.Entities.Common;
 using ThreeBits.Entities.User;
 using ThreeBits.Interfaces.Security.Users;
-using static ThreeBits.Data.Common.SqlDataContext;
+using static ThreeBits.Data.Common.MySqlDataContext;
 
 namespace ThreeBits.Services.Security.User
 {
-	public class UserServiceDA : SqlDataContext, IUserServiceDA
+	public class UserServiceDA : MySqlDataContext, IUserServiceDA
 	{
 		private readonly ILogger _logger;
 
@@ -30,7 +31,7 @@ namespace ThreeBits.Services.Security.User
 		{
 			_logger = logger;
 			_configuration = configuration;
-			_connectionString = _configuration["ConnectionStrings:DefaultConnection"];
+            _MySqlconnectionString = _configuration["ConnectionStrings:MySqlConnection"];
 		}
 
 		public UsuariosBE addUsuario(ReglasBE Reglas, UsuariosBE Usuario, List<DomicilioBE> Domicilios, List<ContactoBE> Contactos, List<RolesXUsuarioBE> RolesXUsuario, long App)
@@ -39,28 +40,28 @@ namespace ThreeBits.Services.Security.User
 			long IdUsuario = 0L;
 			try
 			{
-				SqlCommand dbCommand = new SqlCommand("spFront_insUser")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_insUser")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IDAPLICACION", SqlDbType.BigInt).Value = Usuario.IDAPLICACION;
-				dbCommand.Parameters.Add("@IDSEXO", SqlDbType.Int).Value = ((Usuario.IDSEXO > 0) ? new int?(Usuario.IDSEXO) : null);
-				dbCommand.Parameters.Add("@IDTIPOPERSONA", SqlDbType.Int).Value = ((Usuario.IDTIPOPERSONA > 0) ? new int?(Usuario.IDTIPOPERSONA) : null);
-				dbCommand.Parameters.Add("@IDESTADOCIVIL", SqlDbType.Int).Value = ((Usuario.IDESTADOCIVIL > 0) ? new int?(Usuario.IDESTADOCIVIL) : null);
-				dbCommand.Parameters.Add("@IDAREA", SqlDbType.Int).Value = ((Usuario.IDAREA > 0) ? new int?(Usuario.IDAREA) : null);
-				dbCommand.Parameters.Add("@IDTIPOUSUARIO", SqlDbType.Int).Value = ((Usuario.IDTIPOUSUARIO > 0) ? new int?(Usuario.IDTIPOUSUARIO) : null);
-				dbCommand.Parameters.Add("@IDUSUARIOAPP", SqlDbType.VarChar).Value = Usuario.IDUSUARIOAPP;
-				dbCommand.Parameters.Add("@APATERNO", SqlDbType.VarChar).Value = Usuario.APATERNO;
-				dbCommand.Parameters.Add("@AMATERNO", SqlDbType.VarChar).Value = Usuario.AMATERNO;
-				dbCommand.Parameters.Add("@NOMBRE", SqlDbType.VarChar).Value = Usuario.NOMBRE;
-				dbCommand.Parameters.Add("@FECHANACCONST", SqlDbType.DateTime).Value = Usuario.FECHANACCONST;
-				dbCommand.Parameters.Add("@USUARIO", SqlDbType.VarChar).Value = Usuario.USUARIO;
-				dbCommand.Parameters.Add("@PASSWORD", SqlDbType.VarChar).Value = Usuario.PASSWORD;
-				dbCommand.Parameters.Add("@RUTAFOTOPERFIL", SqlDbType.VarChar).Value = Usuario.RUTAFOTOPERFIL;
-				dbCommand.Parameters.Add("@FECHAALTA", SqlDbType.DateTime).Value = DateTime.Now;
-				dbCommand.Parameters.Add("@ACTIVO", SqlDbType.Bit).Value = Usuario.ACTIVO;
-				dbCommand.Parameters.Add("@IDUSERMODIFICA", SqlDbType.BigInt).Value = ((Reglas.IDUSRMODIF > 0) ? new long?(Reglas.IDUSRMODIF) : null);
-				dbCommand.Parameters.Add("@IDAPPMODIFICA", SqlDbType.BigInt).Value = App;
+				dbCommand.Parameters.Add("p_IDAPLICACION", MySqlDbType.Int64).Value = Usuario.IDAPLICACION;
+				dbCommand.Parameters.Add("p_IDSEXO", MySqlDbType.Int32).Value = ((Usuario.IDSEXO > 0) ? new Int32?(Usuario.IDSEXO) : null);
+				dbCommand.Parameters.Add("p_IDTIPOPERSONA", MySqlDbType.Int32).Value = ((Usuario.IDTIPOPERSONA > 0) ? new Int32?(Usuario.IDTIPOPERSONA) : null);
+				dbCommand.Parameters.Add("p_IDESTADOCIVIL", MySqlDbType.Int32).Value = ((Usuario.IDESTADOCIVIL > 0) ? new Int32?(Usuario.IDESTADOCIVIL) : null);
+				dbCommand.Parameters.Add("p_IDAREA", MySqlDbType.Int32).Value = ((Usuario.IDAREA > 0) ? new Int32?(Usuario.IDAREA) : null);
+				dbCommand.Parameters.Add("p_IDTIPOUSUARIO", MySqlDbType.Int32).Value = ((Usuario.IDTIPOUSUARIO > 0) ? new Int32?(Usuario.IDTIPOUSUARIO) : null);
+				dbCommand.Parameters.Add("p_IDUSUARIOAPP", MySqlDbType.VarChar).Value = Usuario.IDUSUARIOAPP;
+				dbCommand.Parameters.Add("p_APATERNO", MySqlDbType.VarChar).Value = Usuario.APATERNO;
+				dbCommand.Parameters.Add("p_AMATERNO", MySqlDbType.VarChar).Value = Usuario.AMATERNO;
+				dbCommand.Parameters.Add("p_NOMBRE", MySqlDbType.VarChar).Value = Usuario.NOMBRE;
+				dbCommand.Parameters.Add("p_FECHANACCONST", MySqlDbType.DateTime).Value = Usuario.FECHANACCONST;
+				dbCommand.Parameters.Add("p_USUARIO", MySqlDbType.VarChar).Value = Usuario.USUARIO;
+				dbCommand.Parameters.Add("p_PASSWORD", MySqlDbType.VarChar).Value = Usuario.PASSWORD;
+				dbCommand.Parameters.Add("p_RUTAFOTOPERFIL", MySqlDbType.VarChar).Value = Usuario.RUTAFOTOPERFIL;
+				dbCommand.Parameters.Add("p_FECHAALTA", MySqlDbType.DateTime).Value = DateTime.Now;
+				dbCommand.Parameters.Add("p_ACTIVO", MySqlDbType.Bit).Value = Usuario.ACTIVO;
+				dbCommand.Parameters.Add("p_IDUSERMODIFICA", MySqlDbType.Int64).Value = ((Reglas.IDUSRMODIF > 0) ? new long?(Reglas.IDUSRMODIF) : null);
+				dbCommand.Parameters.Add("p_IDAPPMODIFICA", MySqlDbType.Int64).Value = App;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					{
@@ -84,26 +85,26 @@ namespace ThreeBits.Services.Security.User
 					}
 					foreach (DomicilioBE Dom in Domicilios)
 					{
-						SqlCommand dbCommandUD = new SqlCommand("spFront_insDomicilio")
+						MySqlCommand dbCommandUD = new MySqlCommand("spFront_insDomicilio")
 						{
 							CommandType = CommandType.StoredProcedure
 						};
-						dbCommandUD.Parameters.Add("@IDUSUARIO", SqlDbType.BigInt).Value = IdUsuario;
-						dbCommandUD.Parameters.Add("@CALLE", SqlDbType.VarChar).Value = Dom.CALLE;
-						dbCommandUD.Parameters.Add("@NUMEXT", SqlDbType.VarChar).Value = Dom.NUMEXT;
-						dbCommandUD.Parameters.Add("@NUMINT", SqlDbType.VarChar).Value = Dom.NUMINT;
-						dbCommandUD.Parameters.Add("@IDESTADO", SqlDbType.Int).Value = ((!string.IsNullOrEmpty(Dom.IDESTADO)) ? new int?(int.Parse(Dom.IDESTADO)) : null);
-						dbCommandUD.Parameters.Add("@ESTADO", SqlDbType.VarChar).Value = Dom.ESTADO;
-						dbCommandUD.Parameters.Add("@IDMUN", SqlDbType.Int).Value = ((!string.IsNullOrEmpty(Dom.IDMUNICIPIO)) ? new int?(int.Parse(Dom.IDMUNICIPIO)) : null);
-						dbCommandUD.Parameters.Add("@MUNICIPIO", SqlDbType.VarChar).Value = Dom.MUNICIPIO;
-						dbCommandUD.Parameters.Add("@IDCOLONIA", SqlDbType.Int).Value = ((!string.IsNullOrEmpty(Dom.IDCOLONIA)) ? new int?(int.Parse(Dom.IDCOLONIA)) : null);
-						dbCommandUD.Parameters.Add("@COLONIA", SqlDbType.VarChar).Value = Dom.COLONIA;
-						dbCommandUD.Parameters.Add("@CP", SqlDbType.VarChar).Value = Dom.CP;
-						dbCommandUD.Parameters.Add("@FECHAALTA", SqlDbType.DateTime).Value = DateTime.Now;
-						dbCommandUD.Parameters.Add("@ACTIVO", SqlDbType.Bit).Value = true;
-						dbCommandUD.Parameters.Add("@IDAPLICACION", SqlDbType.BigInt).Value = App;
-						dbCommandUD.Parameters.Add("@IDUSERMODIFICA", SqlDbType.BigInt).Value = ((Reglas.IDUSRMODIF > 0) ? new long?(Reglas.IDUSRMODIF) : null);
-						dbCommandUD.Parameters.Add("@IDAPPMODIFICA", SqlDbType.BigInt).Value = App;
+						dbCommandUD.Parameters.Add("p_IDUSUARIO", MySqlDbType.Int64).Value = IdUsuario;
+						dbCommandUD.Parameters.Add("p_CALLE", MySqlDbType.VarChar).Value = Dom.CALLE;
+						dbCommandUD.Parameters.Add("p_NUMEXT", MySqlDbType.VarChar).Value = Dom.NUMEXT;
+						dbCommandUD.Parameters.Add("p_NUMINT", MySqlDbType.VarChar).Value = Dom.NUMINT;
+						dbCommandUD.Parameters.Add("p_IDESTADO", MySqlDbType.Int32).Value = ((!string.IsNullOrEmpty(Dom.IDESTADO)) ? new Int32?(Int32.Parse(Dom.IDESTADO)) : null);
+						dbCommandUD.Parameters.Add("p_ESTADO", MySqlDbType.VarChar).Value = Dom.ESTADO;
+						dbCommandUD.Parameters.Add("p_IDMUN", MySqlDbType.Int32).Value = ((!string.IsNullOrEmpty(Dom.IDMUNICIPIO)) ? new Int32?(Int32.Parse(Dom.IDMUNICIPIO)) : null);
+						dbCommandUD.Parameters.Add("p_MUNICIPIO", MySqlDbType.VarChar).Value = Dom.MUNICIPIO;
+						dbCommandUD.Parameters.Add("p_IDCOLONIA", MySqlDbType.Int32).Value = ((!string.IsNullOrEmpty(Dom.IDCOLONIA)) ? new Int32?(Int32.Parse(Dom.IDCOLONIA)) : null);
+						dbCommandUD.Parameters.Add("p_COLONIA", MySqlDbType.VarChar).Value = Dom.COLONIA;
+						dbCommandUD.Parameters.Add("p_CP", MySqlDbType.VarChar).Value = Dom.CP;
+						dbCommandUD.Parameters.Add("p_FECHAALTA", MySqlDbType.DateTime).Value = DateTime.Now;
+						dbCommandUD.Parameters.Add("p_ACTIVO", MySqlDbType.Bit).Value = true;
+						dbCommandUD.Parameters.Add("p_IDAPLICACION", MySqlDbType.Int64).Value = App;
+						dbCommandUD.Parameters.Add("p_IDUSERMODIFICA", MySqlDbType.Int64).Value = ((Reglas.IDUSRMODIF > 0) ? new long?(Reglas.IDUSRMODIF) : null);
+						dbCommandUD.Parameters.Add("p_IDAPPMODIFICA", MySqlDbType.Int64).Value = App;
 						if (!ExecuteNonQuery(ref dbCommandUD, out var _, out var dbErrorUD))
 						{
 							throw new DbDataContextException(dbErrorUD);
@@ -111,18 +112,18 @@ namespace ThreeBits.Services.Security.User
 					}
 					foreach (ContactoBE Contacto in Contactos)
 					{
-						SqlCommand dbCommandIC = new SqlCommand("spFront_insContacto")
+						MySqlCommand dbCommandIC = new MySqlCommand("spFront_insContacto")
 						{
 							CommandType = CommandType.StoredProcedure
 						};
-						dbCommandIC.Parameters.Add("@IDUSUARIO", SqlDbType.BigInt).Value = IdUsuario;
-						dbCommandIC.Parameters.Add("@IDTIPOCONTACTO", SqlDbType.Int).Value = Contacto.IDTIPOCONTACTO;
-						dbCommandIC.Parameters.Add("@VALOR", SqlDbType.VarChar).Value = Contacto.VALOR;
-						dbCommandIC.Parameters.Add("@FECHAALTA", SqlDbType.DateTime).Value = DateTime.Now;
-						dbCommandIC.Parameters.Add("@ACTIVO", SqlDbType.Bit).Value = true;
-						dbCommandIC.Parameters.Add("@IDAPLICACION", SqlDbType.BigInt).Value = App;
-						dbCommandIC.Parameters.Add("@IDUSERMODIFICA", SqlDbType.BigInt).Value = ((Reglas.IDUSRMODIF > 0) ? new long?(Reglas.IDUSRMODIF) : null);
-						dbCommandIC.Parameters.Add("@IDAPPMODIFICA", SqlDbType.BigInt).Value = App;
+						dbCommandIC.Parameters.Add("p_IDUSUARIO", MySqlDbType.Int64).Value = IdUsuario;
+						dbCommandIC.Parameters.Add("p_IDTIPOCONTACTO", MySqlDbType.Int32).Value = Contacto.IDTIPOCONTACTO;
+						dbCommandIC.Parameters.Add("p_VALOR", MySqlDbType.VarChar).Value = Contacto.VALOR;
+						dbCommandIC.Parameters.Add("p_FECHAALTA", MySqlDbType.DateTime).Value = DateTime.Now;
+						dbCommandIC.Parameters.Add("p_ACTIVO", MySqlDbType.Bit).Value = true;
+						dbCommandIC.Parameters.Add("p_IDAPLICACION", MySqlDbType.Int64).Value = App;
+						dbCommandIC.Parameters.Add("p_IDUSERMODIFICA", MySqlDbType.Int64).Value = ((Reglas.IDUSRMODIF > 0) ? new long?(Reglas.IDUSRMODIF) : null);
+						dbCommandIC.Parameters.Add("p_IDAPPMODIFICA", MySqlDbType.Int64).Value = App;
 						if (!ExecuteNonQuery(ref dbCommandIC, out var _, out var dbErrorIC))
 						{
 							throw new DbDataContextException(dbErrorIC);
@@ -130,13 +131,13 @@ namespace ThreeBits.Services.Security.User
 					}
 					foreach (RolesXUsuarioBE Rol2 in RolesXUsuario)
 					{
-						SqlCommand dbCommandUXAP = new SqlCommand("spFrontAddUsuarioXAplicacion")
+						MySqlCommand dbCommandUXAP = new MySqlCommand("spFrontAddUsuarioXAplicacion")
 						{
 							CommandType = CommandType.StoredProcedure
 						};
-						dbCommandUXAP.Parameters.Add("@IDUSRSXAPP", SqlDbType.NVarChar).Value = long.Parse(Rol2.IDAPLICACION);
-						dbCommandUXAP.Parameters.Add("@IDAPLICACION", SqlDbType.NVarChar).Value = IdUsuario;
-						dbCommandUXAP.Parameters.Add("@IDUSUARIO", SqlDbType.NVarChar).Value = true;
+						dbCommandUXAP.Parameters.Add("p_IDUSRSXAPP", MySqlDbType.VarChar).Value = long.Parse(Rol2.IDAPLICACION);
+						dbCommandUXAP.Parameters.Add("p_IDAPLICACION", MySqlDbType.VarChar).Value = IdUsuario;
+						dbCommandUXAP.Parameters.Add("p_IDUSUARIO", MySqlDbType.VarChar).Value = true;
 						if (!ExecuteNonQuery(ref dbCommandUXAP, out var _, out var dbErrorUXAP))
 						{
 							throw new DbDataContextException(dbErrorUXAP);
@@ -144,15 +145,15 @@ namespace ThreeBits.Services.Security.User
 					}
 					foreach (RolesXUsuarioBE Rol in RolesXUsuario)
 					{
-						SqlCommand dbCommandRXU = new SqlCommand("spFront_insRolXUserApp")
+						MySqlCommand dbCommandRXU = new MySqlCommand("spFront_insRolXUserApp")
 						{
 							CommandType = CommandType.StoredProcedure
 						};
-						dbCommandRXU.Parameters.Add("@IDROL", SqlDbType.BigInt).Value = Rol.IDROL;
-						dbCommandRXU.Parameters.Add("@IDUSUARIO", SqlDbType.BigInt).Value = IdUsuario;
-						dbCommandRXU.Parameters.Add("@IDESTACIONXAPP", SqlDbType.BigInt).Value = ((Rol.IDESTACIONXAPP > 0) ? new long?(Rol.IDESTACIONXAPP) : null);
-						dbCommandRXU.Parameters.Add("@IDROLXUSUARIO", SqlDbType.BigInt).Value = ((Rol.IDROLXUSUARIO > 0) ? new long?(Rol.IDROLXUSUARIO) : null);
-						dbCommandRXU.Parameters.Add("@ACTIVO", SqlDbType.Bit).Value = Rol.ACTIVO;
+						dbCommandRXU.Parameters.Add("p_IDROL", MySqlDbType.Int64).Value = Rol.IDROL;
+						dbCommandRXU.Parameters.Add("p_IDUSUARIO", MySqlDbType.Int64).Value = IdUsuario;
+						dbCommandRXU.Parameters.Add("p_IDESTACIONXAPP", MySqlDbType.Int64).Value = ((Rol.IDESTACIONXAPP > 0) ? new long?(Rol.IDESTACIONXAPP) : null);
+						dbCommandRXU.Parameters.Add("p_IDROLXUSUARIO", MySqlDbType.Int64).Value = ((Rol.IDROLXUSUARIO > 0) ? new long?(Rol.IDROLXUSUARIO) : null);
+						dbCommandRXU.Parameters.Add("p_ACTIVO", MySqlDbType.Bit).Value = Rol.ACTIVO;
 						if (!ExecuteNonQuery(ref dbCommandRXU, out var _, out var dbErrorRXU))
 						{
 							throw new DbDataContextException(dbErrorRXU);
@@ -176,13 +177,13 @@ namespace ThreeBits.Services.Security.User
 			{
 				DatosUsuarioBE DatosUsuarioRES = new DatosUsuarioBE();
 				UsuariosBE UsuarioRES = new UsuariosBE();
-				SqlCommand dbCommand = new SqlCommand("spFront_getUsuario")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_getUsuario")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@TIPOBUSQUEDA", SqlDbType.Int).Value = Reglas.TIPOBUSQUEDA;
-				dbCommand.Parameters.Add("@USUARIO", SqlDbType.VarChar).Value = Reglas.USUARIO;
-				dbCommand.Parameters.Add("@IDAPLICACION", SqlDbType.BigInt).Value = Reglas.IDAPP;
+				dbCommand.Parameters.Add("p_TIPOBUSQUEDA", MySqlDbType.Int32).Value = Reglas.TIPOBUSQUEDA;
+				dbCommand.Parameters.Add("p_USUARIO", MySqlDbType.VarChar).Value = Reglas.USUARIO;
+				dbCommand.Parameters.Add("p_IDAPLICACION", MySqlDbType.Int64).Value = Reglas.IDAPP;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					foreach (DataRow row4 in DataTable.Rows)
@@ -208,16 +209,16 @@ namespace ThreeBits.Services.Security.User
 						UsuarioRES.ACTIVO = Convert.ToBoolean(row4["ACTIVO"]);
 					}
 					DatosUsuarioRES.Usuario = UsuarioRES;
-					_ = DatosUsuarioRES.Usuario.IDUSUARIO;
-					if (DatosUsuarioRES.Usuario.IDUSUARIO == 0L)
+					
+					if (DatosUsuarioRES.Usuario.IDUSUARIO == 0)
 					{
 						return DatosUsuarioRES;
 					}
-					SqlCommand dbCommandUD = new SqlCommand("spFront_getDomicilios")
+					MySqlCommand dbCommandUD = new MySqlCommand("spFront_getDomicilios")
 					{
 						CommandType = CommandType.StoredProcedure
 					};
-					dbCommandUD.Parameters.Add("@IDUSUARIO", SqlDbType.BigInt).Value = DatosUsuarioRES.Usuario.IDUSUARIO;
+					dbCommandUD.Parameters.Add("p_IDUSUARIO", MySqlDbType.Int64).Value = DatosUsuarioRES.Usuario.IDUSUARIO;
 					if (ExecuteReader(ref dbCommandUD, out var DataTableUD, out var dbErrorUD))
 					{
 						List<DomicilioBE> lstDomicilios = new List<DomicilioBE>();
@@ -241,11 +242,11 @@ namespace ThreeBits.Services.Security.User
 							lstDomicilios.Add(DomicilioRES);
 						}
 						DatosUsuarioRES.Domicilios = lstDomicilios;
-						SqlCommand dbCommandUC = new SqlCommand("spFront_getContactos")
+						MySqlCommand dbCommandUC = new MySqlCommand("spFront_getContactos")
 						{
 							CommandType = CommandType.StoredProcedure
 						};
-						dbCommandUC.Parameters.Add("@IDUSUARIO", SqlDbType.BigInt).Value = DatosUsuarioRES.Usuario.IDUSUARIO;
+						dbCommandUC.Parameters.Add("p_IDUSUARIO", MySqlDbType.Int64).Value = DatosUsuarioRES.Usuario.IDUSUARIO;
 						if (ExecuteReader(ref dbCommandUC, out var DataTableUC, out var dbErrorUC))
 						{
 							List<ContactoBE> lstContactos = new List<ContactoBE>();
@@ -262,13 +263,13 @@ namespace ThreeBits.Services.Security.User
 								lstContactos.Add(ContactoRES);
 							}
 							DatosUsuarioRES.Contactos = lstContactos;
-							SqlCommand dbCommandRXU = new SqlCommand("spFront_getRolesXUserApp")
+							MySqlCommand dbCommandRXU = new MySqlCommand("spFront_getRolesXUserApp")
 							{
 								CommandType = CommandType.StoredProcedure
 							};
-							dbCommandRXU.Parameters.Add("@TIPOBUSQUEDA", SqlDbType.Int).Value = Reglas.TIPOBUSQUEDA;
-							dbCommandRXU.Parameters.Add("@USUARIO", SqlDbType.VarChar).Value = Reglas.USUARIO;
-							dbCommandRXU.Parameters.Add("@IDAPLICACION", SqlDbType.BigInt).Value = Reglas.IDAPP;
+							dbCommandRXU.Parameters.Add("p_TIPOBUSQUEDA", MySqlDbType.Int32).Value = Reglas.TIPOBUSQUEDA;
+							dbCommandRXU.Parameters.Add("p_USUARIO", MySqlDbType.VarChar).Value = Reglas.USUARIO;
+							dbCommandRXU.Parameters.Add("p_IDAPLICACION", MySqlDbType.Int64).Value = Reglas.IDAPP;
 							if (ExecuteReader(ref dbCommandRXU, out var DataTableRXU, out var dbErrorRXU))
 							{
 								List<RolesXUsuarioBE> lstRoles = new List<RolesXUsuarioBE>();
@@ -299,7 +300,7 @@ namespace ThreeBits.Services.Security.User
 			catch (Exception ex)
 			{
 				StackTrace st = new StackTrace(true);
-				insErrorDB("Error: " + ex.Message + " En El Metodo: " + MethodBase.GetCurrentMethod().Name, st, "", App.ToString());
+				insErrorDB("Error: " + ex.Message + " En El Metodo: " + MethodBase.GetCurrentMethod().Name, st, "", Reglas.IDAPP.ToString());
 				throw new Exception(ex.Message);
 			}
 		}
@@ -310,15 +311,15 @@ namespace ThreeBits.Services.Security.User
 			try
 			{
 				new DatosUsuarioBE();
-				SqlCommand dbCommand = new SqlCommand("spFrontGetUsuarios")
+				MySqlCommand dbCommand = new MySqlCommand("spFrontGetUsuarios")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IdAplicacion", SqlDbType.NVarChar).Value = int.Parse(item.IDAPLICACION.ToString());
-				dbCommand.Parameters.Add("@Nombre", SqlDbType.NVarChar).Value = item.NOMBRE;
-				dbCommand.Parameters.Add("@AMaterno", SqlDbType.NVarChar).Value = item.AMATERNO;
-				dbCommand.Parameters.Add("@APaterno", SqlDbType.NVarChar).Value = item.APATERNO;
-				dbCommand.Parameters.Add("@Usuario", SqlDbType.NVarChar).Value = item.IDUSUARIOAPP;
+				dbCommand.Parameters.Add("p_IdAplicacion", MySqlDbType.VarChar).Value = Int32.Parse(item.IDAPLICACION.ToString());
+				dbCommand.Parameters.Add("p_Nombre", MySqlDbType.VarChar).Value = item.NOMBRE;
+				dbCommand.Parameters.Add("p_AMaterno", MySqlDbType.VarChar).Value = item.AMATERNO;
+				dbCommand.Parameters.Add("p_APaterno", MySqlDbType.VarChar).Value = item.APATERNO;
+				dbCommand.Parameters.Add("p_Usuario", MySqlDbType.VarChar).Value = item.IDUSUARIOAPP;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					foreach (DataRow row in DataTable.Rows)
@@ -352,11 +353,11 @@ namespace ThreeBits.Services.Security.User
 			try
 			{
 				new DatosUsuarioBE();
-				SqlCommand dbCommand = new SqlCommand("spFrontGetUsuario")
+				MySqlCommand dbCommand = new MySqlCommand("spFrontGetUsuario")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IdUsuario", SqlDbType.NVarChar).Value = item.IDUSUARIO.ToString();
+				dbCommand.Parameters.Add("p_IdUsuario", MySqlDbType.VarChar).Value = item.IDUSUARIO.ToString();
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					foreach (DataRow row in DataTable.Rows)
@@ -396,16 +397,16 @@ namespace ThreeBits.Services.Security.User
 			try
 			{
 				bool Respuesta = true;
-				SqlCommand dbCommand = new SqlCommand("spFront_actDeactUsuario")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_actDeactUsuario")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@TIPOUSUARIOIN", SqlDbType.BigInt).Value = Reglas.TIPOBUSQUEDA;
-				dbCommand.Parameters.Add("@ACTDEACTIVATE", SqlDbType.BigInt).Value = Reglas.ACTIVO;
-				dbCommand.Parameters.Add("@USUARIOIN", SqlDbType.BigInt).Value = Reglas.USUARIO;
-				dbCommand.Parameters.Add("@IDAPLICACION", SqlDbType.BigInt).Value = Reglas.IDAPP;
-				dbCommand.Parameters.Add("@IDUSERMODIFICA", SqlDbType.BigInt).Value = Reglas.IDUSRMODIF;
-				dbCommand.Parameters.Add("@IDAPPMODIFICA", SqlDbType.BigInt).Value = App;
+				dbCommand.Parameters.Add("p_TIPOUSUARIOIN", MySqlDbType.Int64).Value = Reglas.TIPOBUSQUEDA;
+				dbCommand.Parameters.Add("p_ACTDEACTIVATE", MySqlDbType.Int64).Value = Reglas.ACTIVO;
+				dbCommand.Parameters.Add("p_USUARIOIN", MySqlDbType.Int64).Value = Reglas.USUARIO;
+				dbCommand.Parameters.Add("p_IDAPLICACION", MySqlDbType.Int64).Value = Reglas.IDAPP;
+				dbCommand.Parameters.Add("p_IDUSERMODIFICA", MySqlDbType.Int64).Value = Reglas.IDUSRMODIF;
+				dbCommand.Parameters.Add("p_IDAPPMODIFICA", MySqlDbType.Int64).Value = App;
 				if (ExecuteNonQuery(ref dbCommand, out var rowsAffected, out var dbError))
 				{
 					if (rowsAffected > 0)
@@ -430,28 +431,28 @@ namespace ThreeBits.Services.Security.User
 			bool bFlag = true;
 			try
 			{
-				SqlCommand dbCommand = new SqlCommand("spFront_updUsuario")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_updUsuario")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IDUSUARIO", SqlDbType.BigInt).Value = Usuario.IDUSUARIO;
-				dbCommand.Parameters.Add("@IDAPLICACION", SqlDbType.BigInt).Value = App;
-				dbCommand.Parameters.Add("@IDSEXO", SqlDbType.Int).Value = ((Usuario.IDSEXO > 0) ? new int?(Usuario.IDSEXO) : null);
-				dbCommand.Parameters.Add("@IDTIPOPERSONA", SqlDbType.Int).Value = ((Usuario.IDTIPOPERSONA > 0) ? new int?(Usuario.IDTIPOPERSONA) : null);
-				dbCommand.Parameters.Add("@IDESTADOCIVIL", SqlDbType.Int).Value = ((Usuario.IDESTADOCIVIL > 0) ? new int?(Usuario.IDESTADOCIVIL) : null);
-				dbCommand.Parameters.Add("@IDAREA", SqlDbType.Int).Value = ((Usuario.IDAREA > 0) ? new int?(Usuario.IDAREA) : null);
-				dbCommand.Parameters.Add("@IDTIPOUSUARIO", SqlDbType.Int).Value = ((Usuario.IDTIPOUSUARIO > 0) ? new int?(Usuario.IDTIPOUSUARIO) : null);
-				dbCommand.Parameters.Add("@IDUSUARIOAPP", SqlDbType.VarChar).Value = Usuario.IDUSUARIOAPP;
-				dbCommand.Parameters.Add("@APATERNO", SqlDbType.VarChar).Value = Usuario.APATERNO;
-				dbCommand.Parameters.Add("@AMATERNO", SqlDbType.VarChar).Value = Usuario.AMATERNO;
-				dbCommand.Parameters.Add("@NOMBRE", SqlDbType.VarChar).Value = Usuario.NOMBRE;
-				dbCommand.Parameters.Add("@FECHANACCONST", SqlDbType.DateTime).Value = Usuario.FECHANACCONST;
-				dbCommand.Parameters.Add("@USUARIO", SqlDbType.VarChar).Value = Usuario.USUARIO;
-				dbCommand.Parameters.Add("@PASSWORD", SqlDbType.VarChar).Value = Usuario.PASSWORD;
-				dbCommand.Parameters.Add("@RUTAFOTOPERFIL", SqlDbType.VarChar).Value = Usuario.RUTAFOTOPERFIL;
-				dbCommand.Parameters.Add("@ACTIVO", SqlDbType.Bit).Value = Usuario.ACTIVO;
-				dbCommand.Parameters.Add("@IDUSERMODIFICA", SqlDbType.BigInt).Value = ((Reglas.IDUSRMODIF > 0) ? new long?(Reglas.IDUSRMODIF) : null);
-				dbCommand.Parameters.Add("@IDAPPMODIFICA", SqlDbType.BigInt).Value = App;
+				dbCommand.Parameters.Add("p_IDUSUARIO", MySqlDbType.Int64).Value = Usuario.IDUSUARIO;
+				dbCommand.Parameters.Add("p_IDAPLICACION", MySqlDbType.Int64).Value = App;
+				dbCommand.Parameters.Add("p_IDSEXO", MySqlDbType.Int32).Value = ((Usuario.IDSEXO > 0) ? new Int32?(Usuario.IDSEXO) : null);
+				dbCommand.Parameters.Add("p_IDTIPOPERSONA", MySqlDbType.Int32).Value = ((Usuario.IDTIPOPERSONA > 0) ? new Int32?(Usuario.IDTIPOPERSONA) : null);
+				dbCommand.Parameters.Add("p_IDESTADOCIVIL", MySqlDbType.Int32).Value = ((Usuario.IDESTADOCIVIL > 0) ? new Int32?(Usuario.IDESTADOCIVIL) : null);
+				dbCommand.Parameters.Add("p_IDAREA", MySqlDbType.Int32).Value = ((Usuario.IDAREA > 0) ? new Int32?(Usuario.IDAREA) : null);
+				dbCommand.Parameters.Add("p_IDTIPOUSUARIO", MySqlDbType.Int32).Value = ((Usuario.IDTIPOUSUARIO > 0) ? new Int32?(Usuario.IDTIPOUSUARIO) : null);
+				dbCommand.Parameters.Add("p_IDUSUARIOAPP", MySqlDbType.VarChar).Value = Usuario.IDUSUARIOAPP;
+				dbCommand.Parameters.Add("p_APATERNO", MySqlDbType.VarChar).Value = Usuario.APATERNO;
+				dbCommand.Parameters.Add("p_AMATERNO", MySqlDbType.VarChar).Value = Usuario.AMATERNO;
+				dbCommand.Parameters.Add("p_NOMBRE", MySqlDbType.VarChar).Value = Usuario.NOMBRE;
+				dbCommand.Parameters.Add("p_FECHANACCONST", MySqlDbType.DateTime).Value = Usuario.FECHANACCONST;
+				dbCommand.Parameters.Add("p_USUARIO", MySqlDbType.VarChar).Value = Usuario.USUARIO;
+				dbCommand.Parameters.Add("p_PASSWORD", MySqlDbType.VarChar).Value = Usuario.PASSWORD;
+				dbCommand.Parameters.Add("p_RUTAFOTOPERFIL", MySqlDbType.VarChar).Value = Usuario.RUTAFOTOPERFIL;
+				dbCommand.Parameters.Add("p_ACTIVO", MySqlDbType.Bit).Value = Usuario.ACTIVO;
+				dbCommand.Parameters.Add("p_IDUSERMODIFICA", MySqlDbType.Int64).Value = ((Reglas.IDUSRMODIF > 0) ? new long?(Reglas.IDUSRMODIF) : null);
+				dbCommand.Parameters.Add("p_IDAPPMODIFICA", MySqlDbType.Int64).Value = App;
 				if (!ExecuteNonQuery(ref dbCommand, out var rowsAffected, out var dbError))
 				{
 					throw new DbDataContextException(dbError);
@@ -463,51 +464,51 @@ namespace ThreeBits.Services.Security.User
 					{
 						if (Dom.IDDOMICILIO > 0)
 						{
-							SqlCommand dbCommandUD = new SqlCommand("spFront_updDomicilio")
+							MySqlCommand dbCommandUD = new MySqlCommand("spFront_updDomicilio")
 							{
 								CommandType = CommandType.StoredProcedure
 							};
-							dbCommandUD.Parameters.Add("@IDUSUARIO", SqlDbType.BigInt).Value = Usuario.IDUSUARIO;
-							dbCommandUD.Parameters.Add("@IDDOMICILIO", SqlDbType.BigInt).Value = Dom.IDDOMICILIO;
-							dbCommandUD.Parameters.Add("@CALLE", SqlDbType.VarChar).Value = Dom.CALLE;
-							dbCommandUD.Parameters.Add("@NUMEXT", SqlDbType.VarChar).Value = Dom.NUMEXT;
-							dbCommandUD.Parameters.Add("@NUMINT", SqlDbType.VarChar).Value = Dom.NUMINT;
-							dbCommandUD.Parameters.Add("@IDESTADO", SqlDbType.Int).Value = ((int.Parse(Dom.IDESTADO) > 0) ? new int?(int.Parse(Dom.IDESTADO)) : null);
-							dbCommandUD.Parameters.Add("@ESTADO", SqlDbType.VarChar).Value = Dom.ESTADO;
-							dbCommandUD.Parameters.Add("@IDMUN", SqlDbType.Int).Value = ((int.Parse(Dom.IDMUNICIPIO) > 0) ? new int?(int.Parse(Dom.IDMUNICIPIO)) : null);
-							dbCommandUD.Parameters.Add("@MUNICIPIO", SqlDbType.VarChar).Value = Dom.MUNICIPIO;
-							dbCommandUD.Parameters.Add("@IDCOLONIA", SqlDbType.Int).Value = ((int.Parse(Dom.IDCOLONIA) > 0) ? new int?(int.Parse(Dom.IDCOLONIA)) : null);
-							dbCommandUD.Parameters.Add("@COLONIA", SqlDbType.VarChar).Value = Dom.COLONIA;
-							dbCommandUD.Parameters.Add("@CP", SqlDbType.VarChar).Value = Dom.CP;
-							dbCommandUD.Parameters.Add("@IDAPLICACION", SqlDbType.BigInt).Value = App;
-							dbCommandUD.Parameters.Add("@IDUSERMODIFICA", SqlDbType.BigInt).Value = ((Reglas.IDUSRMODIF > 0) ? new long?(Reglas.IDUSRMODIF) : null);
-							dbCommandUD.Parameters.Add("@IDAPPMODIFICA", SqlDbType.BigInt).Value = App;
+							dbCommandUD.Parameters.Add("p_IDUSUARIO", MySqlDbType.Int64).Value = Usuario.IDUSUARIO;
+							dbCommandUD.Parameters.Add("p_IDDOMICILIO", MySqlDbType.Int64).Value = Dom.IDDOMICILIO;
+							dbCommandUD.Parameters.Add("p_CALLE", MySqlDbType.VarChar).Value = Dom.CALLE;
+							dbCommandUD.Parameters.Add("p_NUMEXT", MySqlDbType.VarChar).Value = Dom.NUMEXT;
+							dbCommandUD.Parameters.Add("p_NUMINT", MySqlDbType.VarChar).Value = Dom.NUMINT;
+							dbCommandUD.Parameters.Add("p_IDESTADO", MySqlDbType.Int32).Value = ((Int32.Parse(Dom.IDESTADO) > 0) ? new Int32?(Int32.Parse(Dom.IDESTADO)) : null);
+							dbCommandUD.Parameters.Add("p_ESTADO", MySqlDbType.VarChar).Value = Dom.ESTADO;
+							dbCommandUD.Parameters.Add("p_IDMUN", MySqlDbType.Int32).Value = ((Int32.Parse(Dom.IDMUNICIPIO) > 0) ? new Int32?(Int32.Parse(Dom.IDMUNICIPIO)) : null);
+							dbCommandUD.Parameters.Add("p_MUNICIPIO", MySqlDbType.VarChar).Value = Dom.MUNICIPIO;
+							dbCommandUD.Parameters.Add("p_IDCOLONIA", MySqlDbType.Int32).Value = ((Int32.Parse(Dom.IDCOLONIA) > 0) ? new Int32?(Int32.Parse(Dom.IDCOLONIA)) : null);
+							dbCommandUD.Parameters.Add("p_COLONIA", MySqlDbType.VarChar).Value = Dom.COLONIA;
+							dbCommandUD.Parameters.Add("p_CP", MySqlDbType.VarChar).Value = Dom.CP;
+							dbCommandUD.Parameters.Add("p_IDAPLICACION", MySqlDbType.Int64).Value = App;
+							dbCommandUD.Parameters.Add("p_IDUSERMODIFICA", MySqlDbType.Int64).Value = ((Reglas.IDUSRMODIF > 0) ? new long?(Reglas.IDUSRMODIF) : null);
+							dbCommandUD.Parameters.Add("p_IDAPPMODIFICA", MySqlDbType.Int64).Value = App;
 							if (!ExecuteNonQuery(ref dbCommandUD, out var _, out var dbErrorUD))
 							{
 								throw new DbDataContextException(dbErrorUD);
 							}
 							continue;
 						}
-						SqlCommand dbCommandID = new SqlCommand("spFront_insDomicilio")
+						MySqlCommand dbCommandID = new MySqlCommand("spFront_insDomicilio")
 						{
 							CommandType = CommandType.StoredProcedure
 						};
-						dbCommandID.Parameters.Add("@IDUSUARIO", SqlDbType.BigInt).Value = Usuario.IDUSUARIO;
-						dbCommandID.Parameters.Add("@CALLE", SqlDbType.VarChar).Value = Dom.CALLE;
-						dbCommandID.Parameters.Add("@NUMEXT", SqlDbType.VarChar).Value = Dom.NUMEXT;
-						dbCommandID.Parameters.Add("@NUMINT", SqlDbType.VarChar).Value = Dom.NUMINT;
-						dbCommandID.Parameters.Add("@IDESTADO", SqlDbType.Int).Value = ((int.Parse(Dom.IDESTADO) > 0) ? new int?(int.Parse(Dom.IDESTADO)) : null);
-						dbCommandID.Parameters.Add("@ESTADO", SqlDbType.VarChar).Value = Dom.ESTADO;
-						dbCommandID.Parameters.Add("@IDMUN", SqlDbType.Int).Value = ((int.Parse(Dom.IDMUNICIPIO) > 0) ? new int?(int.Parse(Dom.IDMUNICIPIO)) : null);
-						dbCommandID.Parameters.Add("@MUNICIPIO", SqlDbType.VarChar).Value = Dom.MUNICIPIO;
-						dbCommandID.Parameters.Add("@IDCOLONIA", SqlDbType.Int).Value = ((int.Parse(Dom.IDCOLONIA) > 0) ? new int?(int.Parse(Dom.IDCOLONIA)) : null);
-						dbCommandID.Parameters.Add("@COLONIA", SqlDbType.VarChar).Value = Dom.COLONIA;
-						dbCommandID.Parameters.Add("@CP", SqlDbType.VarChar).Value = Dom.CP;
-						dbCommandID.Parameters.Add("@FECHAALTA", SqlDbType.DateTime).Value = DateTime.Now;
-						dbCommandID.Parameters.Add("@ACTIVO", SqlDbType.Bit).Value = true;
-						dbCommandID.Parameters.Add("@IDAPLICACION", SqlDbType.BigInt).Value = App;
-						dbCommandID.Parameters.Add("@IDUSERMODIFICA", SqlDbType.BigInt).Value = ((Reglas.IDUSRMODIF > 0) ? new long?(Reglas.IDUSRMODIF) : null);
-						dbCommandID.Parameters.Add("@IDAPPMODIFICA", SqlDbType.BigInt).Value = App;
+						dbCommandID.Parameters.Add("p_IDUSUARIO", MySqlDbType.Int64).Value = Usuario.IDUSUARIO;
+						dbCommandID.Parameters.Add("p_CALLE", MySqlDbType.VarChar).Value = Dom.CALLE;
+						dbCommandID.Parameters.Add("p_NUMEXT", MySqlDbType.VarChar).Value = Dom.NUMEXT;
+						dbCommandID.Parameters.Add("p_NUMINT", MySqlDbType.VarChar).Value = Dom.NUMINT;
+						dbCommandID.Parameters.Add("p_IDESTADO", MySqlDbType.Int32).Value = ((Int32.Parse(Dom.IDESTADO) > 0) ? new Int32?(Int32.Parse(Dom.IDESTADO)) : null);
+						dbCommandID.Parameters.Add("p_ESTADO", MySqlDbType.VarChar).Value = Dom.ESTADO;
+						dbCommandID.Parameters.Add("p_IDMUN", MySqlDbType.Int32).Value = ((Int32.Parse(Dom.IDMUNICIPIO) > 0) ? new Int32?(Int32.Parse(Dom.IDMUNICIPIO)) : null);
+						dbCommandID.Parameters.Add("p_MUNICIPIO", MySqlDbType.VarChar).Value = Dom.MUNICIPIO;
+						dbCommandID.Parameters.Add("p_IDCOLONIA", MySqlDbType.Int32).Value = ((Int32.Parse(Dom.IDCOLONIA) > 0) ? new Int32?(Int32.Parse(Dom.IDCOLONIA)) : null);
+						dbCommandID.Parameters.Add("p_COLONIA", MySqlDbType.VarChar).Value = Dom.COLONIA;
+						dbCommandID.Parameters.Add("p_CP", MySqlDbType.VarChar).Value = Dom.CP;
+						dbCommandID.Parameters.Add("p_FECHAALTA", MySqlDbType.DateTime).Value = DateTime.Now;
+						dbCommandID.Parameters.Add("p_ACTIVO", MySqlDbType.Bit).Value = true;
+						dbCommandID.Parameters.Add("p_IDAPLICACION", MySqlDbType.Int64).Value = App;
+						dbCommandID.Parameters.Add("p_IDUSERMODIFICA", MySqlDbType.Int64).Value = ((Reglas.IDUSRMODIF > 0) ? new long?(Reglas.IDUSRMODIF) : null);
+						dbCommandID.Parameters.Add("p_IDAPPMODIFICA", MySqlDbType.Int64).Value = App;
 						if (!ExecuteNonQuery(ref dbCommandID, out var _, out var dbErrorID))
 						{
 							throw new DbDataContextException(dbErrorID);
@@ -520,18 +521,18 @@ namespace ThreeBits.Services.Security.User
 					{
 						if (Contacto.IDCONTACTO > 0)
 						{
-							SqlCommand dbCommandUC = new SqlCommand("spFront_updContacto")
+							MySqlCommand dbCommandUC = new MySqlCommand("spFront_updContacto")
 							{
 								CommandType = CommandType.StoredProcedure
 							};
-							dbCommandUC.Parameters.Add("@IDUSUARIO", SqlDbType.BigInt).Value = Usuario.IDUSUARIO;
-							dbCommandUC.Parameters.Add("@IDCONTACTO", SqlDbType.BigInt).Value = Contacto.IDCONTACTO;
-							dbCommandUC.Parameters.Add("@IDTIPOCONTACTO", SqlDbType.Int).Value = Contacto.IDTIPOCONTACTO;
-							dbCommandUC.Parameters.Add("@VALOR", SqlDbType.VarChar).Value = Contacto.VALOR;
-							dbCommandUC.Parameters.Add("@ACTIVO", SqlDbType.Bit).Value = Contacto.ACTIVO;
-							dbCommandUC.Parameters.Add("@IDAPLICACION", SqlDbType.BigInt).Value = App;
-							dbCommandUC.Parameters.Add("@IDUSERMODIFICA", SqlDbType.BigInt).Value = ((Reglas.IDUSRMODIF > 0) ? new long?(Reglas.IDUSRMODIF) : null);
-							dbCommandUC.Parameters.Add("@IDAPPMODIFICA", SqlDbType.BigInt).Value = App;
+							dbCommandUC.Parameters.Add("p_IDUSUARIO", MySqlDbType.Int64).Value = Usuario.IDUSUARIO;
+							dbCommandUC.Parameters.Add("p_IDCONTACTO", MySqlDbType.Int64).Value = Contacto.IDCONTACTO;
+							dbCommandUC.Parameters.Add("p_IDTIPOCONTACTO", MySqlDbType.Int32).Value = Contacto.IDTIPOCONTACTO;
+							dbCommandUC.Parameters.Add("p_VALOR", MySqlDbType.VarChar).Value = Contacto.VALOR;
+							dbCommandUC.Parameters.Add("p_ACTIVO", MySqlDbType.Bit).Value = Contacto.ACTIVO;
+							dbCommandUC.Parameters.Add("p_IDAPLICACION", MySqlDbType.Int64).Value = App;
+							dbCommandUC.Parameters.Add("p_IDUSERMODIFICA", MySqlDbType.Int64).Value = ((Reglas.IDUSRMODIF > 0) ? new long?(Reglas.IDUSRMODIF) : null);
+							dbCommandUC.Parameters.Add("p_IDAPPMODIFICA", MySqlDbType.Int64).Value = App;
 							if (!ExecuteNonQuery(ref dbCommandUC, out var _, out var dbErrorUC))
 							{
 								throw new DbDataContextException(dbErrorUC);
@@ -539,18 +540,18 @@ namespace ThreeBits.Services.Security.User
 						}
 						else
 						{
-							SqlCommand dbCommandIC = new SqlCommand("spFront_insContacto")
+							MySqlCommand dbCommandIC = new MySqlCommand("spFront_insContacto")
 							{
 								CommandType = CommandType.StoredProcedure
 							};
-							dbCommandIC.Parameters.Add("@IDUSUARIO", SqlDbType.BigInt).Value = Usuario.IDUSUARIO;
-							dbCommandIC.Parameters.Add("@IDTIPOCONTACTO", SqlDbType.Int).Value = Contacto.IDTIPOCONTACTO;
-							dbCommandIC.Parameters.Add("@VALOR", SqlDbType.VarChar).Value = Contacto.VALOR;
-							dbCommandIC.Parameters.Add("@FECHAALTA", SqlDbType.DateTime).Value = DateTime.Now;
-							dbCommandIC.Parameters.Add("@ACTIVO", SqlDbType.Bit).Value = true;
-							dbCommandIC.Parameters.Add("@IDAPLICACION", SqlDbType.BigInt).Value = App;
-							dbCommandIC.Parameters.Add("@IDUSERMODIFICA", SqlDbType.BigInt).Value = ((Reglas.IDUSRMODIF > 0) ? new long?(Reglas.IDUSRMODIF) : null);
-							dbCommandIC.Parameters.Add("@IDAPPMODIFICA", SqlDbType.BigInt).Value = App;
+							dbCommandIC.Parameters.Add("p_IDUSUARIO", MySqlDbType.Int64).Value = Usuario.IDUSUARIO;
+							dbCommandIC.Parameters.Add("p_IDTIPOCONTACTO", MySqlDbType.Int32).Value = Contacto.IDTIPOCONTACTO;
+							dbCommandIC.Parameters.Add("p_VALOR", MySqlDbType.VarChar).Value = Contacto.VALOR;
+							dbCommandIC.Parameters.Add("p_FECHAALTA", MySqlDbType.DateTime).Value = DateTime.Now;
+							dbCommandIC.Parameters.Add("p_ACTIVO", MySqlDbType.Bit).Value = true;
+							dbCommandIC.Parameters.Add("p_IDAPLICACION", MySqlDbType.Int64).Value = App;
+							dbCommandIC.Parameters.Add("p_IDUSERMODIFICA", MySqlDbType.Int64).Value = ((Reglas.IDUSRMODIF > 0) ? new long?(Reglas.IDUSRMODIF) : null);
+							dbCommandIC.Parameters.Add("p_IDAPPMODIFICA", MySqlDbType.Int64).Value = App;
 							if (!ExecuteNonQuery(ref dbCommandIC, out var _, out var dbErrorIC))
 							{
 								throw new DbDataContextException(dbErrorIC);
@@ -562,13 +563,13 @@ namespace ThreeBits.Services.Security.User
 				{
 					foreach (RolesXUsuarioBE Rol2 in RolesXUsuario)
 					{
-						SqlCommand dbCommandUXAP = new SqlCommand("spFrontAddUsuarioXAplicacion")
+						MySqlCommand dbCommandUXAP = new MySqlCommand("spFrontAddUsuarioXAplicacion")
 						{
 							CommandType = CommandType.StoredProcedure
 						};
-						dbCommandUXAP.Parameters.Add("@IDUSRSXAPP", SqlDbType.NVarChar).Value = long.Parse(Rol2.IDAPLICACION);
-						dbCommandUXAP.Parameters.Add("@IDAPLICACION", SqlDbType.NVarChar).Value = Usuario.IDUSUARIO;
-						dbCommandUXAP.Parameters.Add("@IDUSUARIO", SqlDbType.NVarChar).Value = true;
+						dbCommandUXAP.Parameters.Add("p_IDUSRSXAPP", MySqlDbType.VarChar).Value = long.Parse(Rol2.IDAPLICACION);
+						dbCommandUXAP.Parameters.Add("p_IDAPLICACION", MySqlDbType.VarChar).Value = Usuario.IDUSUARIO;
+						dbCommandUXAP.Parameters.Add("p_IDUSUARIO", MySqlDbType.VarChar).Value = true;
 						if (!ExecuteNonQuery(ref dbCommandUXAP, out var _, out var dbErrorUXAP))
 						{
 							throw new DbDataContextException(dbErrorUXAP);
@@ -579,15 +580,15 @@ namespace ThreeBits.Services.Security.User
 				{
 					foreach (RolesXUsuarioBE Rol in RolesXUsuario)
 					{
-						SqlCommand dbCommandRXU = new SqlCommand("spFront_insRolXUserApp")
+						MySqlCommand dbCommandRXU = new MySqlCommand("spFront_insRolXUserApp")
 						{
 							CommandType = CommandType.StoredProcedure
 						};
-						dbCommandRXU.Parameters.Add("@IDROL", SqlDbType.BigInt).Value = Rol.IDROL;
-						dbCommandRXU.Parameters.Add("@IDUSUARIO", SqlDbType.BigInt).Value = Usuario.IDUSUARIO;
-						dbCommandRXU.Parameters.Add("@IDESTACIONXAPP", SqlDbType.BigInt).Value = ((Rol.IDESTACIONXAPP > 0) ? new long?(Rol.IDESTACIONXAPP) : null);
-						dbCommandRXU.Parameters.Add("@IDROLXUSUARIO", SqlDbType.BigInt).Value = ((Rol.IDROLXUSUARIO > 0) ? new long?(Rol.IDROLXUSUARIO) : null);
-						dbCommandRXU.Parameters.Add("@ACTIVO", SqlDbType.Bit).Value = Rol.ACTIVO;
+						dbCommandRXU.Parameters.Add("p_IDROL", MySqlDbType.Int64).Value = Rol.IDROL;
+						dbCommandRXU.Parameters.Add("p_IDUSUARIO", MySqlDbType.Int64).Value = Usuario.IDUSUARIO;
+						dbCommandRXU.Parameters.Add("p_IDESTACIONXAPP", MySqlDbType.Int64).Value = ((Rol.IDESTACIONXAPP > 0) ? new long?(Rol.IDESTACIONXAPP) : null);
+						dbCommandRXU.Parameters.Add("p_IDROLXUSUARIO", MySqlDbType.Int64).Value = ((Rol.IDROLXUSUARIO > 0) ? new long?(Rol.IDROLXUSUARIO) : null);
+						dbCommandRXU.Parameters.Add("p_ACTIVO", MySqlDbType.Bit).Value = Rol.ACTIVO;
 						if (!ExecuteNonQuery(ref dbCommandRXU, out var _, out var dbErrorRXU))
 						{
 							throw new DbDataContextException(dbErrorRXU);
@@ -610,13 +611,13 @@ namespace ThreeBits.Services.Security.User
 			{
 				new DatosUsuarioBE();
 				bool bFlag = false;
-				SqlCommand dbCommand = new SqlCommand("spFront_checkUsrXApp")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_checkUsrXApp")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@TIPOBUSQUEDA", SqlDbType.Int).Value = Reglas.TIPOBUSQUEDA;
-				dbCommand.Parameters.Add("@IDAPLICACION", SqlDbType.BigInt).Value = Reglas.IDAPP;
-				dbCommand.Parameters.Add("@USUARIO", SqlDbType.VarChar).Value = Reglas.USUARIO;
+				dbCommand.Parameters.Add("p_TIPOBUSQUEDA", MySqlDbType.Int32).Value = Reglas.TIPOBUSQUEDA;
+				dbCommand.Parameters.Add("p_IDAPLICACION", MySqlDbType.Int64).Value = Reglas.IDAPP;
+				dbCommand.Parameters.Add("p_USUARIO", MySqlDbType.VarChar).Value = Reglas.USUARIO;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					{
@@ -656,12 +657,12 @@ namespace ThreeBits.Services.Security.User
 			{
 				new DatosUsuarioBE();
 				bool bFlag = false;
-				SqlCommand dbCommand = new SqlCommand("sp_checkUsr")
+				MySqlCommand dbCommand = new MySqlCommand("sp_checkUsr")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@TIPOBUSQUEDA", SqlDbType.Int).Value = Reglas.TIPOBUSQUEDA;
-				dbCommand.Parameters.Add("@USUARIO", SqlDbType.VarChar).Value = Reglas.USUARIO;
+				dbCommand.Parameters.Add("p_TIPOBUSQUEDA", MySqlDbType.Int32).Value = Reglas.TIPOBUSQUEDA;
+				dbCommand.Parameters.Add("p_USUARIO", MySqlDbType.VarChar).Value = Reglas.USUARIO;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					{
@@ -700,12 +701,12 @@ namespace ThreeBits.Services.Security.User
 			try
 			{
 				List<UsuarioXAppBE> ListaApps = new List<UsuarioXAppBE>();
-				SqlCommand dbCommand = new SqlCommand("spFront_getAppsXUsuario")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_getAppsXUsuario")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@TIPOBUSQUEDA", SqlDbType.BigInt).Value = Reglas.TIPOBUSQUEDA;
-				dbCommand.Parameters.Add("@USUARIO", SqlDbType.BigInt).Value = Reglas.USUARIO;
+				dbCommand.Parameters.Add("p_TIPOBUSQUEDA", MySqlDbType.Int64).Value = Reglas.TIPOBUSQUEDA;
+				dbCommand.Parameters.Add("p_USUARIO", MySqlDbType.Int64).Value = Reglas.USUARIO;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					foreach (DataRow row in DataTable.Rows)
@@ -735,11 +736,11 @@ namespace ThreeBits.Services.Security.User
 			try
 			{
 				List<EstacionesXAppBE> ListaEstaciones = new List<EstacionesXAppBE>();
-				SqlCommand dbCommand = new SqlCommand("spFront_getEstacionesXApps")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_getEstacionesXApps")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IDAPLICACION", SqlDbType.BigInt).Value = Reglas.IDAPP;
+				dbCommand.Parameters.Add("p_IDAPLICACION", MySqlDbType.Int64).Value = Reglas.IDAPP;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					foreach (DataRow row in DataTable.Rows)
@@ -770,13 +771,13 @@ namespace ThreeBits.Services.Security.User
 				bool bFlag = true;
 				foreach (RolesXUsuarioBE Rol in RolesXUsuario)
 				{
-					SqlCommand dbCommand = new SqlCommand("spFront_insRolesXUsuario")
+					MySqlCommand dbCommand = new MySqlCommand("spFront_insRolesXUsuario")
 					{
 						CommandType = CommandType.StoredProcedure
 					};
-					dbCommand.Parameters.Add("@IDROL", SqlDbType.BigInt).Value = Rol.IDROL;
-					dbCommand.Parameters.Add("@IDUSUARIO", SqlDbType.BigInt).Value = Rol.IDUSUARIO;
-					dbCommand.Parameters.Add("@IDESTACIONXAPP", SqlDbType.BigInt).Value = ((Rol.IDESTACIONXAPP > 0) ? new long?(Rol.IDESTACIONXAPP) : null);
+					dbCommand.Parameters.Add("p_IDROL", MySqlDbType.Int64).Value = Rol.IDROL;
+					dbCommand.Parameters.Add("p_IDUSUARIO", MySqlDbType.Int64).Value = Rol.IDUSUARIO;
+					dbCommand.Parameters.Add("p_IDESTACIONXAPP", MySqlDbType.Int64).Value = ((Rol.IDESTACIONXAPP > 0) ? new long?(Rol.IDESTACIONXAPP) : null);
 					if (!ExecuteNonQuery(ref dbCommand, out var rowsAffected, out var dbError))
 					{
 						throw new DbDataContextException(dbError);
@@ -798,12 +799,12 @@ namespace ThreeBits.Services.Security.User
 			try
 			{
 				List<RolesXUsuarioBE> RolesVSUsuarios = new List<RolesXUsuarioBE>();
-				SqlCommand dbCommand = new SqlCommand("spFrontGetRolesVSUsuario")
+				MySqlCommand dbCommand = new MySqlCommand("spFrontGetRolesVSUsuario")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IDUSUARIO", SqlDbType.NVarChar).Value = Reglas.USUARIO;
-				dbCommand.Parameters.Add("@IDAPLICAION", SqlDbType.NVarChar).Value = Reglas.IDAPP.ToString();
+				dbCommand.Parameters.Add("p_IDUSUARIO", MySqlDbType.VarChar).Value = Reglas.USUARIO;
+				dbCommand.Parameters.Add("p_IDAPLICAION", MySqlDbType.VarChar).Value = Reglas.IDAPP.ToString();
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					foreach (DataRow row in DataTable.Rows)
@@ -836,14 +837,14 @@ namespace ThreeBits.Services.Security.User
 				bool bFlag = true;
 				foreach (UsuarioXAppBE item in lstUSuarioXApp)
 				{
-					SqlCommand dbCommand = new SqlCommand("spFront_addUsuarioXAplicacion")
+					MySqlCommand dbCommand = new MySqlCommand("spFront_addUsuarioXAplicacion")
 					{
 						CommandType = CommandType.StoredProcedure
 					};
-					dbCommand.Parameters.Add("@IDUSRSXAPP", SqlDbType.BigInt).Value = item.IDUSRSXAPP;
-					dbCommand.Parameters.Add("@IDAPLICACION", SqlDbType.BigInt).Value = item.IDAPLICACION;
-					dbCommand.Parameters.Add("@IDUSUARIO", SqlDbType.BigInt).Value = item.IDUSUARIO;
-					dbCommand.Parameters.Add("@ACTIVO", SqlDbType.BigInt).Value = item.ACTIVO;
+					dbCommand.Parameters.Add("p_IDUSRSXAPP", MySqlDbType.Int64).Value = item.IDUSRSXAPP;
+					dbCommand.Parameters.Add("p_IDAPLICACION", MySqlDbType.Int64).Value = item.IDAPLICACION;
+					dbCommand.Parameters.Add("p_IDUSUARIO", MySqlDbType.Int64).Value = item.IDUSUARIO;
+					dbCommand.Parameters.Add("p_ACTIVO", MySqlDbType.Int64).Value = item.ACTIVO;
 					if (!ExecuteNonQuery(ref dbCommand, out var rowsAffected, out var dbError))
 					{
 						throw new DbDataContextException(dbError);
@@ -865,11 +866,11 @@ namespace ThreeBits.Services.Security.User
 			try
 			{
 				List<RolesBE> RolesXApp = new List<RolesBE>();
-				SqlCommand dbCommand = new SqlCommand("spFront_getRolesXApp")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_getRolesXApp")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IDAPLICAION", SqlDbType.BigInt).Value = Reglas.IDAPP;
+				dbCommand.Parameters.Add("p_IDAPLICAION", MySqlDbType.Int64).Value = Reglas.IDAPP;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					foreach (DataRow row in DataTable.Rows)
@@ -893,17 +894,17 @@ namespace ThreeBits.Services.Security.User
 			}
 		}
 
-		public List<CatalogosBE> getCatSelection(int IdCatGeneral, int IdSubCatalogo, long App)
+		public List<CatalogosBE> getCatSelection(Int32 IdCatGeneral, Int32 IdSubCatalogo, long App)
 		{
 			try
 			{
 				List<CatalogosBE> ListaCatalogo = new List<CatalogosBE>();
 				new CatalogosBE();
-				SqlCommand dbCommand = new SqlCommand("spFront_getCatGenerales")
+				MySqlCommand dbCommand = new MySqlCommand("spFrontgetCatGenerales")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IDAPLICAION", SqlDbType.Int).Value = IdCatGeneral;
+				dbCommand.Parameters.Add("p_IDAPLICAION", MySqlDbType.Int32).Value = IdCatGeneral;
 				Cat_GralsBE CatGrasl = new Cat_GralsBE();
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
@@ -938,7 +939,7 @@ namespace ThreeBits.Services.Security.User
 						sComando.Append(" WHERE ACTIVO = 1 ");
 					}
 					new List<CatalogosBE>();
-					SqlCommand dbCommandText = new SqlCommand(sComando.ToString())
+					MySqlCommand dbCommandText = new MySqlCommand(sComando.ToString())
 					{
 						CommandType = CommandType.Text
 					};
@@ -978,13 +979,13 @@ namespace ThreeBits.Services.Security.User
 			try
 			{
 				bool Respuesta = true;
-				SqlCommand dbCommand = new SqlCommand("spFront_updRol")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_updRol")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IDROLXUSUARIO", SqlDbType.BigInt).Value = RolXUsuario.IDROLXUSUARIO;
-				dbCommand.Parameters.Add("@IDROL", SqlDbType.BigInt).Value = RolXUsuario.IDROL;
-				dbCommand.Parameters.Add("@IDESTACIONXAPP", SqlDbType.BigInt).Value = RolXUsuario.IDESTACIONXAPP;
+				dbCommand.Parameters.Add("p_IDROLXUSUARIO", MySqlDbType.Int64).Value = RolXUsuario.IDROLXUSUARIO;
+				dbCommand.Parameters.Add("p_IDROL", MySqlDbType.Int64).Value = RolXUsuario.IDROL;
+				dbCommand.Parameters.Add("p_IDESTACIONXAPP", MySqlDbType.Int64).Value = RolXUsuario.IDESTACIONXAPP;
 				if (ExecuteNonQuery(ref dbCommand, out var rowsAffected, out var dbError))
 				{
 					if (rowsAffected > 0)
@@ -1008,11 +1009,11 @@ namespace ThreeBits.Services.Security.User
 			try
 			{
 				List<DatosUsuarioBE> DatosUsuarioRES = new List<DatosUsuarioBE>();
-				SqlCommand dbCommand = new SqlCommand("sp_getUsuariosXIdRol")
+				MySqlCommand dbCommand = new MySqlCommand("sp_getUsuariosXIdRol")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IdRol", SqlDbType.BigInt).Value = IdRol;
+				dbCommand.Parameters.Add("p_IdRol", MySqlDbType.Int64).Value = IdRol;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					foreach (DataRow row in DataTable.Rows)
@@ -1061,7 +1062,7 @@ namespace ThreeBits.Services.Security.User
 			{
 				new DatosUsuarioBE();
 				string IdUsrApp = string.Empty;
-				SqlCommand dbCommand = new SqlCommand("sp_setIdUsrApp")
+				MySqlCommand dbCommand = new MySqlCommand("sp_setIdUsrApp")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
@@ -1109,7 +1110,7 @@ namespace ThreeBits.Services.Security.User
 				string sIp = Dns.GetHostEntry(strHostname).AddressList.Where((IPAddress n) => n.AddressFamily == AddressFamily.InterNetwork).First().ToString();
 				StringBuilder strStackTrace = new StringBuilder();
 				StackFrame[] frames = st.GetFrames();
-				int num = 0;
+				Int32 num = 0;
 				if (num < frames.Length)
 				{
 					StackFrame f = frames[num];
@@ -1129,17 +1130,17 @@ namespace ThreeBits.Services.Security.User
 				{
 					strHostname = strHostname.Substring(0, 148);
 				}
-				SqlCommand dbCommand = new SqlCommand("sp_insLogError")
+				MySqlCommand dbCommand = new MySqlCommand("sp_insLogError")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@idApp", SqlDbType.BigInt).Value = long.Parse(sApp);
-				dbCommand.Parameters.Add("@MENSAJE", SqlDbType.VarChar).Value = MessageErr;
-				dbCommand.Parameters.Add("@HOSTNAME", SqlDbType.VarChar).Value = strHostname;
-				dbCommand.Parameters.Add("@IP", SqlDbType.VarChar).Value = sIp;
-				dbCommand.Parameters.Add("@STACKTRACE", SqlDbType.VarChar).Value = strStackTrace.ToString();
-				dbCommand.Parameters.Add("@DTFECHAERROR", SqlDbType.DateTime).Value = DateTime.Now;
-				dbCommand.Parameters.Add("@VCHUSUARIO", SqlDbType.VarChar).Value = user;
+				dbCommand.Parameters.Add("p_idApp", MySqlDbType.Int64).Value = long.Parse(sApp);
+				dbCommand.Parameters.Add("p_MENSAJE", MySqlDbType.VarChar).Value = MessageErr;
+				dbCommand.Parameters.Add("p_HOSTNAME", MySqlDbType.VarChar).Value = strHostname;
+				dbCommand.Parameters.Add("p_IP", MySqlDbType.VarChar).Value = sIp;
+				dbCommand.Parameters.Add("p_STACKTRACE", MySqlDbType.VarChar).Value = strStackTrace.ToString();
+				dbCommand.Parameters.Add("p_DTFECHAERROR", MySqlDbType.DateTime).Value = DateTime.Now;
+				dbCommand.Parameters.Add("p_VCHUSUARIO", MySqlDbType.VarChar).Value = user;
 				if (!ExecuteNonQuery(ref dbCommand, out var _, out var dbError))
 				{
 					throw new DbDataContextException(dbError);

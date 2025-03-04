@@ -17,7 +17,6 @@ C:\Users\juliocmartinezz\source\repos\ThreeBits.Shared\obj\Debug\net6.0\ThreeBit
 C:\Users\juliocmartinezz\source\repos\ThreeBits.Shared\obj\Debug\net6.0\ref\ThreeBits.Shared.dll
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Shared\bin\Debug\net6.0\ThreeBits.Shared.deps.json
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Shared\bin\Debug\net6.0\ThreeBits.Shared.dll
-H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Shared\bin\Debug\net6.0\ref\ThreeBits.Shared.dll
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Shared\bin\Debug\net6.0\ThreeBits.Shared.pdb
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Shared\bin\Debug\net6.0\ThreeBits.Entities.dll
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Shared\bin\Debug\net6.0\ThreeBits.Interfaces.dll
@@ -28,7 +27,9 @@ H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Shared\obj\Debug\net6.0\ThreeBits.
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Shared\obj\Debug\net6.0\ThreeBits.Shared.AssemblyInfoInputs.cache
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Shared\obj\Debug\net6.0\ThreeBits.Shared.AssemblyInfo.cs
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Shared\obj\Debug\net6.0\ThreeBits.Shared.csproj.CoreCompileInputs.cache
-H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Shared\obj\Debug\net6.0\ThreeBits.Shared.csproj.CopyComplete
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Shared\obj\Debug\net6.0\ThreeBits.Shared.dll
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Shared\obj\Debug\net6.0\ref\ThreeBits.Shared.dll
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Shared\obj\Debug\net6.0\ThreeBits.Shared.pdb
+H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Shared\obj\Debug\net6.0\ThreeBits.Shared.sourcelink.json
+H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Shared\obj\Debug\net6.0\ThreeBit.FA189DE3.Up2Date
+H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Shared\obj\Debug\net6.0\refint\ThreeBits.Shared.dll

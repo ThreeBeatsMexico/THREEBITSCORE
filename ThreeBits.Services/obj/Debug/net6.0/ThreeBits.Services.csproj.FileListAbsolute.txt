@@ -28,7 +28,6 @@ H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Services\obj\Debug\net6.0\ThreeBit
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Services\obj\Debug\net6.0\ThreeBits.Services.csproj.CoreCompileInputs.cache
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Services\bin\Debug\net6.0\ThreeBits.Services.deps.json
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Services\bin\Debug\net6.0\ThreeBits.Services.dll
-H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Services\bin\Debug\net6.0\ref\ThreeBits.Services.dll
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Services\bin\Debug\net6.0\ThreeBits.Services.pdb
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Services\bin\Debug\net6.0\ThreeBits.Business.dll
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Services\bin\Debug\net6.0\ThreeBits.Data.dll
@@ -40,7 +39,9 @@ H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Services\bin\Debug\net6.0\ThreeBit
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Services\bin\Debug\net6.0\ThreeBits.Interfaces.pdb
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Services\bin\Debug\net6.0\ThreeBits.Shared.pdb
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Services\bin\Debug\net6.0\ThreeBits.Data.pdb
-H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Services\obj\Debug\net6.0\ThreeBits.Services.csproj.CopyComplete
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Services\obj\Debug\net6.0\ThreeBits.Services.dll
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Services\obj\Debug\net6.0\ref\ThreeBits.Services.dll
 H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Services\obj\Debug\net6.0\ThreeBits.Services.pdb
+H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Services\obj\Debug\net6.0\ThreeBits.Services.sourcelink.json
+H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Services\obj\Debug\net6.0\ThreeBit.D62A4B13.Up2Date
+H:\Projectos2022\THREEBITSCORENUEVO\ThreeBits.Services\obj\Debug\net6.0\refint\ThreeBits.Services.dll

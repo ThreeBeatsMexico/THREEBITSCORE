@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,11 +16,11 @@ using ThreeBits.Entities.Security;
 using ThreeBits.Entities.User;
 using ThreeBits.Interfaces.Common;
 using ThreeBits.Interfaces.Security.Security;
-using static ThreeBits.Data.Common.SqlDataContext;
+using static ThreeBits.Data.Common.MySqlDataContext;
 
 namespace ThreeBits.Services.Security
 {
-	public class SecurityServiceDA : SqlDataContext, ISecurityServiceDA
+	public class SecurityServiceDA : MySqlDataContext, ISecurityServiceDA
 	{
 		private readonly ILogger _logger;
 
@@ -31,7 +32,7 @@ namespace ThreeBits.Services.Security
 		{
 			_logger = logger;
 			_configuration = configuration;
-			_connectionString = _configuration["ConnectionStrings:DefaultConnection"];
+            _MySqlconnectionString = _configuration["ConnectionStrings:MySqlConnection"];
 			_securityCommon = securityCommonDA;
 		}
 
@@ -40,11 +41,11 @@ namespace ThreeBits.Services.Security
 			AplicacionBE PermisosXApp = new AplicacionBE();
 			try
 			{
-				SqlCommand dbCommand = new SqlCommand("spFront_getPermisoXApp")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_getPermisoXApp")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IdApp", SqlDbType.BigInt).Value = App;
+				dbCommand.Parameters.Add("p_IdApp", MySqlDbType.Int64).Value = App;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					{
@@ -86,13 +87,13 @@ namespace ThreeBits.Services.Security
 			List<WCFMetodosBE> MetodosXApp = new List<WCFMetodosBE>();
 			try
 			{
-				SqlCommand dbCommand = new SqlCommand("spFront_getMetodoXApp")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_getMetodoXApp")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IdApp", SqlDbType.BigInt).Value = App;
-				dbCommand.Parameters.Add("@SERVICENAME", SqlDbType.VarChar).Value = sServiceName;
-				dbCommand.Parameters.Add("@METHODNAME", SqlDbType.VarChar).Value = sMethodName;
+				dbCommand.Parameters.Add("p_IdApp", MySqlDbType.Int64).Value = App;
+				dbCommand.Parameters.Add("p_SERVICENAME", MySqlDbType.VarChar).Value = sServiceName;
+				dbCommand.Parameters.Add("p_METHODNAME", MySqlDbType.VarChar).Value = sMethodName;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					foreach (DataRow row in DataTable.Rows)
@@ -123,13 +124,13 @@ namespace ThreeBits.Services.Security
 			List<PermisosXObjetosBE> PermisoXObjetos = new List<PermisosXObjetosBE>();
 			try
 			{
-				SqlCommand dbCommand = new SqlCommand("spFront_getObjetosXAppRolPage")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_getObjetosXAppRolPage")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IdApp", SqlDbType.BigInt).Value = App;
-				dbCommand.Parameters.Add("@IdRol", SqlDbType.BigInt).Value = Rol;
-				dbCommand.Parameters.Add("@Pagina", SqlDbType.VarChar).Value = Pagina;
+				dbCommand.Parameters.Add("p_IdApp", MySqlDbType.Int64).Value = App;
+				dbCommand.Parameters.Add("p_IdRol", MySqlDbType.Int64).Value = Rol;
+				dbCommand.Parameters.Add("p_Pagina", MySqlDbType.VarChar).Value = Pagina;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					foreach (DataRow row in DataTable.Rows)
@@ -160,11 +161,11 @@ namespace ThreeBits.Services.Security
 			List<PermisoXElementosObjBE> PermisoXElementosObj = new List<PermisoXElementosObjBE>();
 			try
 			{
-				SqlCommand dbCommand = new SqlCommand("spFront_getElementsObjectsXIdObj")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_getElementsObjectsXIdObj")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IDELEMENTOSXOBJ", SqlDbType.BigInt).Value = IdPermisosXObj;
+				dbCommand.Parameters.Add("p_IDELEMENTOSXOBJ", MySqlDbType.Int64).Value = IdPermisosXObj;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					foreach (DataRow row in DataTable.Rows)
@@ -194,12 +195,12 @@ namespace ThreeBits.Services.Security
 			List<PermisosXMenuBE> PermisosXMenu = new List<PermisosXMenuBE>();
 			try
 			{
-				SqlCommand dbCommand = new SqlCommand("spFront_getMenusXAppRol")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_getMenusXAppRol")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IdApp", SqlDbType.BigInt).Value = App;
-				dbCommand.Parameters.Add("@IdRol", SqlDbType.BigInt).Value = Rol;
+				dbCommand.Parameters.Add("p_IdApp", MySqlDbType.Int64).Value = App;
+				dbCommand.Parameters.Add("p_IdRol", MySqlDbType.Int64).Value = Rol;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					foreach (DataRow row in DataTable.Rows)
@@ -233,12 +234,12 @@ namespace ThreeBits.Services.Security
 			List<PermisosXMenuBE> PermisosXMenu = new List<PermisosXMenuBE>();
 			try
 			{
-				SqlCommand dbCommand = new SqlCommand("spFront_getMenusXAppRolAdmin")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_getMenusXAppRolAdmin")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IdApp", SqlDbType.BigInt).Value = App;
-				dbCommand.Parameters.Add("@IdRol", SqlDbType.BigInt).Value = Rol;
+				dbCommand.Parameters.Add("p_IdApp", MySqlDbType.Int64).Value = App;
+				dbCommand.Parameters.Add("p_IdRol", MySqlDbType.Int64).Value = Rol;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					foreach (DataRow row in DataTable.Rows)
@@ -272,11 +273,11 @@ namespace ThreeBits.Services.Security
 			List<PermisoXSubmenuBE> PermisosXSubmenu = new List<PermisoXSubmenuBE>();
 			try
 			{
-				SqlCommand dbCommand = new SqlCommand("spFront_getSubMenusXIdMenu")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_getSubMenusXIdMenu")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IDPERMISOSMENU", SqlDbType.BigInt).Value = IdPermisoMenu;
+				dbCommand.Parameters.Add("p_IDPERMISOSMENU", MySqlDbType.Int64).Value = IdPermisoMenu;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					foreach (DataRow row in DataTable.Rows)
@@ -310,11 +311,11 @@ namespace ThreeBits.Services.Security
 			List<PermisoXSubmenuBE> PermisosXSubmenu = new List<PermisoXSubmenuBE>();
 			try
 			{
-				SqlCommand dbCommand = new SqlCommand("spFront_getSubMenusXIdMenuAdmin")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_getSubMenusXIdMenuAdmin")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IDPERMISOSMENU", SqlDbType.BigInt).Value = IdPermisoMenu;
+				dbCommand.Parameters.Add("p_IDPERMISOSMENU", MySqlDbType.Int64).Value = IdPermisoMenu;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					foreach (DataRow row in DataTable.Rows)
@@ -348,12 +349,12 @@ namespace ThreeBits.Services.Security
 			List<AplicacionBE> Aplicaciones = new List<AplicacionBE>();
 			try
 			{
-				SqlCommand dbCommand = new SqlCommand("spFront_getAplicaciones")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_getAplicaciones")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IDAPLICACION", SqlDbType.VarChar).Value = idAplicacion;
-				dbCommand.Parameters.Add("@TXTBUSQUEDA", SqlDbType.NVarChar).Value = txtBusqueda;
+				dbCommand.Parameters.Add("p_IDAPLICACION", MySqlDbType.VarChar).Value = idAplicacion;
+				dbCommand.Parameters.Add("p_TXTBUSQUEDA", MySqlDbType.VarChar).Value = txtBusqueda;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					foreach (DataRow row in DataTable.Rows)
@@ -382,13 +383,13 @@ namespace ThreeBits.Services.Security
 			try
 			{
 				bool bFlag = true;
-				SqlCommand dbCommand = new SqlCommand("spFront_insAplicacion")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_insAplicacion")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@DESCRIPCION", SqlDbType.VarChar).Value = Aplicacion.DESCRIPCION;
-				dbCommand.Parameters.Add("@PASSWORD", SqlDbType.VarChar).Value = Aplicacion.PASSWORD;
-				dbCommand.Parameters.Add("@ACTIVO", SqlDbType.Bit).Value = Aplicacion.ACTIVO;
+				dbCommand.Parameters.Add("p_DESCRIPCION", MySqlDbType.VarChar).Value = Aplicacion.DESCRIPCION;
+				dbCommand.Parameters.Add("p_PASSWORD", MySqlDbType.VarChar).Value = Aplicacion.PASSWORD;
+				dbCommand.Parameters.Add("p_ACTIVO", MySqlDbType.Bit).Value = Aplicacion.ACTIVO;
 				if (ExecuteNonQuery(ref dbCommand, out var rowsAffected, out var dbError))
 				{
 					if (rowsAffected > 0)
@@ -412,14 +413,14 @@ namespace ThreeBits.Services.Security
 			try
 			{
 				bool bFlag = true;
-				SqlCommand dbCommand = new SqlCommand("spFront_updAplicacion")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_updAplicacion")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IDAPLICACION", SqlDbType.VarChar).Value = Aplicacion.IDAPLICACION;
-				dbCommand.Parameters.Add("@DESCRIPCION", SqlDbType.VarChar).Value = Aplicacion.DESCRIPCION;
-				dbCommand.Parameters.Add("@PASSWORD", SqlDbType.VarChar).Value = Aplicacion.PASSWORD;
-				dbCommand.Parameters.Add("@ACTIVO", SqlDbType.Bit).Value = Aplicacion.ACTIVO;
+				dbCommand.Parameters.Add("p_IDAPLICACION", MySqlDbType.VarChar).Value = Aplicacion.IDAPLICACION;
+				dbCommand.Parameters.Add("p_DESCRIPCION", MySqlDbType.VarChar).Value = Aplicacion.DESCRIPCION;
+				dbCommand.Parameters.Add("p_PASSWORD", MySqlDbType.VarChar).Value = Aplicacion.PASSWORD;
+				dbCommand.Parameters.Add("p_ACTIVO", MySqlDbType.Bit).Value = Aplicacion.ACTIVO;
 				if (ExecuteNonQuery(ref dbCommand, out var rowsAffected, out var dbError))
 				{
 					if (rowsAffected > 0)
@@ -443,18 +444,18 @@ namespace ThreeBits.Services.Security
 			try
 			{
 				bool bFlag = true;
-				SqlCommand dbCommand = new SqlCommand("spFront_updMenuXAppRol")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_updMenuXAppRol")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IDPERMISOSMENU", SqlDbType.BigInt).Value = idMenu;
-				dbCommand.Parameters.Add("@NOMBREMENU", SqlDbType.VarChar).Value = Menu;
-				dbCommand.Parameters.Add("@IMAGEN", SqlDbType.VarChar).Value = Img;
-				dbCommand.Parameters.Add("@TIPOOBJETO", SqlDbType.VarChar).Value = TpoObj;
-				dbCommand.Parameters.Add("@URL", SqlDbType.VarChar).Value = Url;
-				dbCommand.Parameters.Add("@TOOLTIP", SqlDbType.VarChar).Value = Tool;
-				dbCommand.Parameters.Add("@ORDEN", SqlDbType.BigInt).Value = Orden;
-				dbCommand.Parameters.Add("@ACTIVO", SqlDbType.Bit).Value = Activo;
+				dbCommand.Parameters.Add("p_IDPERMISOSMENU", MySqlDbType.Int64).Value = idMenu;
+				dbCommand.Parameters.Add("p_NOMBREMENU", MySqlDbType.VarChar).Value = Menu;
+				dbCommand.Parameters.Add("p_IMAGEN", MySqlDbType.VarChar).Value = Img;
+				dbCommand.Parameters.Add("p_TIPOOBJETO", MySqlDbType.VarChar).Value = TpoObj;
+				dbCommand.Parameters.Add("p_URL", MySqlDbType.VarChar).Value = Url;
+				dbCommand.Parameters.Add("p_TOOLTIP", MySqlDbType.VarChar).Value = Tool;
+				dbCommand.Parameters.Add("p_ORDEN", MySqlDbType.Int64).Value = Orden;
+				dbCommand.Parameters.Add("p_ACTIVO", MySqlDbType.Bit).Value = Activo;
 				if (ExecuteNonQuery(ref dbCommand, out var rowsAffected, out var dbError))
 				{
 					if (rowsAffected > 0)
@@ -478,19 +479,19 @@ namespace ThreeBits.Services.Security
 			try
 			{
 				bool bFlag = true;
-				SqlCommand dbCommand = new SqlCommand("spFront_updSubMenuXAppRol")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_updSubMenuXAppRol")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IDPERMISOSMENU", SqlDbType.BigInt).Value = idPermisoMenu;
-				dbCommand.Parameters.Add("@IDPERMISOSSUBMENU", SqlDbType.BigInt).Value = IdPermisoSubmenu;
-				dbCommand.Parameters.Add("@NOMBRESUBMENU", SqlDbType.VarChar).Value = SubMenu;
-				dbCommand.Parameters.Add("@IMAGEN", SqlDbType.VarChar).Value = Img;
-				dbCommand.Parameters.Add("@TIPOOBJETO", SqlDbType.VarChar).Value = TpoObj;
-				dbCommand.Parameters.Add("@URL", SqlDbType.VarChar).Value = Url;
-				dbCommand.Parameters.Add("@TOOLTIP", SqlDbType.VarChar).Value = Tool;
-				dbCommand.Parameters.Add("@ORDEN", SqlDbType.BigInt).Value = Orden;
-				dbCommand.Parameters.Add("@ACTIVO", SqlDbType.Bit).Value = Activo;
+				dbCommand.Parameters.Add("p_IDPERMISOSMENU", MySqlDbType.Int64).Value = idPermisoMenu;
+				dbCommand.Parameters.Add("p_IDPERMISOSSUBMENU", MySqlDbType.Int64).Value = IdPermisoSubmenu;
+				dbCommand.Parameters.Add("p_NOMBRESUBMENU", MySqlDbType.VarChar).Value = SubMenu;
+				dbCommand.Parameters.Add("p_IMAGEN", MySqlDbType.VarChar).Value = Img;
+				dbCommand.Parameters.Add("p_TIPOOBJETO", MySqlDbType.VarChar).Value = TpoObj;
+				dbCommand.Parameters.Add("p_URL", MySqlDbType.VarChar).Value = Url;
+				dbCommand.Parameters.Add("p_TOOLTIP", MySqlDbType.VarChar).Value = Tool;
+				dbCommand.Parameters.Add("p_ORDEN", MySqlDbType.Int64).Value = Orden;
+				dbCommand.Parameters.Add("p_ACTIVO", MySqlDbType.Bit).Value = Activo;
 				if (ExecuteNonQuery(ref dbCommand, out var rowsAffected, out var dbError))
 				{
 					if (rowsAffected > 0)
@@ -514,12 +515,12 @@ namespace ThreeBits.Services.Security
 			try
 			{
 				bool bFlag = true;
-				SqlCommand dbCommand = new SqlCommand("spFront_insRolXApp")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_insRolXApp")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@ROL", SqlDbType.VarChar).Value = Rol;
-				dbCommand.Parameters.Add("@IDAPLICACION", SqlDbType.BigInt).Value = App;
+				dbCommand.Parameters.Add("p_ROL", MySqlDbType.VarChar).Value = Rol;
+				dbCommand.Parameters.Add("p_IDAPLICACION", MySqlDbType.Int64).Value = App;
 				if (ExecuteNonQuery(ref dbCommand, out var rowsAffected, out var dbError))
 				{
 					if (rowsAffected > 0)
@@ -545,16 +546,16 @@ namespace ThreeBits.Services.Security
 				bool bFlag = true;
 				foreach (WCFMetodosBE item in lstMetodos)
 				{
-					SqlCommand dbCommand = new SqlCommand("spFront_insMetodosxApp")
+					MySqlCommand dbCommand = new MySqlCommand("spFront_insMetodosxApp")
 					{
 						CommandType = CommandType.StoredProcedure
 					};
-					dbCommand.Parameters.Add("@IDMETODOS", SqlDbType.BigInt).Value = item.IDMETODOS;
-					dbCommand.Parameters.Add("@IDAPLICACION", SqlDbType.BigInt).Value = item.IDAPLICACION;
-					dbCommand.Parameters.Add("@IDSERVICIOS", SqlDbType.BigInt).Value = item.IDSERVICIOS;
-					dbCommand.Parameters.Add("@NOMBREMETODO", SqlDbType.VarChar).Value = item.NOMBREMETODO;
-					dbCommand.Parameters.Add("@RECURRENTE", SqlDbType.Bit).Value = item.RECURRENTE;
-					dbCommand.Parameters.Add("@ACTIVO", SqlDbType.Bit).Value = item.ACTIVO;
+					dbCommand.Parameters.Add("p_IDMETODOS", MySqlDbType.Int64).Value = item.IDMETODOS;
+					dbCommand.Parameters.Add("p_IDAPLICACION", MySqlDbType.Int64).Value = item.IDAPLICACION;
+					dbCommand.Parameters.Add("p_IDSERVICIOS", MySqlDbType.Int64).Value = item.IDSERVICIOS;
+					dbCommand.Parameters.Add("p_NOMBREMETODO", MySqlDbType.VarChar).Value = item.NOMBREMETODO;
+					dbCommand.Parameters.Add("p_RECURRENTE", MySqlDbType.Bit).Value = item.RECURRENTE;
+					dbCommand.Parameters.Add("p_ACTIVO", MySqlDbType.Bit).Value = item.ACTIVO;
 					if (ExecuteNonQuery(ref dbCommand, out var rowsAffected, out var _))
 					{
 						bFlag = ((rowsAffected > 0) ? true : false);
@@ -575,11 +576,11 @@ namespace ThreeBits.Services.Security
 			try
 			{
 				bool bFlag = true;
-				SqlCommand dbCommand = new SqlCommand("spFront_insServicioWCF")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_insServicioWCF")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@DESCRIPCION", SqlDbType.VarChar).Value = Servicio;
+				dbCommand.Parameters.Add("p_DESCRIPCION", MySqlDbType.VarChar).Value = Servicio;
 				if (ExecuteNonQuery(ref dbCommand, out var rowsAffected, out var dbError))
 				{
 					if (rowsAffected > 0)
@@ -603,17 +604,17 @@ namespace ThreeBits.Services.Security
 			try
 			{
 				bool bFlag = true;
-				SqlCommand dbCommand = new SqlCommand("spFront_insSubMenuXAppRol")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_insSubMenuXAppRol")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IDPERMISOSMENU", SqlDbType.BigInt).Value = IdSubMenu;
-				dbCommand.Parameters.Add("@NOMBRESUBMENU", SqlDbType.VarChar).Value = SubMenu;
-				dbCommand.Parameters.Add("@IMAGEN", SqlDbType.VarChar).Value = Img;
-				dbCommand.Parameters.Add("@TIPOOBJETO", SqlDbType.VarChar).Value = Obj;
-				dbCommand.Parameters.Add("@URL", SqlDbType.VarChar).Value = Url;
-				dbCommand.Parameters.Add("@TOOLTIP", SqlDbType.VarChar).Value = Tool;
-				dbCommand.Parameters.Add("@ORDEN", SqlDbType.BigInt).Value = Orden;
+				dbCommand.Parameters.Add("p_IDPERMISOSMENU", MySqlDbType.Int64).Value = IdSubMenu;
+				dbCommand.Parameters.Add("p_NOMBRESUBMENU", MySqlDbType.VarChar).Value = SubMenu;
+				dbCommand.Parameters.Add("p_IMAGEN", MySqlDbType.VarChar).Value = Img;
+				dbCommand.Parameters.Add("p_TIPOOBJETO", MySqlDbType.VarChar).Value = Obj;
+				dbCommand.Parameters.Add("p_URL", MySqlDbType.VarChar).Value = Url;
+				dbCommand.Parameters.Add("p_TOOLTIP", MySqlDbType.VarChar).Value = Tool;
+				dbCommand.Parameters.Add("p_ORDEN", MySqlDbType.Int64).Value = Orden;
 				if (ExecuteNonQuery(ref dbCommand, out var rowsAffected, out var dbError))
 				{
 					if (rowsAffected > 0)
@@ -637,17 +638,17 @@ namespace ThreeBits.Services.Security
 			try
 			{
 				bool bFlag = true;
-				SqlCommand dbCommand = new SqlCommand("spFront_insMenuXAppRol")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_insMenuXAppRol")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IDROL", SqlDbType.BigInt).Value = Rol;
-				dbCommand.Parameters.Add("@NOMBREMENU", SqlDbType.VarChar).Value = Menu;
-				dbCommand.Parameters.Add("@IMAGEN", SqlDbType.VarChar).Value = Img;
-				dbCommand.Parameters.Add("@TIPOOBJETO", SqlDbType.VarChar).Value = Obj;
-				dbCommand.Parameters.Add("@URL", SqlDbType.VarChar).Value = Url;
-				dbCommand.Parameters.Add("@TOOLTIP", SqlDbType.VarChar).Value = Tool;
-				dbCommand.Parameters.Add("@ORDEN", SqlDbType.BigInt).Value = Orden;
+				dbCommand.Parameters.Add("p_IDROL", MySqlDbType.Int64).Value = Rol;
+				dbCommand.Parameters.Add("p_NOMBREMENU", MySqlDbType.VarChar).Value = Menu;
+				dbCommand.Parameters.Add("p_IMAGEN", MySqlDbType.VarChar).Value = Img;
+				dbCommand.Parameters.Add("p_TIPOOBJETO", MySqlDbType.VarChar).Value = Obj;
+				dbCommand.Parameters.Add("p_URL", MySqlDbType.VarChar).Value = Url;
+				dbCommand.Parameters.Add("p_TOOLTIP", MySqlDbType.VarChar).Value = Tool;
+				dbCommand.Parameters.Add("p_ORDEN", MySqlDbType.Int64).Value = Orden;
 				if (ExecuteNonQuery(ref dbCommand, out var rowsAffected, out var dbError))
 				{
 					if (rowsAffected > 0)
@@ -671,15 +672,15 @@ namespace ThreeBits.Services.Security
 			try
 			{
 				bool bFlag = true;
-				SqlCommand dbCommand = new SqlCommand("spFront_insPermisosxObjeto")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_insPermisosxObjeto")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IDROL", SqlDbType.BigInt).Value = Rol;
-				dbCommand.Parameters.Add("@PAGINA", SqlDbType.VarChar).Value = Pagina;
-				dbCommand.Parameters.Add("@NOMBREOBJETO", SqlDbType.VarChar).Value = Obj;
-				dbCommand.Parameters.Add("@TIPOOBJETO", SqlDbType.VarChar).Value = TipoObjeto;
-				dbCommand.Parameters.Add("@TOOLTIP", SqlDbType.VarChar).Value = Tool;
+				dbCommand.Parameters.Add("p_IDROL", MySqlDbType.Int64).Value = Rol;
+				dbCommand.Parameters.Add("p_PAGINA", MySqlDbType.VarChar).Value = Pagina;
+				dbCommand.Parameters.Add("p_NOMBREOBJETO", MySqlDbType.VarChar).Value = Obj;
+				dbCommand.Parameters.Add("p_TIPOOBJETO", MySqlDbType.VarChar).Value = TipoObjeto;
+				dbCommand.Parameters.Add("p_TOOLTIP", MySqlDbType.VarChar).Value = Tool;
 				if (ExecuteNonQuery(ref dbCommand, out var rowsAffected, out var dbError))
 				{
 					if (rowsAffected > 0)
@@ -703,13 +704,13 @@ namespace ThreeBits.Services.Security
 			try
 			{
 				bool bFlag = true;
-				SqlCommand dbCommand = new SqlCommand("spFront_insPermisosxElementoObjeto")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_insPermisosxElementoObjeto")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IDPERMISOSOBJ", SqlDbType.BigInt).Value = PermisoObj;
-				dbCommand.Parameters.Add("@ELEMENTO", SqlDbType.VarChar).Value = Elemento;
-				dbCommand.Parameters.Add("@TOOLTIP", SqlDbType.VarChar).Value = Tool;
+				dbCommand.Parameters.Add("p_IDPERMISOSOBJ", MySqlDbType.Int64).Value = PermisoObj;
+				dbCommand.Parameters.Add("p_ELEMENTO", MySqlDbType.VarChar).Value = Elemento;
+				dbCommand.Parameters.Add("p_TOOLTIP", MySqlDbType.VarChar).Value = Tool;
 				if (ExecuteNonQuery(ref dbCommand, out var rowsAffected, out var dbError))
 				{
 					if (rowsAffected > 0)
@@ -733,11 +734,11 @@ namespace ThreeBits.Services.Security
 			try
 			{
 				bool bFlag = true;
-				SqlCommand dbCommand = new SqlCommand("spFront_delMenusXAppRol")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_delMenusXAppRol")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IdMenu", SqlDbType.BigInt).Value = idMenu;
+				dbCommand.Parameters.Add("p_IdMenu", MySqlDbType.Int64).Value = idMenu;
 				if (ExecuteNonQuery(ref dbCommand, out var rowsAffected, out var dbError))
 				{
 					if (rowsAffected > 0)
@@ -761,11 +762,11 @@ namespace ThreeBits.Services.Security
 			try
 			{
 				bool bFlag = true;
-				SqlCommand dbCommand = new SqlCommand("spFront_delSubMenusXAppRol")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_delSubMenusXAppRol")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IdSubMenu", SqlDbType.BigInt).Value = idSubMenu;
+				dbCommand.Parameters.Add("p_IdSubMenu", MySqlDbType.Int64).Value = idSubMenu;
 				if (ExecuteNonQuery(ref dbCommand, out var rowsAffected, out var dbError))
 				{
 					if (rowsAffected > 0)
@@ -789,11 +790,11 @@ namespace ThreeBits.Services.Security
 			bool bFlag = false;
 			try
 			{
-				SqlCommand dbCommand = new SqlCommand("spFront_checkXApp")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_checkXApp")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@APLICACION", SqlDbType.VarChar).Value = App;
+				dbCommand.Parameters.Add("p_APLICACION", MySqlDbType.VarChar).Value = App;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					IEnumerator enumerator = DataTable.Rows.GetEnumerator();
@@ -830,12 +831,12 @@ namespace ThreeBits.Services.Security
 			bool bFlag = false;
 			try
 			{
-				SqlCommand dbCommand = new SqlCommand("spFront_checkRolxApp")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_checkRolxApp")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@ROL", SqlDbType.VarChar).Value = Rol;
-				dbCommand.Parameters.Add("@IDAPLICACION", SqlDbType.BigInt).Value = App;
+				dbCommand.Parameters.Add("p_ROL", MySqlDbType.VarChar).Value = Rol;
+				dbCommand.Parameters.Add("p_IDAPLICACION", MySqlDbType.Int64).Value = App;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					IEnumerator enumerator = DataTable.Rows.GetEnumerator();
@@ -872,13 +873,13 @@ namespace ThreeBits.Services.Security
 			bool bFlag = false;
 			try
 			{
-				SqlCommand dbCommand = new SqlCommand("spFront_checkMetodo")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_checkMetodo")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@METODO", SqlDbType.VarChar).Value = Metodo;
-				dbCommand.Parameters.Add("@IDAPLICACION", SqlDbType.BigInt).Value = IdApp;
-				dbCommand.Parameters.Add("@IDSERVICIOS", SqlDbType.BigInt).Value = Servicio;
+				dbCommand.Parameters.Add("p_METODO", MySqlDbType.VarChar).Value = Metodo;
+				dbCommand.Parameters.Add("p_IDAPLICACION", MySqlDbType.Int64).Value = IdApp;
+				dbCommand.Parameters.Add("p_IDSERVICIOS", MySqlDbType.Int64).Value = Servicio;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					IEnumerator enumerator = DataTable.Rows.GetEnumerator();
@@ -915,11 +916,11 @@ namespace ThreeBits.Services.Security
 			bool bFlag = false;
 			try
 			{
-				SqlCommand dbCommand = new SqlCommand("spFront_checkServicio")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_checkServicio")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@SERVICIO", SqlDbType.VarChar).Value = Servicio;
+				dbCommand.Parameters.Add("p_SERVICIO", MySqlDbType.VarChar).Value = Servicio;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					IEnumerator enumerator = DataTable.Rows.GetEnumerator();
@@ -956,12 +957,12 @@ namespace ThreeBits.Services.Security
 			bool bFlag = false;
 			try
 			{
-				SqlCommand dbCommand = new SqlCommand("spFront_checkMenuxAppRol")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_checkMenuxAppRol")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@MENU", SqlDbType.VarChar).Value = Menu;
-				dbCommand.Parameters.Add("@IDROL", SqlDbType.VarChar).Value = Rol;
+				dbCommand.Parameters.Add("p_MENU", MySqlDbType.VarChar).Value = Menu;
+				dbCommand.Parameters.Add("p_IDROL", MySqlDbType.VarChar).Value = Rol;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					IEnumerator enumerator = DataTable.Rows.GetEnumerator();
@@ -998,12 +999,12 @@ namespace ThreeBits.Services.Security
 			bool bFlag = false;
 			try
 			{
-				SqlCommand dbCommand = new SqlCommand("spFront_checkSubMenuxAppRol")
+				MySqlCommand dbCommand = new MySqlCommand("spFront_checkSubMenuxAppRol")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@SUBMENU", SqlDbType.VarChar).Value = SubMenu;
-				dbCommand.Parameters.Add("@IDPERMISOSMENU", SqlDbType.BigInt).Value = PermisosMenu;
+				dbCommand.Parameters.Add("p_SUBMENU", MySqlDbType.VarChar).Value = SubMenu;
+				dbCommand.Parameters.Add("p_IDPERMISOSMENU", MySqlDbType.Int64).Value = PermisosMenu;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					IEnumerator enumerator = DataTable.Rows.GetEnumerator();
@@ -1040,11 +1041,11 @@ namespace ThreeBits.Services.Security
 			try
 			{
 				List<EstacionesXAppBE> ListaEstaciones = new List<EstacionesXAppBE>();
-				SqlCommand dbCommand = new SqlCommand("sp_getEstacionesXApps")
+				MySqlCommand dbCommand = new MySqlCommand("sp_getEstacionesXApps")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IDAPLICACION", SqlDbType.BigInt).Value = IdApp;
+				dbCommand.Parameters.Add("p_IDAPLICACION", MySqlDbType.Int64).Value = IdApp;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					foreach (DataRow row in DataTable.Rows)
@@ -1073,11 +1074,11 @@ namespace ThreeBits.Services.Security
 			try
 			{
 				List<EstacionesXAppBE> ListaEstaciones = new List<EstacionesXAppBE>();
-				SqlCommand dbCommand = new SqlCommand("sp_getEstacionesXID")
+				MySqlCommand dbCommand = new MySqlCommand("sp_getEstacionesXID")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IDESTACIONXAPP", SqlDbType.BigInt).Value = IdEstacion;
+				dbCommand.Parameters.Add("p_IDESTACIONXAPP", MySqlDbType.Int64).Value = IdEstacion;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					foreach (DataRow row in DataTable.Rows)
@@ -1108,11 +1109,11 @@ namespace ThreeBits.Services.Security
 			try
 			{
 				AplicacionBE sRes = new AplicacionBE();
-				SqlCommand dbCommand = new SqlCommand("spGetAppInfo")
+				MySqlCommand dbCommand = new MySqlCommand("spGetAppInfo")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@xAppId", SqlDbType.NVarChar).Value = xAppId;
+				dbCommand.Parameters.Add("p_xAppId", MySqlDbType.VarChar).Value = xAppId;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					foreach (DataRow row in DataTable.Rows)
@@ -1141,11 +1142,11 @@ namespace ThreeBits.Services.Security
 			List<AppsUsuarioBE> AplicacionesUsuario = new List<AppsUsuarioBE>();
 			try
 			{
-				SqlCommand dbCommand = new SqlCommand("sp_getAppsXUsuarioMenu")
+				MySqlCommand dbCommand = new MySqlCommand("sp_getAppsXUsuarioMenu")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@USUARIO", SqlDbType.BigInt).Value = idUsuario;
+				dbCommand.Parameters.Add("p_USUARIO", MySqlDbType.Int64).Value = idUsuario;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					foreach (DataRow row in DataTable.Rows)
@@ -1173,13 +1174,13 @@ namespace ThreeBits.Services.Security
 			List<RolesUserApp> AplicacionesUsuario = new List<RolesUserApp>();
 			try
 			{
-				SqlCommand dbCommand = new SqlCommand("sp_getRolesXUserApp")
+				MySqlCommand dbCommand = new MySqlCommand("sp_getRolesXUserApp")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@TIPOBUSQUEDA", SqlDbType.Int).Value = iBusqueda;
-				dbCommand.Parameters.Add("@USUARIO", SqlDbType.VarChar).Value = idUsuario;
-				dbCommand.Parameters.Add("@IDAPLICACION", SqlDbType.BigInt).Value = idApp;
+				dbCommand.Parameters.Add("p_TIPOBUSQUEDA", MySqlDbType.Int32).Value = iBusqueda;
+				dbCommand.Parameters.Add("p_USUARIO", MySqlDbType.VarChar).Value = idUsuario;
+				dbCommand.Parameters.Add("p_IDAPLICACION", MySqlDbType.Int64).Value = idApp;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					foreach (DataRow row in DataTable.Rows)

@@ -1,0 +1,873 @@
+[
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.SecurityController",
+    "Method": "addAplicacion",
+    "RelativePath": "api/v1/Security/addAplicacion",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Aplicacion",
+        "Type": "ThreeBits.Entities.Security.AplicacionBE",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.SecurityController",
+    "Method": "addMenuxAppRol",
+    "RelativePath": "api/v1/Security/addMenuxAppRol",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Rol",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "Menu",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Img",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Obj",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Url",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Tool",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Orden",
+        "Type": "System.Int64",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.SecurityController",
+    "Method": "addMetodo",
+    "RelativePath": "api/v1/Security/addMetodo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "lstMetodos",
+        "Type": "System.Collections.Generic.List\u00601[[ThreeBits.Entities.Security.WCFMetodosBE, ThreeBits.Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.SecurityController",
+    "Method": "addPermisosxElementoObjeto",
+    "RelativePath": "api/v1/Security/addPermisosxElementoObjeto",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "IdPermiosObj",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "Elemento",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Tool",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.SecurityController",
+    "Method": "addPermisosxObjeto",
+    "RelativePath": "api/v1/Security/addPermisosxObjeto",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "IdRol",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "Pagina",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Obj",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "TipoObj",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Tool",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.SecurityController",
+    "Method": "addRolxApp",
+    "RelativePath": "api/v1/Security/addRolxApp",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Rol",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.SecurityController",
+    "Method": "addServicio",
+    "RelativePath": "api/v1/Security/addServicio",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Servicio",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Recurrente",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.SecurityController",
+    "Method": "addSubMenuxAppRol",
+    "RelativePath": "api/v1/Security/addSubMenuxAppRol",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "IdSubMenu",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "SubMenu",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Img",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Obj",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Url",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Tool",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Orden",
+        "Type": "System.Int64",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.CommonController",
+    "Method": "getCatGenerales",
+    "RelativePath": "api/v1/Security/Common/getCatGenerales",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "item",
+        "Type": "ThreeBits.Entities.Common.CatGeneralesBE",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.SecurityController",
+    "Method": "delMenu",
+    "RelativePath": "api/v1/Security/delMenu",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "IdMenu",
+        "Type": "System.Int64",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.SecurityController",
+    "Method": "delSubMenu",
+    "RelativePath": "api/v1/Security/delSubMenu",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idSubMenu",
+        "Type": "System.Int64",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.SecurityController",
+    "Method": "encryptDecryptChain",
+    "RelativePath": "api/v1/Security/encryptDecryptChain",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Tipo",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Valor",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Llave",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.SecurityController",
+    "Method": "encryptDesEncrypt",
+    "RelativePath": "api/v1/Security/encryptDesEncrypt",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Tipo",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Valor",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.SecurityController",
+    "Method": "getAplicaciones",
+    "RelativePath": "api/v1/Security/getAplicaciones",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idAplicacion",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "txtbusqueda",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.SecurityController",
+    "Method": "getAppInfo",
+    "RelativePath": "api/v1/Security/getAppInfo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.SecurityController",
+    "Method": "getElementsObjectsXIdObj",
+    "RelativePath": "api/v1/Security/getElementsObjectsXIdObj",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "IdPermisosXObj",
+        "Type": "System.Int64",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.SecurityController",
+    "Method": "getMenuXAppRol",
+    "RelativePath": "api/v1/Security/getMenuXAppRol",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Rol",
+        "Type": "System.Int64",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.SecurityController",
+    "Method": "getMenuXAppRolAdmin",
+    "RelativePath": "api/v1/Security/getMenuXAppRolAdmin",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Rol",
+        "Type": "System.Int64",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.SecurityController",
+    "Method": "getObjetosXAppRolPage",
+    "RelativePath": "api/v1/Security/getObjetosXAppRolPage",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Rol",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "Pagina",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.SecurityController",
+    "Method": "getSubMenuXIdMenu",
+    "RelativePath": "api/v1/Security/getSubMenuXIdMenu",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "IdPermisoMenu",
+        "Type": "System.Int64",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.SecurityController",
+    "Method": "getSubMenuXIdMenuAdmin",
+    "RelativePath": "api/v1/Security/getSubMenuXIdMenuAdmin",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "IdPermisoMenu",
+        "Type": "System.Int64",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.LoginController",
+    "Method": "Login",
+    "RelativePath": "api/v1/Security/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "input",
+        "Type": "ThreeBits.Entities.Security.Credential",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.SecurityController",
+    "Method": "updAplicacion",
+    "RelativePath": "api/v1/Security/updAplicacion",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Aplicacion",
+        "Type": "ThreeBits.Entities.Security.AplicacionBE",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.SecurityController",
+    "Method": "updMenuxAppRol",
+    "RelativePath": "api/v1/Security/updMenuxAppRol",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idMenu",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "Menu",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Img",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "TpoObj",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Url",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Tool",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Orden",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "Activo",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.SecurityController",
+    "Method": "updSubMenuxAppRol",
+    "RelativePath": "api/v1/Security/updSubMenuxAppRol",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idPermisoMenu",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdPermisoSubmenu",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "SubMenu",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Img",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "TpoObj",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Url",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Tool",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Orden",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "Activo",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.UserController",
+    "Method": "actDeactivateUsuario",
+    "RelativePath": "api/v1/User/actDeactivateUsuario",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "item",
+        "Type": "ThreeBits.Entities.Common.ReglasBE",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.UserController",
+    "Method": "addRolesXUsurario",
+    "RelativePath": "api/v1/User/addRolesXUsuario",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "item",
+        "Type": "ThreeBits.Entities.User.reqAddRolesxUsuario",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.UserController",
+    "Method": "addUserAut",
+    "RelativePath": "api/v1/User/addUserAut",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "item",
+        "Type": "ThreeBits.Entities.User.DatosUsuarioBE",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.UserController",
+    "Method": "addUsuarioXAplicacion",
+    "RelativePath": "api/v1/User/addUsuarioXAplicacion",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "item",
+        "Type": "ThreeBits.Entities.User.reqAddUsuarioxAplicacionBE",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.UserController",
+    "Method": "getAppXUsuario",
+    "RelativePath": "api/v1/User/getAppXUsuario",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Reglas",
+        "Type": "ThreeBits.Entities.Common.ReglasBE",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.UserController",
+    "Method": "getCatSelection",
+    "RelativePath": "api/v1/User/getCatSelection",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "item",
+        "Type": "ThreeBits.Entities.User.reqCatalogoBE",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.UserController",
+    "Method": "getEstacionesXApp",
+    "RelativePath": "api/v1/User/getEstacionesXApp",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Reglas",
+        "Type": "ThreeBits.Entities.Common.ReglasBE",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.UserController",
+    "Method": "getRelTipoUsuario",
+    "RelativePath": "api/v1/User/getRelTipoUsuario",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Reglas",
+        "Type": "ThreeBits.Entities.Common.ReglasBE",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.UserController",
+    "Method": "GetRolesVsUser",
+    "RelativePath": "api/v1/User/GetRolesVsUser",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Reglas",
+        "Type": "ThreeBits.Entities.Common.ReglasBE",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.UserController",
+    "Method": "getRolesXApp",
+    "RelativePath": "api/v1/User/getRolesXApp",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Reglas",
+        "Type": "ThreeBits.Entities.Common.ReglasBE",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.UserController",
+    "Method": "getUsrIdApp",
+    "RelativePath": "api/v1/User/getUsrIdApp",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.UserController",
+    "Method": "GetUsuario",
+    "RelativePath": "api/v1/User/GetUsuario",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "item",
+        "Type": "ThreeBits.Entities.User.UsuariosBE",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.UserController",
+    "Method": "GetrUsuario",
+    "RelativePath": "api/v1/User/getUsuarioFull",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "item",
+        "Type": "ThreeBits.Entities.Common.ReglasBE",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.UserController",
+    "Method": "GetUsuarios",
+    "RelativePath": "api/v1/User/GetUsuarios",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Usuario",
+        "Type": "ThreeBits.Entities.User.UsuariosBE",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.UserController",
+    "Method": "getUsuariosXRol",
+    "RelativePath": "api/v1/User/getUsuariosXRol",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "IdRol",
+        "Type": "System.Int64",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.UserController",
+    "Method": "CrearUsuario",
+    "RelativePath": "api/v1/User/insUsuario",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "item",
+        "Type": "ThreeBits.Entities.User.DatosUsuarioBE",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.UserController",
+    "Method": "updateRol",
+    "RelativePath": "api/v1/User/updateRol",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "item",
+        "Type": "ThreeBits.Entities.User.reqUpdRolBE",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ThreeBits.Api.Security.Controllers.UserController",
+    "Method": "updateUsuario",
+    "RelativePath": "api/v1/User/updUsuario",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "item",
+        "Type": "ThreeBits.Entities.User.DatosUsuarioBE",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

@@ -14,7 +14,7 @@ namespace ThreeBits.Api.Security.Controllers
 	[EnableCors("ThreeBitsPolicy")]
 	[ApiController]
 	[xAppIdHeader(true)]
-	[Route("api/v1/Security")]
+	[Route("api/v1/Security/Common")]
 	public class CommonController : _BaseController
 	{
 		private readonly ILogger<CommonController> _logger;
@@ -35,7 +35,7 @@ namespace ThreeBits.Api.Security.Controllers
 			_serviceBR = serviceBR;
 		}
 
-		[HttpGet]
+		[HttpPost]
 		[Route("getCatGenerales")]
 		[Authorize]
 		public ActionResult getCatGenerales(CatGeneralesBE item)

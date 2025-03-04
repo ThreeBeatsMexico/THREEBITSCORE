@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ using ThreeBits.Interfaces.Common;
 
 namespace ThreeBits.Services.Security.Common
 {
-	public class CommonServiceDA : SqlDataContext, ICommonServiceDA
+	public class CommonServiceDA : MySqlDataContext, ICommonServiceDA
 	{
 		private readonly ILogger _logger;
 
@@ -28,23 +29,22 @@ namespace ThreeBits.Services.Security.Common
 		{
 			_logger = logger;
 			_configuration = configuration;
-			_connectionString = _configuration["ConnectionStrings:DefaultConnection"];
-		}
+            _MySqlconnectionString = _configuration["ConnectionStrings:MySqlConnection"];
+        }
 
 		public RespuestaComunBE GetCatGenerales(CatGeneralesBE item)
 		{
 			RespuestaComunBE RespuestaComun = new RespuestaComunBE();
-			_ = string.Empty;
 			RespuestaComun.lstCatGenerales = new List<CatGeneralesBE>();
 			RespuestaComun.itemError = new ErrorBE();
 			RespuestaComun.itemError.psMensaje = new StringBuilder(string.Empty);
 			try
 			{
-				SqlCommand dbCommand = new SqlCommand("spGetCatGenerales")
+                MySqlCommand dbCommand = new MySqlCommand("spFrontGetCatGenerales")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IDCATGENERALES", SqlDbType.BigInt).Value = item.psIDCATGENERALES;
+				dbCommand.Parameters.Add("p_IDCATGENERALES", MySqlDbType.Int32).Value = item.psIDCATGENERALES;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					foreach (DataRow row in DataTable.Rows)
@@ -79,16 +79,16 @@ namespace ThreeBits.Services.Security.Common
 			RespuestaComun.itemError.psMensaje = new StringBuilder(string.Empty);
 			try
 			{
-				SqlCommand dbCommand = new SqlCommand("spAddCatGenerales")
+				MySqlCommand dbCommand = new MySqlCommand("spAddCatGenerales")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@NOMBRECATALOGO", SqlDbType.BigInt).Value = item.psIDCATGENERALES;
-				dbCommand.Parameters.Add("@IDCATALOGO", SqlDbType.BigInt).Value = item.psIDCATGENERALES;
-				dbCommand.Parameters.Add("@DESCRIPCION", SqlDbType.BigInt).Value = item.psIDCATGENERALES;
-				dbCommand.Parameters.Add("@FILTRO", SqlDbType.BigInt).Value = item.psIDCATGENERALES;
-				dbCommand.Parameters.Add("@ACTIVO", SqlDbType.BigInt).Value = item.psIDCATGENERALES;
-				dbCommand.Parameters.Add("@NOMBRECATALOGO", SqlDbType.BigInt).Value = item.psIDCATGENERALES;
+				dbCommand.Parameters.Add("@NOMBRECATALOGO", MySqlDbType.Int64).Value = item.psIDCATGENERALES;
+				dbCommand.Parameters.Add("@IDCATALOGO", MySqlDbType.Int64).Value = item.psIDCATGENERALES;
+				dbCommand.Parameters.Add("@DESCRIPCION", MySqlDbType.Int64).Value = item.psIDCATGENERALES;
+				dbCommand.Parameters.Add("@FILTRO", MySqlDbType.Int64).Value = item.psIDCATGENERALES;
+				dbCommand.Parameters.Add("@ACTIVO", MySqlDbType.Int64).Value = item.psIDCATGENERALES;
+				dbCommand.Parameters.Add("@NOMBRECATALOGO", MySqlDbType.Int64).Value = item.psIDCATGENERALES;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					foreach (DataRow row in DataTable.Rows)
@@ -123,16 +123,16 @@ namespace ThreeBits.Services.Security.Common
 			RespuestaComun.itemError.psMensaje = new StringBuilder(string.Empty);
 			try
 			{
-				SqlCommand dbCommand = new SqlCommand("spSetCatGenerales")
+				MySqlCommand dbCommand = new MySqlCommand("spSetCatGenerales")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@NOMBRECATALOGO", SqlDbType.BigInt).Value = item.psIDCATGENERALES;
-				dbCommand.Parameters.Add("@IDCATALOGO", SqlDbType.BigInt).Value = item.psIDCATGENERALES;
-				dbCommand.Parameters.Add("@DESCRIPCION", SqlDbType.BigInt).Value = item.psIDCATGENERALES;
-				dbCommand.Parameters.Add("@FILTRO", SqlDbType.BigInt).Value = item.psIDCATGENERALES;
-				dbCommand.Parameters.Add("@ACTIVO", SqlDbType.BigInt).Value = item.psIDCATGENERALES;
-				dbCommand.Parameters.Add("@NOMBRECATALOGO", SqlDbType.BigInt).Value = item.psIDCATGENERALES;
+				dbCommand.Parameters.Add("@NOMBRECATALOGO", MySqlDbType.Int64).Value = item.psIDCATGENERALES;
+				dbCommand.Parameters.Add("@IDCATALOGO", MySqlDbType.Int64).Value = item.psIDCATGENERALES;
+				dbCommand.Parameters.Add("@DESCRIPCION", MySqlDbType.Int64).Value = item.psIDCATGENERALES;
+				dbCommand.Parameters.Add("@FILTRO", MySqlDbType.Int64).Value = item.psIDCATGENERALES;
+				dbCommand.Parameters.Add("@ACTIVO", MySqlDbType.Int64).Value = item.psIDCATGENERALES;
+				dbCommand.Parameters.Add("@NOMBRECATALOGO", MySqlDbType.Int64).Value = item.psIDCATGENERALES;
 				if (ExecuteNonQuery(ref dbCommand, out var rowsAffected, out var dbError))
 				{
 					if (rowsAffected > 0)
@@ -159,17 +159,17 @@ namespace ThreeBits.Services.Security.Common
 			RespuestaComun.itemError.psMensaje = new StringBuilder(string.Empty);
 			try
 			{
-				SqlCommand dbCommand = new SqlCommand("spGetCatEspecifico")
+				MySqlCommand dbCommand = new MySqlCommand("spGetCatEspecifico")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IDCATGENERALES", SqlDbType.BigInt).Value = item.psIDCATGENERALES;
-				dbCommand.Parameters.Add("@NOMBRECATALOGO", SqlDbType.BigInt).Value = item.psIDCATGENERALES;
-				dbCommand.Parameters.Add("@IDCATALOGO", SqlDbType.BigInt).Value = item.psIDCATGENERALES;
-				dbCommand.Parameters.Add("@DESCRIPCION", SqlDbType.BigInt).Value = item.psIDCATGENERALES;
-				dbCommand.Parameters.Add("@FILTRO", SqlDbType.BigInt).Value = item.psIDCATGENERALES;
-				dbCommand.Parameters.Add("@ACTIVO", SqlDbType.BigInt).Value = item.psIDCATGENERALES;
-				dbCommand.Parameters.Add("@VALORFILTRO", SqlDbType.BigInt).Value = item.psIDCATGENERALES;
+				dbCommand.Parameters.Add("@IDCATGENERALES", MySqlDbType.Int64).Value = item.psIDCATGENERALES;
+				dbCommand.Parameters.Add("@NOMBRECATALOGO", MySqlDbType.Int64).Value = item.psIDCATGENERALES;
+				dbCommand.Parameters.Add("@IDCATALOGO", MySqlDbType.Int64).Value = item.psIDCATGENERALES;
+				dbCommand.Parameters.Add("@DESCRIPCION", MySqlDbType.Int64).Value = item.psIDCATGENERALES;
+				dbCommand.Parameters.Add("@FILTRO", MySqlDbType.Int64).Value = item.psIDCATGENERALES;
+				dbCommand.Parameters.Add("@ACTIVO", MySqlDbType.Int64).Value = item.psIDCATGENERALES;
+				dbCommand.Parameters.Add("@VALORFILTRO", MySqlDbType.Int64).Value = item.psIDCATGENERALES;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					foreach (DataRow row in DataTable.Rows)
@@ -200,14 +200,14 @@ namespace ThreeBits.Services.Security.Common
 			RespuestaComun.itemError.psMensaje = new StringBuilder(string.Empty);
 			try
 			{
-				SqlCommand dbCommand = new SqlCommand("spAddCatGenerales")
+				MySqlCommand dbCommand = new MySqlCommand("spAddCatGenerales")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@NOMBRECATALOGO", SqlDbType.BigInt).Value = itemCatGenerales.psIDCATGENERALES;
-				dbCommand.Parameters.Add("@IDCATALOGO", SqlDbType.BigInt).Value = itemCatGenerales.psIDCATGENERALES;
-				dbCommand.Parameters.Add("@DESCRIPCION", SqlDbType.BigInt).Value = itemCatGenerales.psIDCATGENERALES;
-				dbCommand.Parameters.Add("@VALORDESCRIPCION", SqlDbType.BigInt).Value = itemCatGenerales.psIDCATGENERALES;
+				dbCommand.Parameters.Add("@NOMBRECATALOGO", MySqlDbType.Int64).Value = itemCatGenerales.psIDCATGENERALES;
+				dbCommand.Parameters.Add("@IDCATALOGO", MySqlDbType.Int64).Value = itemCatGenerales.psIDCATGENERALES;
+				dbCommand.Parameters.Add("@DESCRIPCION", MySqlDbType.Int64).Value = itemCatGenerales.psIDCATGENERALES;
+				dbCommand.Parameters.Add("@VALORDESCRIPCION", MySqlDbType.Int64).Value = itemCatGenerales.psIDCATGENERALES;
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
 					foreach (DataRow row in DataTable.Rows)
@@ -237,16 +237,16 @@ namespace ThreeBits.Services.Security.Common
 			RespuestaComun.itemError.psMensaje = new StringBuilder(string.Empty);
 			try
 			{
-				SqlCommand dbCommand = new SqlCommand("spSetCatEspecifico")
+				MySqlCommand dbCommand = new MySqlCommand("spSetCatEspecifico")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IDCATGENERALES", SqlDbType.BigInt).Value = item.psIDCATGENERALES;
-				dbCommand.Parameters.Add("@NOMBRECATALOGO", SqlDbType.BigInt).Value = item.psIDCATGENERALES;
-				dbCommand.Parameters.Add("@IDCATALOGO", SqlDbType.BigInt).Value = item.psIDCATGENERALES;
-				dbCommand.Parameters.Add("@DESCRIPCION", SqlDbType.BigInt).Value = item.psIDCATGENERALES;
-				dbCommand.Parameters.Add("@FILTRO", SqlDbType.BigInt).Value = item.psIDCATGENERALES;
-				dbCommand.Parameters.Add("@ACTIVO", SqlDbType.BigInt).Value = item.psIDCATGENERALES;
+				dbCommand.Parameters.Add("@IDCATGENERALES", MySqlDbType.Int64).Value = item.psIDCATGENERALES;
+				dbCommand.Parameters.Add("@NOMBRECATALOGO", MySqlDbType.Int64).Value = item.psIDCATGENERALES;
+				dbCommand.Parameters.Add("@IDCATALOGO", MySqlDbType.Int64).Value = item.psIDCATGENERALES;
+				dbCommand.Parameters.Add("@DESCRIPCION", MySqlDbType.Int64).Value = item.psIDCATGENERALES;
+				dbCommand.Parameters.Add("@FILTRO", MySqlDbType.Int64).Value = item.psIDCATGENERALES;
+				dbCommand.Parameters.Add("@ACTIVO", MySqlDbType.Int64).Value = item.psIDCATGENERALES;
 				if (ExecuteNonQuery(ref dbCommand, out var rowsAffected, out var dbError))
 				{
 					if (rowsAffected > 0)
@@ -273,11 +273,11 @@ namespace ThreeBits.Services.Security.Common
 			RespuestaComun.itemError.psMensaje = new StringBuilder(string.Empty);
 			try
 			{
-				SqlCommand dbCommand = new SqlCommand("spGetConfigApp")
+				MySqlCommand dbCommand = new MySqlCommand("spGetConfigApp")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IDCONFIGAPP", SqlDbType.BigInt).Value = item.psIDCONFIGAPP;
+				dbCommand.Parameters.Add("@IDCONFIGAPP", MySqlDbType.Int64).Value = item.psIDCONFIGAPP;
 				ConfiguracionBE itemLector = new ConfiguracionBE();
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
@@ -325,13 +325,13 @@ namespace ThreeBits.Services.Security.Common
 			RespuestaComun.itemError.psMensaje = new StringBuilder(string.Empty);
 			try
 			{
-				SqlCommand dbCommand = new SqlCommand("spAddConfigApp")
+				MySqlCommand dbCommand = new MySqlCommand("spAddConfigApp")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@DESCRIPCION", SqlDbType.BigInt).Value = item.psDESCRIPCION;
-				dbCommand.Parameters.Add("@VALOR", SqlDbType.BigInt).Value = item.psVALOR;
-				dbCommand.Parameters.Add("@ACTIVO", SqlDbType.BigInt).Value = item.psACTIVO;
+				dbCommand.Parameters.Add("@DESCRIPCION", MySqlDbType.Int64).Value = item.psDESCRIPCION;
+				dbCommand.Parameters.Add("@VALOR", MySqlDbType.Int64).Value = item.psVALOR;
+				dbCommand.Parameters.Add("@ACTIVO", MySqlDbType.Int64).Value = item.psACTIVO;
 				new ConfiguracionBE();
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
@@ -375,14 +375,14 @@ namespace ThreeBits.Services.Security.Common
 			RespuestaComun.itemError.psMensaje = new StringBuilder(string.Empty);
 			try
 			{
-				SqlCommand dbCommand = new SqlCommand("spSetConfigApp")
+				MySqlCommand dbCommand = new MySqlCommand("spSetConfigApp")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@IDCONFIGAPP", SqlDbType.BigInt).Value = item.psDESCRIPCION;
-				dbCommand.Parameters.Add("@DESCRIPCION", SqlDbType.BigInt).Value = item.psDESCRIPCION;
-				dbCommand.Parameters.Add("@VALOR", SqlDbType.BigInt).Value = item.psVALOR;
-				dbCommand.Parameters.Add("@ACTIVO", SqlDbType.BigInt).Value = item.psACTIVO;
+				dbCommand.Parameters.Add("@IDCONFIGAPP", MySqlDbType.Int64).Value = item.psDESCRIPCION;
+				dbCommand.Parameters.Add("@DESCRIPCION", MySqlDbType.Int64).Value = item.psDESCRIPCION;
+				dbCommand.Parameters.Add("@VALOR", MySqlDbType.Int64).Value = item.psVALOR;
+				dbCommand.Parameters.Add("@ACTIVO", MySqlDbType.Int64).Value = item.psACTIVO;
 				new ConfiguracionBE();
 				if (ExecuteReader(ref dbCommand, out var DataTable, out var dbError))
 				{
@@ -449,17 +449,17 @@ namespace ThreeBits.Services.Security.Common
 				{
 					strHostname = strHostname.Substring(0, 148);
 				}
-				SqlCommand dbCommand = new SqlCommand("sp_insLogError")
+				MySqlCommand dbCommand = new MySqlCommand("sp_insLogError")
 				{
 					CommandType = CommandType.StoredProcedure
 				};
-				dbCommand.Parameters.Add("@idApp", SqlDbType.BigInt).Value = long.Parse(sApp);
-				dbCommand.Parameters.Add("@MENSAJE", SqlDbType.BigInt).Value = MessageErr;
-				dbCommand.Parameters.Add("@HOSTNAME", SqlDbType.BigInt).Value = strHostname;
-				dbCommand.Parameters.Add("@IP", SqlDbType.BigInt).Value = sIp;
-				dbCommand.Parameters.Add("@STACKTRACE", SqlDbType.BigInt).Value = strStackTrace.ToString();
-				dbCommand.Parameters.Add("@DTFECHAERROR", SqlDbType.BigInt).Value = DateTime.Now;
-				dbCommand.Parameters.Add("@VCHUSUARIO", SqlDbType.BigInt).Value = user;
+				dbCommand.Parameters.Add("@idApp", MySqlDbType.Int64).Value = long.Parse(sApp);
+				dbCommand.Parameters.Add("@MENSAJE", MySqlDbType.Int64).Value = MessageErr;
+				dbCommand.Parameters.Add("@HOSTNAME", MySqlDbType.Int64).Value = strHostname;
+				dbCommand.Parameters.Add("@IP", MySqlDbType.Int64).Value = sIp;
+				dbCommand.Parameters.Add("@STACKTRACE", MySqlDbType.Int64).Value = strStackTrace.ToString();
+				dbCommand.Parameters.Add("@DTFECHAERROR", MySqlDbType.Int64).Value = DateTime.Now;
+				dbCommand.Parameters.Add("@VCHUSUARIO", MySqlDbType.Int64).Value = user;
 				if (!ExecuteNonQuery(ref dbCommand, out var _, out var dbError))
 				{
 					throw new DbDataContextException(dbError);

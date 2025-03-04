@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\ThreeBits.Api.Security.props" />
+</Project>

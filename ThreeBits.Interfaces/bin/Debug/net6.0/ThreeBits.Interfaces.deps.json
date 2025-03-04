@@ -45,7 +45,10 @@
           "System.Runtime": "4.3.1"
         },
         "runtime": {
-          "ThreeBits.Entities.dll": {}
+          "ThreeBits.Entities.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

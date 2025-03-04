@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ThreeBits.Api.School")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1e5f56c021a5d68967c5e2f20ab2e8e9f4b79a60")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+86196c91a8ca2c88d89a8d816d279c610a61bd50")]
 [assembly: System.Reflection.AssemblyProductAttribute("ThreeBits.Api.School")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ThreeBits.Api.School")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
