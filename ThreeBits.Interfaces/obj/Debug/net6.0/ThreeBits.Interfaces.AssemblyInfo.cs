@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ThreeBits.Interfaces")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+86196c91a8ca2c88d89a8d816d279c610a61bd50")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b808793d737a5c04f92aa55e93e3e39a1c08d249")]
 [assembly: System.Reflection.AssemblyProductAttribute("ThreeBits.Interfaces")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ThreeBits.Interfaces")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

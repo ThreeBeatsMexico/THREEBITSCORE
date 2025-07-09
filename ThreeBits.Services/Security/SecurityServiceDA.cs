@@ -389,7 +389,11 @@ namespace ThreeBits.Services.Security
 				};
 				dbCommand.Parameters.Add("p_DESCRIPCION", MySqlDbType.VarChar).Value = Aplicacion.DESCRIPCION;
 				dbCommand.Parameters.Add("p_PASSWORD", MySqlDbType.VarChar).Value = Aplicacion.PASSWORD;
-				dbCommand.Parameters.Add("p_ACTIVO", MySqlDbType.Bit).Value = Aplicacion.ACTIVO;
+                dbCommand.Parameters.Add("p_XAPPID", MySqlDbType.VarChar).Value = Aplicacion.xAppId;
+                dbCommand.Parameters.Add("p_URLINICIO", MySqlDbType.VarChar).Value = Aplicacion.URLINICIO;
+                dbCommand.Parameters.Add("p_JWTKEY", MySqlDbType.VarChar).Value = Aplicacion.jwtKey;
+                dbCommand.Parameters.Add("p_JWTEXPIRATIONTIME", MySqlDbType.VarChar).Value = Aplicacion.jwtExpirationTime;
+                dbCommand.Parameters.Add("p_ACTIVO", MySqlDbType.Bit).Value = Aplicacion.ACTIVO;
 				if (ExecuteNonQuery(ref dbCommand, out var rowsAffected, out var dbError))
 				{
 					if (rowsAffected > 0)
@@ -418,9 +422,13 @@ namespace ThreeBits.Services.Security
 					CommandType = CommandType.StoredProcedure
 				};
 				dbCommand.Parameters.Add("p_IDAPLICACION", MySqlDbType.VarChar).Value = Aplicacion.IDAPLICACION;
-				dbCommand.Parameters.Add("p_DESCRIPCION", MySqlDbType.VarChar).Value = Aplicacion.DESCRIPCION;
-				dbCommand.Parameters.Add("p_PASSWORD", MySqlDbType.VarChar).Value = Aplicacion.PASSWORD;
-				dbCommand.Parameters.Add("p_ACTIVO", MySqlDbType.Bit).Value = Aplicacion.ACTIVO;
+                dbCommand.Parameters.Add("p_DESCRIPCION", MySqlDbType.VarChar).Value = Aplicacion.DESCRIPCION;
+                dbCommand.Parameters.Add("p_PASSWORD", MySqlDbType.VarChar).Value = Aplicacion.PASSWORD;
+                dbCommand.Parameters.Add("p_XAPPID", MySqlDbType.VarChar).Value = Aplicacion.xAppId;
+                dbCommand.Parameters.Add("p_URLINICIO", MySqlDbType.VarChar).Value = Aplicacion.URLINICIO;
+                dbCommand.Parameters.Add("p_JWTKEY", MySqlDbType.VarChar).Value = Aplicacion.jwtKey;
+                dbCommand.Parameters.Add("p_JWTEXPIRATIONTIME", MySqlDbType.VarChar).Value = Aplicacion.jwtExpirationTime;
+                dbCommand.Parameters.Add("p_ACTIVO", MySqlDbType.Bit).Value = Aplicacion.ACTIVO;
 				if (ExecuteNonQuery(ref dbCommand, out var rowsAffected, out var dbError))
 				{
 					if (rowsAffected > 0)

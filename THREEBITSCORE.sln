@@ -15,9 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThreeBits.Services", "Three
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThreeBits.Entities", "ThreeBits.Entities\ThreeBits.Entities.csproj", "{B11EFDC7-8C69-4F67-87F2-99EDCAD66AC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreeBits.Api.School", "ThreeBits.Api.School\ThreeBits.Api.School.csproj", "{B1869E9C-C349-47FB-984D-5FE80E42E8E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThreeBits.Api.School", "ThreeBits.Api.School\ThreeBits.Api.School.csproj", "{B1869E9C-C349-47FB-984D-5FE80E42E8E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreeBits.Api.Security", "ThreeBits.Api.Security\ThreeBits.Api.Security.csproj", "{9709AF59-3C55-48CF-ACB0-816DB9197E1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThreeBits.Api.Security", "ThreeBits.Api.Security\ThreeBits.Api.Security.csproj", "{9709AF59-3C55-48CF-ACB0-816DB9197E1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

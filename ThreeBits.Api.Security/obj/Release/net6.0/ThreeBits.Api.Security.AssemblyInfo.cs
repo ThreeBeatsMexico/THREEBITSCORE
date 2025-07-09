@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ThreeBits.Api.Security")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1e5f56c021a5d68967c5e2f20ab2e8e9f4b79a60")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b808793d737a5c04f92aa55e93e3e39a1c08d249")]
 [assembly: System.Reflection.AssemblyProductAttribute("ThreeBits.Api.Security")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ThreeBits.Api.Security")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

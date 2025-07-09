@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
+using ThreeBits.Business.Filters;
 using ThreeBits.Business.Helpers;
 using ThreeBits.Entities.Common;
 using ThreeBits.Entities.School;
@@ -9,7 +11,11 @@ using ThreeBits.Interfaces.Security.Security;
 
 namespace ThreeBits.Api.School.Controllers
 {
-	public class SchoolController : _BaseController
+    [EnableCors("ThreeBitsPolicy")]
+    [ApiController]
+    [xAppIdHeader(true)]
+    [Route("api/v1/School")]
+    public class SchoolController : _BaseController
 	{
 		private readonly ILogger<SchoolController> _logger;
 
