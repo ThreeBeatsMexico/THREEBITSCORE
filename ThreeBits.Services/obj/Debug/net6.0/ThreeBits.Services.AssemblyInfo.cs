@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ThreeBits.Services")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b808793d737a5c04f92aa55e93e3e39a1c08d249")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d89f41fcaefc23934207db2f1802272e007ad5e0")]
 [assembly: System.Reflection.AssemblyProductAttribute("ThreeBits.Services")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ThreeBits.Services")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

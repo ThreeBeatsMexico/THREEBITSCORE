@@ -13,4 +13,8 @@
     <ProjectReference Include="..\ThreeBits.Shared\ThreeBits.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Sign\" />
+  </ItemGroup>
+
 </Project>
