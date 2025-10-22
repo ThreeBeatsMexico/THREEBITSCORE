@@ -740,6 +740,1778 @@ LOCK TABLES `venta_detalle_tmp` WRITE;
 /*!40000 ALTER TABLE `venta_detalle_tmp` DISABLE KEYS */;
 /*!40000 ALTER TABLE `venta_detalle_tmp` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'tbschooldb'
+--
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_ALUMNOS` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_ALUMNOS`( p_NumeroMatricula	nvarchar(50),
+p_IdColegio nvarchar(50),
+  p_APaterno	nvarchar(150),
+  p_AMaterno	nvarchar(150),
+  p_Nombres	nvarchar(150),
+  p_FechaNacimiento  nvarchar(20),
+  p_Sexo	nvarchar(2),
+  p_Nacionalidad	nvarchar(50),
+  p_Grado	nvarchar(50),
+  p_EscuelaProcedencia	nvarchar(250),
+  p_Hermanos	int,
+  p_GradoHermanos	nvarchar(50),
+  p_Calle	nvarchar(150),
+  p_Numero	nvarchar(50),
+  p_Colonia	nvarchar(150),
+  p_Delegacion	nvarchar(150),
+  p_Estado	nvarchar(150),
+  p_CodigoPostal	nvarchar(5),
+  p_Telefono	nvarchar(50),
+  p_Email	nvarchar(200),
+  p_Curp	nvarchar(20),
+  p_EdadAnos	nvarchar(50),
+  p_EdadMeses	nvarchar(50),
+  p_Foto	nvarchar(150),
+  p_NivelAcademico	nvarchar(50),
+  p_NombrePadreTutor	nvarchar(150),
+  p_OcupacionPadre	nvarchar(150),
+  p_TelefonoPadre	nvarchar(50),
+  p_TelefonoTrabajoPadre	nvarchar(50),
+  p_CelularPadre	nvarchar(50),
+  p_FechaNacimientoPadre	varchar(20),
+  p_SueldoPadre	nvarchar(50),
+  p_NacionalidadPadre	nvarchar(150),
+  p_NombreMadreTutor	nvarchar(150),
+  p_OcupacionMadre	nvarchar(150),
+  p_TelefonoMadre	nvarchar(50),
+  p_TelefonoTrabajoMadre	nvarchar(50),
+  p_CelularMadre	nvarchar(50),
+  p_FechaNacimientoMadre	varchar(20),
+  p_SueldoMadre	nvarchar(50),
+  p_NacionalidadMadre	nvarchar(50),
+  p_NombreFamVecino	nvarchar(50),
+  p_TelefonoVecino	nvarchar(50),
+  p_TelefonoTrabajoVecino	nvarchar(50),
+  p_CelularVecino	nvarchar(50),
+  p_EducacionFisica	int,
+  p_Medicamento	int,
+  p_NombreMedicamento	nvarchar(150),
+  p_DosisMedicamento	nvarchar(150),
+  p_Peso	nvarchar(50),
+  p_Talla	nvarchar(50),
+  p_TipoSangre	nvarchar(50),
+  p_Enfermedades	int,
+  p_NombreEnfermedades	nvarchar(150),
+  p_ProcedimientoCrisis	nvarchar(500),
+  p_Certificado	int,
+  p_EnfermedadCertificado	int,
+  p_Alergia	int,
+  p_NombreAlergia	nvarchar(150),
+  p_ProcedimintoCrisisAlergia	nvarchar(500),
+  p_NombreAccidente	nvarchar(50),
+  p_TelefonoAccidente	nvarchar(50),
+  p_NombreHospital	nvarchar(150),
+  p_Medico	int,
+  p_NombreMedico	nvarchar(250),
+  p_TelefonoMedico	nvarchar(150),
+  p_CedulaMedico	nvarchar(150),
+  p_AutorizaTraslado	int,
+  p_ProcedimientoAccidente	nvarchar(500),
+  p_NombreUsuario nvarchar(50),
+  p_Tutor nvarchar(150),
+  p_Estatus nvarchar(3),
+  p_ServerPath nvarchar(200),
+  p_Beca int,
+  p_FormaPago int)
+sp_lbl:
+begin
+ DECLARE v_IDAlumno int;
+ DECLARE v_SMATRICULA VARCHAR(50);
+ DECLARE v_FOLIO INT;
+ DECLARE v_NIVEL varchar(5);
+ DECLARE v_FOLIOCHAR VARCHAR(4);
+ DECLARE v_NombreFoto NVARCHAR(200);
+ DECLARE v_RUTAFOTO NVARCHAR(200);
+ START TRANSACTION;
+
+ SET v_NIVEL = CASE p_NivelAcademico 
+	WHEN '1' THEN 'P'
+	WHEN '0' THEN 'K' END;
+
+ IF p_NumeroMatricula IS NULL OR p_NumeroMatricula = ''
+		THEN
+		CALL proc_GETFOLIOS(p_NivelAcademico,'NUMMAT', v_NIVEL , v_FOLIO);
+        SET v_FOLIOCHAR = Right('0000' + v_FOLIO, 4);
+			SET v_SMATRICULA = Concat('15' , Right(Concat('0000' , v_FOLIOCHAR), 4) , v_NIVEL);
+			SET v_NombreFoto = CONCAT('../Images/Alumnos/' , v_SMATRICULA , '.jpg');
+			
+	ELSE
+			SET v_SMATRICULA = p_NumeroMatricula;
+			SET v_NombreFoto = CONCAT('../Images/Alumnos/' , p_NumeroMatricula , '.jpg');
+			
+		END IF;
+
+		SET v_RUTAFOTO = CONCAT(p_ServerPath , p_NumeroMatricula , '.jpg');
+
+
+		SELECT v_SMATRICULA AS MATRICULA;
+		
+ IF NOT EXISTS(SELECT * FROM Alumnos WHERE NumeroMatricula = v_SMATRICULA and IDCOLEGIO = p_IdColegio)
+ THEN
+ 
+ INSERT INTO Alumnos
+(IDCOLEGIO,NUMEROMATRICULA,FechaRegistro,FechaMatricula,APaterno,AMaterno,Nombres,FechaNacimiento,Sexo,Nacionalidad,Grado,EscuelaProcedencia,Hermanos,GradoHermanos,Calle,Numero,Colonia,Delegacion,Estado,CodigoPostal,Telefono,Email,Curp,EdadAnos,EdadMeses,Tutor,UsuarioAlta,FechaAlta,Foto,NivelAcademico,Estatus,UsuarioModifica,FechaModifica,ServerPath,Beca,FormaPago)
+VALUES
+(p_IdColegio,v_SMATRICULA,NOW(3),NOW(3),p_APaterno,p_AMaterno,p_Nombres,STR_TO_DATE(p_FechaNacimiento,103),p_Sexo,p_Nacionalidad,p_Grado,p_EscuelaProcedencia,p_Hermanos,p_GradoHermanos,p_Calle,p_Numero,p_Colonia,p_Delegacion,p_Estado,p_CodigoPostal,p_Telefono,p_Email,p_Curp,p_EdadAnos,p_EdadMeses,p_Tutor,p_NombreUsuario,NOW(3),v_NombreFoto,p_NivelAcademico,p_Estatus,p_NombreUsuario,NOW(3),v_RUTAFOTO,p_Beca,p_FormaPago);
+
+SET v_IDAlumno = (SELECT LAST_INSERT_ID());
+
+
+INSERT INTO InfoAlumnos 
+(IDALUMNO,IDCOLEGIO,NumeroMatricula,NombrePadreTutor,OcupacionPadre,TelefonoPadre,TelefonoTrabajoPadre,CelularPadre,FechaNacimientoPadre,SueldoPadre,NacionalidadPadre,NombreMadreTutor,OcupacionMadre,TelefonoMadre,TelefonoTrabajoMadre,CelularMadre,FechaNacimientoMadre,SueldoMadre,NacionalidadMadre,NombreFamVecino,TelefonoVecino,TelefonoTrabajoVecino,CelularVecino,EducacionFisica,
+Medicamento,NombreMedicamento,DosisMedicamento,Peso,Talla,TipoSangre,Enfermedades,NombreEnfermedades,ProcedimientoCrisis,Certificado,EnfermedadCertificado,Alergia,NombreAlergia,ProcedimintoCrisisAlergia,NombreAccidente,TelefonoAccidente,NombreHospital,Medico,NombreMedico,TelefonoMedico,CedulaMedico,AutorizaTraslado,ProcedimientoAccidente)
+VALUES
+(v_IDAlumno,p_IdColegio,v_SMATRICULA,p_NombrePadreTutor,p_OcupacionPadre,p_TelefonoPadre,p_TelefonoTrabajoPadre,p_CelularPadre,STR_TO_DATE(p_FechaNacimientoPadre,103),p_SueldoPadre,p_NacionalidadPadre,p_NombreMadreTutor,p_OcupacionMadre,p_TelefonoMadre,p_TelefonoTrabajoMadre,p_CelularMadre,STR_TO_DATE(p_FechaNacimientoMadre,103),p_SueldoMadre,p_NacionalidadMadre,p_NombreFamVecino,p_TelefonoVecino,p_TelefonoTrabajoVecino,
+p_CelularVecino,p_EducacionFisica,p_Medicamento,p_NombreMedicamento,p_DosisMedicamento,p_Peso,p_Talla,p_TipoSangre,p_Enfermedades,p_NombreEnfermedades,p_ProcedimientoCrisis,p_Certificado,p_EnfermedadCertificado,p_Alergia,p_NombreAlergia,p_ProcedimintoCrisisAlergia,p_NombreAccidente,p_TelefonoAccidente,p_NombreHospital,p_Medico,p_NombreMedico,p_TelefonoMedico,p_CedulaMedico,p_AutorizaTraslado,p_ProcedimientoAccidente);
+
+
+ ELSE
+   UPDATE ALUMNOS SET
+   APaterno=p_APaterno,AMaterno=p_AMaterno,Nombres=p_Nombres,FechaNacimiento=p_FechaNacimiento,Sexo=p_Sexo,Nacionalidad=p_Nacionalidad,Grado=p_Grado,EscuelaProcedencia=p_EscuelaProcedencia,Hermanos=p_Hermanos,GradoHermanos=p_GradoHermanos,
+   Calle=p_Calle,Numero=p_Numero,Colonia=p_Colonia,Delegacion=p_Delegacion,Estado=p_Estado,CodigoPostal=p_CodigoPostal,Telefono=p_Telefono,Email=p_Email,Curp=p_Curp,EdadAnos=p_EdadAnos,EdadMeses=p_EdadMeses,Tutor=p_Tutor,UsuarioModifica=p_NombreUsuario,FechaModifica=NOW(3),Foto=v_NombreFoto,NivelAcademico=p_NivelAcademico,Estatus=p_Estatus,ServerPath = v_RUTAFOTO, Beca=p_Beca, FormaPago = p_FormaPago
+   WHERE NumeroMatricula = v_SMATRICULA AND IDCOLEGIO = p_IdColegio;
+
+   UPDATE InfoAlumnos SET
+   NombrePadreTutor=p_NombrePadreTutor,OcupacionPadre=p_OcupacionPadre,TelefonoPadre=p_TelefonoPadre,TelefonoTrabajoPadre=p_TelefonoTrabajoPadre,CelularPadre=p_CelularPadre,FechaNacimientoPadre=STR_TO_DATE(p_FechaNacimientoPadre,103),SueldoPadre=p_SueldoPadre,NacionalidadPadre=p_NacionalidadPadre,NombreMadreTutor=p_NombreMadreTutor,OcupacionMadre=p_OcupacionMadre,TelefonoMadre=p_TelefonoMadre,TelefonoTrabajoMadre=p_TelefonoTrabajoMadre,CelularMadre=p_CelularMadre,
+   FechaNacimientoMadre=STR_TO_DATE(p_FechaNacimientoMadre,103),SueldoMadre=p_SueldoMadre,NacionalidadMadre=p_NacionalidadMadre,NombreFamVecino=p_NombreFamVecino,TelefonoVecino=p_TelefonoVecino,TelefonoTrabajoVecino=p_TelefonoTrabajoVecino,CelularVecino=p_CelularVecino,EducacionFisica=p_EducacionFisica,Medicamento=p_Medicamento,NombreMedicamento=p_NombreMedicamento,DosisMedicamento=p_DosisMedicamento,Peso=p_Peso,Talla=p_Talla,TipoSangre=p_TipoSangre,
+   Enfermedades=p_Enfermedades,NombreEnfermedades=p_NombreEnfermedades,ProcedimientoCrisis=p_ProcedimientoCrisis,Certificado=p_Certificado,EnfermedadCertificado=p_EnfermedadCertificado,Alergia=p_Alergia,NombreAlergia=p_NombreAlergia,ProcedimintoCrisisAlergia=p_ProcedimintoCrisisAlergia,NombreAccidente=p_NombreAccidente,TelefonoAccidente=p_TelefonoAccidente,NombreHospital=p_NombreHospital,Medico=p_Medico,NombreMedico=p_NombreMedico,TelefonoMedico=p_TelefonoMedico,
+   CedulaMedico=p_CedulaMedico,AutorizaTraslado=p_AutorizaTraslado,ProcedimientoAccidente=p_ProcedimientoAccidente
+  WHERE NumeroMatricula = v_SMATRICULA AND IDCOLEGIO = p_IdColegio;
+  END IF;
+
+COMMIT;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_ASIGNA_ALUMNO_GRUPO` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_ASIGNA_ALUMNO_GRUPO`( p_IDALUMNO NVARCHAR(50),
+   p_IDGRUPO NVARCHAR(20),
+   p_IDCICLO NVARCHAR(20),
+   p_USUARIO NVARCHAR(20),
+   p_IDCOLEGIO NVARCHAR(20))
+begin
+DECLARE v_MATRICULA NVARCHAR(50);
+  DECLARE v_GRADO NVARCHAR(50);
+  DECLARE v_INSCRIPCION DECIMAL(16,2);
+  DECLARE v_MENSUALIDAD DECIMAL(16,2);
+  DECLARE v_FORMAPAGO INT;
+
+  SET v_FORMAPAGO = (SELECT FormaPago FROM ALUMNOS WHERE IDALUMNO = p_IDALUMNO);
+  SET v_MATRICULA = (SELECT NUMEROMATRICULA FROM Alumnos WHERE IDALUMNO=p_IDALUMNO);
+  SET v_GRADO = (SELECT GRADO FROM Alumnos WHERE IDALUMNO=p_IDALUMNO);
+  SET v_INSCRIPCION = (SELECT MontoInscripcion FROM Ciclo WHERE ID=p_IDCICLO and IDCOLEGIO = p_IDCOLEGIO);
+  SET v_MENSUALIDAD = (SELECT MontoColegiatura FROM Ciclo WHERE ID=p_IDCICLO and IDCOLEGIO = p_IDCOLEGIO);
+
+
+
+START TRANSACTION;
+
+  UPDATE Alumnos SET GRUPO = p_IDGRUPO, idCiclo=p_IDCICLO WHERE IdAlumno=p_IDALUMNO;
+  
+  IF v_FORMAPAGO = 1
+  THEN
+
+  
+  INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'INSCRIPCION',v_INSCRIPCION,v_INSCRIPCION,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+  INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'MENSUALIDAD SEPTIEMBRE',v_MENSUALIDAD,v_MENSUALIDAD,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'MENSUALIDAD OCTUBRE',v_MENSUALIDAD,v_MENSUALIDAD,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'MENSUALIDAD NOVIEMBRE',v_MENSUALIDAD,v_MENSUALIDAD,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'MENSUALIDAD DICIEMBRE',v_MENSUALIDAD,v_MENSUALIDAD,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'MENSUALIDAD ENERO',v_MENSUALIDAD,v_MENSUALIDAD,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'MENSUALIDAD FEBRERO',v_MENSUALIDAD,v_MENSUALIDAD,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'MENSUALIDAD MARZO',v_MENSUALIDAD,v_MENSUALIDAD,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+  INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'MENSUALIDAD ABRIL',v_MENSUALIDAD,v_MENSUALIDAD,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'MENSUALIDAD MAYO',v_MENSUALIDAD,v_MENSUALIDAD,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'MENSUALIDAD JUNIO',v_MENSUALIDAD,v_MENSUALIDAD,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+  INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'UNIFORME',0.00,0.00,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'SEGURO',0.00,0.00,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'COPIAS',0.00,0.00,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'LIBROS',0.00,0.00,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+  INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'NATACIÓN',0.00,0.00,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+  INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'TAEKWONDO',0.00,0.00,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+  INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'MÚSICA',0.00,0.00,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+  INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'TAREAS',0.00,0.00,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+  INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'FUTBOL',0.00,0.00,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+  INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'BALLET',0.00,0.00,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+  INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'OTRO',0.00,0.00,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+  ELSE
+
+   INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'INSCRIPCION',v_INSCRIPCION,v_INSCRIPCION,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+  INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'MENSUALIDAD SEPTIEMBRE',v_MENSUALIDAD,v_MENSUALIDAD,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'MENSUALIDAD OCTUBRE',v_MENSUALIDAD,v_MENSUALIDAD,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'MENSUALIDAD NOVIEMBRE',v_MENSUALIDAD,v_MENSUALIDAD,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'MENSUALIDAD DICIEMBRE',v_MENSUALIDAD,v_MENSUALIDAD,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'MENSUALIDAD ENERO',v_MENSUALIDAD,v_MENSUALIDAD,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'MENSUALIDAD FEBRERO',v_MENSUALIDAD,v_MENSUALIDAD,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'MENSUALIDAD MARZO',v_MENSUALIDAD,v_MENSUALIDAD,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+  INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'MENSUALIDAD ABRIL',v_MENSUALIDAD,v_MENSUALIDAD,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'MENSUALIDAD MAYO',v_MENSUALIDAD,v_MENSUALIDAD,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'MENSUALIDAD JUNIO',v_MENSUALIDAD,v_MENSUALIDAD,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+  INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'MENSUALIDAD JULIO',v_MENSUALIDAD,v_MENSUALIDAD,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'MENSUALIDAD AGOSTO',v_MENSUALIDAD,v_MENSUALIDAD,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+  INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'UNIFORME',0.00,0.00,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'SEGURO',0.00,0.00,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'COPIAS',0.00,0.00,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'LIBROS',0.00,0.00,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+  INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'NATACIÓN',0.00,0.00,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+  INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'TAEKWONDO',0.00,0.00,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+  INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'MÚSICA',0.00,0.00,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+  INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'TAREAS',0.00,0.00,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+   INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'FUTBOL',0.00,0.00,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+  INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'BALLET',0.00,0.00,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+  INSERT INTO  PagosAlumno
+  (idCiclo,NumeroMatricula,idGrupo,idGrado,idAlumno,Concepto,MontoTotal,MontoActual,idEstatus,FechaModifica,FechaAlta,UsuarioModifica,UsuarioAlta)
+    VALUES
+  (p_IDCICLO,v_MATRICULA,p_IDGRUPO,v_GRADO,p_IDALUMNO,'OTRO',0.00,0.00,0,NOW(3),NOW(3),p_USUARIO,p_USUARIO);
+
+  END IF;
+
+
+COMMIT;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_CATEGORIA` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_CATEGORIA`( p_NOMBRE NVARCHAR(200),
+   p_IMAGECAT NVARCHAR(200))
+begin
+START TRANSACTION;
+ IF NOT EXISTS(SELECT 1 FROM Categoria WHERE Nombre=p_NOMBRE)
+ THEN
+  INSERT INTO CATEGORIA(NOMBRE,IMAGECAT)
+  VALUES(p_NOMBRE,p_IMAGECAT);
+ ELSE
+  UPDATE CATEGORIA SET
+  NOMBRE=p_NOMBRE,
+  IMAGECAT=p_IMAGECAT
+  WHERE NOMBRE=p_NOMBRE;
+ END IF;
+COMMIT;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_CICLOS` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_CICLOS`( p_ID NVARCHAR(50),
+p_IDCOLEGIO NVARCHAR(50),
+   p_NOMBRECICLO NVARCHAR(50),
+   p_FECHAINICIAL NVARCHAR(20),
+   p_FECHAFINAL NVARCHAR(20),
+   p_MONTOINSCRIPCION NVARCHAR(50),
+   p_MONTOCOLEGIATURA NVARCHAR(50),
+   p_ESTATUS INT)
+begin
+START TRANSACTION;
+ IF NOT EXISTS(SELECT 1 FROM CICLO WHERE ID=p_ID)
+ THEN
+  INSERT INTO CICLO
+  (IdColegio,NombreCiclo,FechaInicio,FechaFin,MontoInscripcion,MontoColegiatura,Estatus)
+  VALUES
+  (p_IDCOLEGIO,p_NOMBRECICLO,STR_TO_DATE(p_FECHAINICIAL,103),STR_TO_DATE(p_FECHAFINAL,103),p_MONTOINSCRIPCION,p_MONTOCOLEGIATURA,p_ESTATUS);
+ ELSE
+ UPDATE CICLO SET
+  NombreCiclo = p_NOMBRECICLO,
+  FechaInicio = STR_TO_DATE(p_FECHAINICIAL,103),
+  FechaFin = STR_TO_DATE(p_FECHAFINAL,103),
+  MontoInscripcion=CONVERT(p_MONTOINSCRIPCION, DECIMAL(6,2)),
+  MontoColegiatura=CONVERT(p_MONTOCOLEGIATURA, DECIMAL(6,2)),
+  Estatus=p_ESTATUS
+  WHERE Id=p_ID;
+ END IF;
+COMMIT;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_COLEGIO` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_COLEGIO`( 
+		   p_IDCOLEGIO INT,
+           p_NOMBRE varchar(300),
+           p_DIRECCION varchar(300),
+           p_TELEFONO varchar(200),
+           p_EMAIL varchar(100),
+           p_REG_PRIMARIA varchar(100),
+           p_REG_PRESCOLAR varchar(100),
+           p_REG_SECUNDARIA varchar(100),
+           p_LEMA varchar(500),
+           p_LOGO varchar(100))
+BEGIN
+ 
+ START TRANSACTION;
+
+
+ IF (p_IDCOLEGIO = 0)
+ THEN
+
+INSERT INTO `COLEGIO`
+           (`NOMBRE`
+           ,`DIRECCION`
+           ,`TELEFONO`
+           ,`EMAIL`
+           ,`REG_PRIMARIA`
+           ,`REG_PRESCOLAR`
+           ,`REG_SECUNDARIA`
+           ,`LEMA`
+           ,`LOGO`)
+     VALUES
+           (p_NOMBRE, 
+           p_DIRECCION,
+           p_TELEFONO,
+           p_EMAIL, 
+           p_REG_PRIMARIA, 
+           p_REG_PRESCOLAR, 
+           p_REG_SECUNDARIA,
+           p_LEMA,
+           p_LOGO);
+
+ ELSE
+
+
+UPDATE `COLEGIO`
+   SET `NOMBRE` = p_NOMBRE, 
+      `DIRECCION` = p_DIRECCION, 
+      `TELEFONO` = p_TELEFONO, 
+      `EMAIL` = p_EMAIL, 
+      `REG_PRIMARIA` = p_REG_PRIMARIA, 
+      `REG_PRESCOLAR` = p_REG_PRESCOLAR,
+      `REG_SECUNDARIA` = p_REG_SECUNDARIA,
+      `LEMA` = p_LEMA, 
+      `LOGO` = p_LOGO 
+ WHERE IDCOLEGIO = p_IDCOLEGIO;
+
+
+
+
+
+
+
+  
+  END IF;
+
+COMMIT;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_FOLIOS` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_FOLIOS`( p_DOC INT, 
+   p_SERIE NVARCHAR(10),
+   p_INI BIGINT,
+   p_ACT BIGINT, 
+   p_FIN BIGINT,
+   p_APROBACION VARCHAR(15),
+   p_ANO INT,
+   p_RFC VARCHAR(13))
+begin
+START TRANSACTION;
+ IF NOT EXISTS(SELECT 1 FROM numeracion WHERE nmbSerie=p_SERIE)
+ THEN
+  INSERT INTO NUMERACION(ID_DOCTYPE,NMBSERIE,NMBNUMBERFROM,NMBCURRENTNUMBER,NMBNUMBERTO,NMBAUTHDATE,NMBAUTHNUMBER,NMBRFC)
+  VALUES(p_DOC,p_SERIE,p_INI,p_ACT,p_FIN,p_ANO,p_APROBACION,p_RFC);
+ ELSE
+  UPDATE NUMERACION SET
+  ID_DOCTYPE=p_DOC,
+  NMBSERIE=p_SERIE,
+  NMBNUMBERFROM=p_INI,
+  NMBCURRENTNUMBER=p_ACT,
+  NMBNUMBERTO=p_FIN,
+  NMBAUTHNUMBER=p_APROBACION,
+  NMBAUTHDATE=p_ANO,
+  NMBRFC=p_RFC
+  WHERE NMBSERIE=p_SERIE;
+ END IF;
+COMMIT;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_GETFOLIOS` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_GETFOLIOS`(p_CveProc VARChar(10), 
+  	 p_Tipo varChar(10),
+  	 p_Serie varchar(10),
+  	 OUT p_Num_Folio numeric(18,0)
+  	)
+begin
+Declare  v_FolIni numeric(18,0);
+Declare  v_FolAct numeric(18,0);
+Declare  v_Fecha  DateTime(3);
+
+Start Transaction;
+	select inicial, Actual, Fecha_Inicio into v_FolIni, v_FolAct, v_Fecha from Numeraciones 
+	where rtrim(Clave_Proceso) = rtrim(p_CveProc) and Serie = p_Serie  and
+	rtrim(Tipo_Proc) = rtrim(p_Tipo)  and actual < final
+	order by inicial
+	limit 1;
+	if v_FolAct = 0 
+	then
+		Set v_FolAct = v_FolIni - 1;
+		Set v_Fecha = NOW(3);
+	end if;
+
+	Update Numeraciones Set Actual = v_FolAct + 1, Fecha_Inicio = v_Fecha 
+	where rtrim(Clave_Proceso) = rtrim(p_CveProc) and Serie = p_Serie and
+	rtrim(Tipo_Proc) = rtrim(p_Tipo) and inicial = v_FolIni;
+
+	SET p_Num_Folio = v_FolAct + 1;
+
+commit;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_GRUPOS` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_GRUPOS`( p_ID NVARCHAR(50),
+   p_IDCOLEGIO NVARCHAR(20),
+   p_IDNIVEL NVARCHAR(50),
+   p_IDGRADO NVARCHAR(20),
+   p_IDCICLO NVARCHAR(20),
+   p_NOMBREGRUPO NVARCHAR(50))
+begin
+START TRANSACTION;
+ IF NOT EXISTS(SELECT 1 FROM GRUPO WHERE IDGRUPO=p_ID)
+ THEN
+  INSERT INTO GRUPO
+  (IDCOLEGIO,IDNIVEL,IDGRADO,IDCICLO,NOMBREGRUPO)
+  VALUES
+  (p_IDCOLEGIO,p_IDNIVEL,p_IDGRADO,p_IDCICLO,p_NOMBREGRUPO);
+ ELSE
+ UPDATE GRUPO SET
+  IDNIVEL = p_IDNIVEL,
+  IDGRADO = p_IDGRADO,
+  IDCICLO = p_IDCICLO,
+  NOMBREGRUPO = p_NOMBREGRUPO
+ 
+  WHERE IdGRUPO=p_ID;
+ END IF;
+COMMIT;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_LISTA_ALUMNOS` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_LISTA_ALUMNOS`( 
+    p_IdColegio varchar(200),
+    p_MATRICULA varchar(200) /* = NULL */,
+  	p_Nombres varchar(200)/* = NULL */,
+  	p_APaterno varchar(200)/* = NULL */,
+  	p_AMaterno varchar(200)/* = NULL */,
+  	p_FechaNacimiento varchar(20)/* = NULL */,
+  	p_Estatus varchar(20)/* = NULL */)
+begin
+-- SQLINES DEMO ***  for procedure here
+
+DECLARE v_Seleccion varchar(2000);
+DECLARE v_Origen varchar(2000);
+DECLARE v_Condiciones varchar(2000);
+DECLARE v_Consulta nvarchar(4000);
+Set v_Seleccion = CONCAT('SELECT IDALUMNO,NUMEROMATRICULA,NOMBRES,APATERNO,AMATERNO,CONVERT(varchar,FECHANACIMIENTO,103) AS FECHANACIMIENTO, DESCESTATUS = CASE ESTATUS WHEN ''0'' THEN ''NO INSCRITO''
+	WHEN ''1'' THEN ''INSCRITO'' END ' , Char(10 Using ascii));
+Set v_Origen = CONCAT('FROM Alumnos ' , Char(10 Using ascii));
+Set v_Condiciones=CONCAT('WHERE 1=1 AND IDCOLEGIO=' , p_IdColegio , Char(10 Using ascii));
+--  SQLINES DEMO *** WHERE 1=1 '
+IF p_MATRICULA IS NULL OR p_MATRICULA = ''
+THEN
+ SET v_Condiciones = v_Condiciones;
+ELSE 
+ SET v_Condiciones = CONCAT(v_Condiciones , ' AND NumeroMatricula = ' , Quotename(p_MATRICULA,'''') , '');
+END IF;
+IF p_Nombres IS NULL OR p_Nombres = ''
+THEN
+ SET v_Condiciones = v_Condiciones;
+ELSE 
+SET v_Condiciones = CONCAT(v_Condiciones , ' AND Nombres LIKE ''%' , p_Nombres , '%''');      
+END IF;
+IF p_APaterno IS NULL OR p_APaterno = ''
+THEN
+ SET v_Condiciones = v_Condiciones;
+ELSE 
+--  SQLINES DEMO ***  @Condiciones + ' AND APATERNO = ' + Quotename(@APaterno,'''') + ''
+SET v_Condiciones = CONCAT(v_Condiciones , ' AND APATERNO LIKE ''%' , p_APaterno , '%''');
+END IF;
+
+IF p_AMaterno IS NULL OR p_AMaterno = ''
+THEN
+ SET v_Condiciones = v_Condiciones;
+ELSE 
+SET v_Condiciones = CONCAT(v_Condiciones , ' AND AMATERNO LIKE ''%' , p_AMaterno , '%''');
+END IF;
+
+IF p_FechaNacimiento IS NULL OR p_FechaNacimiento = ''
+THEN
+ SET v_Condiciones = v_Condiciones;
+ELSE 
+SET v_Condiciones = CONCAT(v_Condiciones , ' AND FECHANACIMIENTO = ' , Quotename(p_FechaNacimiento,'''') , '');
+END IF;
+
+IF p_Estatus IS NULL or p_Estatus = '-1' or  p_Estatus = ''
+THEN
+ SET v_Condiciones = v_Condiciones;
+ELSE 
+SET v_Condiciones = CONCAT(v_Condiciones , ' AND ESTATUS = ' , Quotename(p_Estatus,'''') , '');
+END IF;
+
+
+SET v_Consulta = CONCAT(v_Seleccion , v_Origen , v_Condiciones);
+/* PRINT v_Consulta */
+
+CALL sp_executesql(v_Consulta, N'@Matricula AS varchar(200),@Nombres varchar(200),@APaterno varchar(200),@AMaterno varchar(200),@FechaNacimiento varchar(20),@Estatus varchar(200)',p_MATRICULA,p_Nombres,p_APaterno,p_AMaterno,p_FechaNacimiento,p_Estatus);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_LISTA_ALUMNOS_GRUPO` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_LISTA_ALUMNOS_GRUPO`( 
+p_IDCOLEGIO varchar(50),
+p_IDGRADO varchar(50),
+  	p_IDGRUPO varchar(50))
+begin
+-- SQLINES DEMO ***  for procedure here
+
+SELECT * FROM Alumnos WHERE Grado = p_IDGRADO AND Grupo=p_IDGRUPO AND IDCOLEGIO = p_IDCOLEGIO order by APaterno, AMaterno;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_LISTA_ALUMNOS_GRUPO_ADD` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_LISTA_ALUMNOS_GRUPO_ADD`( p_IDGRADO varchar(50),
+p_IDCOLEGIO varchar(50))
+begin
+-- SQLINES DEMO ***  for procedure here
+
+SELECT * FROM Alumnos WHERE Grado = p_IDGRADO AND GRUPO IS NULL and IDCOLEGIO = p_IDCOLEGIO order by APaterno, AMaterno;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_LISTA_DETALLES` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_LISTA_DETALLES`( p_ID_VENTA int)
+begin
+SELECT T.id_venta_detalle,P.id_producto, 
+P.producto, T.cantidad,  T.p_venta,
+(T.cantidad * T.p_venta) AS TOTAL,T.aduana,T.pedimento,T.f_pedimento,T.predial,(SELECT unidad_medida FROM UNIDAD_MEDIDA WHERE id_unidad_medida=P.id_unidad_medida) AS UM
+FROM productos P JOIN venta_detalle T ON P.id_producto=T.id_producto
+JOIN unidad_medida M ON P.id_unidad_medida=M.id_unidad_medida
+WHERE T.id_venta=p_ID_VENTA;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_LISTA_DEUDORES` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_LISTA_DEUDORES`( 
+p_IDCOLEGIO nvarchar(20))
+begin
+-- SQLINES DEMO ***  for procedure here
+
+SELECT A.IDALUMNO, A.APaterno, A.AMaterno, A.Nombres, GR.NombreGrupo, G.DescripcionGrado ,PA.ID,PA.CONCEPTO, PA.MontoActual
+FROM ALUMNOS A, PAGOSALUMNO PA , GRUPO GR, GRADO G
+WHERE A.GRADO = G.IDGrado
+AND A.Grupo = GR.IDGrupo AND PA.idEstatus IN (0,2)
+and A.IDCOLEGIO = p_IDCOLEGIO
+ORDER BY DescripcionGrado,NombreGrupo;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_LISTA_GRADO` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_LISTA_GRADO`( p_NIVEL varchar(2),
+p_IDCOLEGIO varchar(50))
+BEGIN
+SELECT IDGRADO, DESCRIPCIONGRADO FROM GRADO WHERE IDNIVEL = p_NIVEL AND IDCOLEGIO = p_IDCOLEGIO;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_LISTA_PAGOS_ALUMNO` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_LISTA_PAGOS_ALUMNO`( p_IDALUMNO VARCHAR (50))
+begin
+-- SQLINES DEMO ***  for procedure here
+
+SELECT A.IDALUMNO,PA.ID,PA.CONCEPTO, PA.MontoActual , 
+ CASE PA.IDESTATUS 
+WHEN 0 THEN 'SIN PAGAR'
+WHEN 1 THEN 'PAGADO'
+WHEN 2 THEN 'ABONADO'
+END AS ESTATUS, PA.FechaMovimiento
+FROM ALUMNOS A,PAGOSALUMNO PA
+WHERE A.IDALUMNO = p_IDALUMNO AND A.IDALUMNO = PA.IDALUMNO;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_LISTA_PAGOS_ALUMNO_MATRICULA` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_LISTA_PAGOS_ALUMNO_MATRICULA`( p_MATRICULA VARCHAR (50), p_IDCOLEGIO VARCHAR(50))
+begin
+-- SQLINES DEMO ***  for procedure here
+
+SELECT A.IDALUMNO,PA.ID,PA.CONCEPTO, PA.MontoActual , 
+ CASE PA.IDESTATUS 
+WHEN 0 THEN 'SIN PAGAR'
+WHEN 1 THEN 'PAGADO'
+WHEN 2 THEN 'ABONADO'
+END AS ESTATUS, PA.FechaMovimiento
+FROM ALUMNOS A,PAGOSALUMNO PA
+WHERE A.NumeroMatricula = p_MATRICULA 
+AND A.IDCOLEGIO = p_IDCOLEGIO
+AND A.IDALUMNO = PA.IDALUMNO;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_LISTA_PAGOS_TRANSACCIONES` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_LISTA_PAGOS_TRANSACCIONES`( p_IDPAGO VARCHAR (50),
+  	p_IDALUMNO VARCHAR (50))
+begin
+-- SQLINES DEMO ***  for procedure here
+
+SELECT *, CASE  FormaPago
+WHEN 1 THEN 'EFECTIVO'
+WHEN 2 THEN 'CHEQUE'
+WHEN 0 THEN 'TRANSFERENCIA'
+WHEN 1 THEN 'DEPOSITO'
+WHEN 2 THEN 'OTRO'
+END AS DESCFORMAPAGO 
+FROM Transacciones
+WHERE idPago = p_IDPAGO AND IDALUMNO = p_IDALUMNO;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_LISTA_TEMP_VENTAS` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_LISTA_TEMP_VENTAS`( p_USER_LOGIN NVARCHAR(50))
+begin
+SELECT T.id_venta_detalle_tmp,P.id_producto, 
+P.producto, T.cantidad,  T.p_venta,
+(T.cantidad * T.p_venta) AS TOTAL,T.aduana,T.pedimento,T.f_pedimento,T.predial,(SELECT unidad_medida FROM UNIDAD_MEDIDA WHERE id_unidad_medida=P.id_unidad_medida) AS UM
+FROM productos P JOIN venta_detalle_tmp T ON P.id_producto=T.id_producto
+JOIN unidad_medida M ON P.id_unidad_medida=M.id_unidad_medida
+WHERE T.user_login=p_USER_LOGIN;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_MATERIAS` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_MATERIAS`( 
+			p_IDMATERIA int,
+		    p_IDCOLEGIO int,
+            p_IDGRADO int,
+            p_IDGRUPO int,
+            p_CVEMATERIA varchar(50),
+            p_NOMBREMATERIA varchar(150))
+BEGIN
+ 
+ START TRANSACTION;
+
+
+ IF (p_IDMATERIA = 0)
+ THEN
+ 
+INSERT INTO `MATERIAS`
+           (`IDCOLEGIO`
+           ,`IDGRADO`
+           ,`IDGRUPO`
+           ,`CVEMATERIA`
+           ,`NOMBREMATERIA`)
+     VALUES
+           (p_IDCOLEGIO,
+            p_IDGRADO,
+            p_IDGRUPO,
+            p_CVEMATERIA,
+            p_NOMBREMATERIA);
+
+
+
+
+ ELSE
+UPDATE `MATERIAS`
+   SET `IDCOLEGIO` = p_IDCOLEGIO, 
+       `IDGRADO` = p_IDGRADO, 
+       `IDGRUPO` = p_IDGRUPO, 
+       `CVEMATERIA` = p_CVEMATERIA,
+       `NOMBREMATERIA` = p_NOMBREMATERIA
+ WHERE IDMATERIA = p_IDMATERIA;
+
+  END IF;
+
+COMMIT;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_OBTIENE_PAGO` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_OBTIENE_PAGO`( p_IDPAGO VARCHAR (50))
+begin
+-- SQLINES DEMO ***  for procedure here
+
+SELECT A.IDALUMNO,PA.ID,PA.CONCEPTO, PA.MontoActual , 
+ CASE PA.IDESTATUS 
+WHEN 0 THEN 'SIN PAGAR'
+WHEN 1 THEN 'PAGADO'
+WHEN 2 THEN 'ABONADO'
+END AS ESTATUS, PA.FechaMovimiento
+FROM ALUMNOS A,PAGOSALUMNO PA
+WHERE PA.id = p_IDPAGO AND A.IDALUMNO = PA.IDALUMNO;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_PERIODOS` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_PERIODOS`( 
+             p_IDPERIODO int,
+			 p_IDCICLO int,
+             p_IDCOLEGIO int,
+             p_DESCRIPCION varchar(250),
+             p_FECHAINCIO date,
+             p_FECHAFIN date)
+BEGIN
+ 
+ START TRANSACTION;
+
+
+ IF (p_IDPERIODO = 0)
+ THEN
+
+INSERT INTO `PERIODOS`
+           (`IDCICLO`
+           ,`IDCOLEGIO`
+           ,`DESCRIPCION`
+           ,`FECHAINCIO`
+           ,`FECHAFIN`)
+     VALUES
+           (p_IDCICLO,
+           p_IDCOLEGIO,
+           p_DESCRIPCION,
+           p_FECHAINCIO,
+           p_FECHAFIN);
+
+ ELSE
+UPDATE `PERIODOS`
+   SET `IDCICLO` = p_IDCICLO,
+      `IDCOLEGIO` = p_IDCOLEGIO,
+      `DESCRIPCION` = p_DESCRIPCION,
+      `FECHAINCIO` = p_FECHAINCIO,
+      `FECHAFIN` = p_FECHAFIN
+ WHERE IDPERIODO = p_IDPERIODO;
+  END IF;
+
+COMMIT;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_PERSONAL` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_PERSONAL`( 
+           p_IDPERSONAL int,
+		   p_IDCOLEGIO int,
+           p_IDAREA int,
+           p_IDTIPOPERSONAL int,
+           p_CVEPERSONAL nvarchar(50),
+           p_NOMBRE varchar(150),
+           p_APATERNO varchar(150),
+           p_AMATERNO varchar(150),
+           p_TITULO varchar(150),
+           p_TITULOCORTO varchar(50),
+           p_FECHANACIMIENTO date,
+           p_FECHAINGRESO date,
+           p_CELULAR varchar(50),
+           p_TELEFONO varchar(50),
+           p_EMAIL varchar(100),
+           p_DIRECCION varchar(500),
+           p_TIPODOCENTE varchar(50),
+           p_FOTO varchar(250))
+BEGIN
+ DECLARE v_IDAlumno int;
+ DECLARE v_SMATRICULA VARCHAR(50);
+ DECLARE v_FOLIO INT;
+ DECLARE v_NIVEL varchar(5);
+ DECLARE v_FOLIOCHAR VARCHAR(4);
+ DECLARE v_NombreFoto NVARCHAR(200);
+ DECLARE v_RUTAFOTO NVARCHAR(200);
+ DECLARE v_FechaY Varchar(1);
+ START TRANSACTION ;
+
+ set v_FechaY = (Select Right(Cast(Year(now(3)) As Char(4)),2));
+
+ IF p_CVEPERSONAL IS NULL OR p_CVEPERSONAL = ''
+		THEN
+		CALL proc_GETFOLIOS('5','NUMPER', 'D' , v_FOLIO);
+        SET v_FOLIOCHAR = Right('0000' + v_FOLIO, 4);
+			SET v_SMATRICULA = CONCAT(v_FechaY , Right(Concat('0000' , v_FOLIOCHAR), 4) , v_NIVEL);
+			SET v_NombreFoto = CONCAT('/Images/Personal/' , v_SMATRICULA , '.jpg');
+			
+	ELSE
+			SET v_SMATRICULA = p_CVEPERSONAL;
+			SET v_NombreFoto = CONCAT('/Images/Personal/' , p_CVEPERSONAL , '.jpg');
+			
+		END IF;
+
+		
+
+
+		SELECT v_SMATRICULA AS MATRICULA;
+		
+ IF (p_IDPERSONAL = 0)
+ THEN
+ 
+ 
+INSERT INTO `PERSONAL`
+           (`IDCOLEGIO`
+           ,`IDAREA`
+           ,`IDTIPOPERSONAL`
+           ,`CVEPERSONAL`
+           ,`NOMBRE`
+           ,`APATERNO`
+           ,`AMATERNO`
+           ,`TITULO`
+           ,`TITULOCORTO`
+           ,`FECHANACIMIENTO`
+           ,`FECHAINGRESO`
+           ,`CELULAR`
+           ,`TELEFONO`
+           ,`EMAIL`
+           ,`DIRECCION`
+           ,`TIPODOCENTE`
+           ,`FOTO`)
+     VALUES
+           (p_IDCOLEGIO,
+           p_IDAREA, 
+           p_IDTIPOPERSONAL,
+           v_SMATRICULA, 
+           p_NOMBRE, 
+           p_APATERNO,
+           p_AMATERNO, 
+           p_TITULO, 
+           p_TITULOCORTO, 
+           p_FECHANACIMIENTO, 
+           p_FECHAINGRESO, 
+           p_CELULAR, 
+           p_TELEFONO, 
+           p_EMAIL, 
+           p_DIRECCION, 
+           p_TIPODOCENTE, 
+           p_FOTO);
+
+ ELSE
+
+
+UPDATE `PERSONAL`
+   SET `IDAREA` = p_IDAREA, 
+      `IDTIPOPERSONAL` = p_IDTIPOPERSONAL,
+      `CVEPERSONAL` = p_CVEPERSONAL,
+      `NOMBRE` = p_NOMBRE,
+      `APATERNO` = p_APATERNO,
+      `AMATERNO` = p_AMATERNO,
+      `TITULO` = p_TITULO,
+      `TITULOCORTO` = p_TITULOCORTO, 
+      `FECHANACIMIENTO` = p_FECHANACIMIENTO,
+      `FECHAINGRESO` = p_FECHAINGRESO,
+      `CELULAR` = p_CELULAR, 
+      `TELEFONO` = p_TELEFONO, 
+      `EMAIL` = p_EMAIL, 
+      `DIRECCION` = p_DIRECCION, 
+      `TIPODOCENTE` = p_TIPODOCENTE, 
+      `FOTO` = p_FOTO
+ WHERE IDPERSONAL = p_IDPERSONAL;
+
+
+
+
+  
+  END IF;
+
+COMMIT;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_PRODS` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_PRODS`( p_ID_PRODUCTO NVARCHAR(50),
+   p_PRODUCTO NVARCHAR(250),
+   p_ID_UNIDAD_MEDIDA SMALLINT,
+   p_COMPRA DOUBLE,
+   p_VENTA DOUBLE,
+   p_EXISTENCIA DOUBLE)
+begin
+START TRANSACTION;
+ IF NOT EXISTS(SELECT 1 FROM productos WHERE id_producto=p_ID_PRODUCTO)
+ THEN
+  INSERT INTO PRODUCTOS(ID_PRODUCTO,PRODUCTO,ID_UNIDAD_MEDIDA,P_COMPRA,P_VENTA,EXISTENCIA)
+  VALUES(p_ID_PRODUCTO,p_PRODUCTO,p_ID_UNIDAD_MEDIDA,p_COMPRA,p_VENTA,p_EXISTENCIA);
+ ELSE
+  UPDATE PRODUCTOS SET
+  PRODUCTO=p_PRODUCTO,
+  ID_UNIDAD_MEDIDA=p_ID_UNIDAD_MEDIDA,
+  P_COMPRA=p_COMPRA,
+  P_VENTA=p_VENTA,
+  EXISTENCIA=p_EXISTENCIA
+  WHERE ID_PRODUCTO=p_ID_PRODUCTO;
+ END IF;
+COMMIT;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_REGISTRA_PAGO` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_REGISTRA_PAGO`( p_IDPAGO VARCHAR (50),
+  	p_IDALUMNO VARCHAR (50),
+  	p_MONTO VARCHAR (50),
+  	p_REFERENCIA VARCHAR(500),
+  	p_MEDIOPAGO VARCHAR(50),
+  	p_ESTATUS VARCHAR(50))
+begin
+DECLARE v_MONTOACTUAL DECIMAL(16,2);
+DECLARE v_NUEVOMONTO DECIMAL(16,2);
+DECLARE v_CONCEPTO VARCHAR(500);
+SET v_MONTOACTUAL = (SELECT MONTOACTUAL FROM PagosAlumno WHERE ID = p_IDPAGO);
+SET v_NUEVOMONTO = (v_MONTOACTUAL - (CONVERT(p_MONTO, DECIMAL(16,2))));
+SET v_CONCEPTO = (SELECT CONCEPTO FROM PagosAlumno WHERE ID = p_IDPAGO);
+IF p_ESTATUS = 1
+THEN
+SET v_CONCEPTO = CONCAT('PAGO FINAL DE ' , v_CONCEPTO);
+END IF;
+
+IF p_ESTATUS = 2
+THEN
+SET v_CONCEPTO = CONCAT('PAGO A CUENTA DE ' , v_CONCEPTO);
+END IF;
+-- SQLINES DEMO ***  for procedure here
+UPDATE PagosAlumno SET MontoActual = v_NUEVOMONTO, idEstatus = p_ESTATUS, FechaMovimiento=NOW(3),MEDIOPAGO = p_MEDIOPAGO, REFERENCIA = p_REFERENCIA
+WHERE ID = p_IDPAGO AND IDALUMNO=p_IDALUMNO;
+
+INSERT INTO TRANSACCIONES 
+(idAlumno,idPago,Concepto,Monto,FechaTransaccion,UsuarioTransaccion,FormaPago,Referencia)
+VALUES
+(p_IDALUMNO,p_IDPAGO,v_CONCEPTO,CONVERT(p_MONTO, DECIMAL(16,2)),NOW(3),'ADMIN',p_MEDIOPAGO,p_REFERENCIA);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_RPT_ALUMNO` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_RPT_ALUMNO`( p_MATRICULA NVARCHAR(50),
+p_IDCOLEGIO NVARCHAR(50))
+begin
+SELECT A.*, B.*, GR.NombreGrupo, G.DescripcionGrado, C.NombreCiclo
+FROM
+Alumnos A, InfoAlumnos B, Grupo GR, Grado G, CICLO C
+WHERE A.NumeroMatricula = p_MATRICULA AND A.NumeroMatricula = B.NumeroMatricula
+AND A.IDCOLEGIO = p_IDCOLEGIO
+AND A.Grupo = GR.IDGrupo
+AND A.Grado = G.IDGrado
+AND A.idCiclo = C.id;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_RPT_CREDENCIAL` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_RPT_CREDENCIAL`( p_MATRICULA NVARCHAR(300),p_IDCOLEGIO NVARCHAR(20),p_IDCICLO NVARCHAR(20))
+SELECT A.*, B.*, GR.NombreGrupo, G.DescripcionGrado, C.NombreCiclo
+			FROM Alumnos A, InfoAlumnos B, Grupo GR, Grado G, CICLO C 
+			WHERE A.NumeroMatricula in (p_MATRICULA)
+			AND A.IdColegio = p_IDCOLEGIO
+            AND A.idCiclo = p_IDCICLO
+			AND A.NumeroMatricula = B.NumeroMatricula
+			AND A.Grupo = GR.IDGrupo
+			AND A.Grado = G.IDGrado ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_RPT_PAGOS` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_RPT_PAGOS`( p_FECHA_INI VARCHAR(10),
+      p_FECHA_FIN VARCHAR(10),
+	  p_IDCOLEGIO VARCHAR(20))
+begin
+select A.IdAlumno, A.NumeroMatricula, A.Apaterno, A.AMaterno, A.Nombres,GR.NombreGrupo, G.DescripcionGrado, T.Concepto, T.Monto, T.FechaTransaccion, p_FECHA_INI AS FINI, p_FECHA_FIN AS FFIN,
+case T.FormaPago when 1 then 'EFECTIVO'
+WHEN 2 THEN 'CHEQUE'
+WHEN 3 THEN 'TRANSFERENCIA'
+WHEN 4 THEN 'DEPOSITO'
+WHEN 5 THEN 'OTRO' 
+ELSE 'NO IDENTIFICADO' END AS FPAGO, T.REFERENCIA
+ from Transacciones T, Alumnos A, Grupo GR, Grado G
+ where T.FechaTransaccion >= str_to_date(p_FECHA_INI,103) and T.FechaTransaccion <= str_to_date(p_FECHA_FIN,103)
+ AND A.IDCOLEGIO = p_IDCOLEGIO
+AND T.idAlumno = A.IdAlumno
+AND A.Grupo = GR.IDGrupo
+AND A.Grado = G.IDGrado ORDER BY FechaTransaccion;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_RPT_RECIBO` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_RPT_RECIBO`( p_IDALUMNO VARCHAR(20))
+begin
+select Concepto, Monto, FechaTransaccion,
+case FormaPago when 1 then 'EFECTIVO'
+WHEN 2 THEN 'CHEQUE'
+WHEN 3 THEN 'TRANSFERENCIA'
+WHEN 4 THEN 'DEPOSITO'
+WHEN 5 THEN 'OTRO' 
+ELSE 'NO IDENTIFICADO' END AS FPAGO, REFERENCIA 
+ from Transacciones where DATE_FORMAT(FechaTransaccion,'%d/%m/%Y') = date_format(now(3),'%d/%m/%Y')
+AND IdAlumno = p_IDALUMNO;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_RPT_RECIBO_ALUMNO` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_RPT_RECIBO_ALUMNO`( p_IDALUMNO NVARCHAR(20))
+begin
+SELECT A.IdAlumno, A.APaterno, A.AMaterno, A.Nombres, GR.NombreGrupo, G.DescripcionGrado, C.NombreCiclo
+FROM
+Alumnos A, Grupo GR, Grado G, CICLO C
+WHERE A.IdAlumno = p_IDALUMNO
+AND A.Grupo = GR.IDGrupo
+AND A.Grado = G.IDGrado
+AND A.idCiclo = C.id;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_RPT_VENTAS` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_RPT_VENTAS`( p_FECHA_INI DATETIME(3),
+      p_FECHA_FIN DATETIME(3))
+begin
+SELECT V.id_venta,V.fecha_registro, P.id_producto,P.producto,
+D.cantidad,D.p_venta, D.cantidad*D.p_venta AS TOTAL
+FROM
+venta V JOIN venta_detalle D ON V.id_venta=V.id_venta
+JOIN productos P ON D.id_producto=P.id_producto
+WHERE V.fecha_registro BETWEEN p_FECHA_INI AND p_FECHA_FIN;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_TEMP_VENTAS` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_TEMP_VENTAS`( p_USER_LOGIN NVARCHAR(50),  
+      p_ID_PRODUCTO NVARCHAR(50), 
+      p_CANTIDAD DOUBLE,
+      p_ADUANA NVARCHAR(50), 
+  	p_PEDIMENTO NVARCHAR(50), 
+  	p_FECHAPEDIMENTO NVARCHAR(50), 
+  	p_PREDIAL NVARCHAR(50))
+begin
+    
+     DECLARE v_PRECIO DOUBLE; DECLARE v_IVA DOUBLE; DECLARE v_EXISTENCIA DOUBLE; DECLARE v_CANT DOUBLE; DECLARE v_PORC_DESC DOUBLE;
+START TRANSACTION;
+   
+    SELECT EXISTENCIA INTO v_EXISTENCIA FROM productos WHERE ID_PRODUCTO=p_ID_PRODUCTO;
+    SET v_PORC_DESC=0;
+    SELECT p_venta,ID_PRODUCTO INTO v_PRECIO, p_ID_PRODUCTO FROM productos 
+    WHERE ID_PRODUCTO=p_ID_PRODUCTO
+    LIMIT 1;
+    
+    IF EXISTS(SELECT ID_PRODUCTO FROM venta_detalle_tmp 
+    WHERE ID_PRODUCTO=p_ID_PRODUCTO AND user_login=p_USER_LOGIN)
+    THEN
+        -- EDI... SQLINES DEMO ***
+        SELECT CANTIDAD INTO v_CANT FROM venta_detalle_tmp 
+        WHERE ID_PRODUCTO=p_ID_PRODUCTO AND user_login=p_USER_LOGIN;
+        IF(p_CANTIDAD<=(v_EXISTENCIA-v_CANT))
+        THEN
+            UPDATE venta_detalle_tmp 
+            SET CANTIDAD = CANTIDAD + p_CANTIDAD
+            WHERE user_login = p_USER_LOGIN
+            AND ID_PRODUCTO=p_ID_PRODUCTO AND user_login=p_USER_LOGIN;
+         END IF;
+    ELSE
+        -- INS... SQLINES DEMO ***
+        IF(p_CANTIDAD<=v_EXISTENCIA)
+        THEN
+            INSERT  INTO venta_detalle_tmp(user_login,ID_PRODUCTO,CANTIDAD,p_venta,aduana,pedimento,f_pedimento,predial)
+            VALUES(p_USER_LOGIN,p_ID_PRODUCTO,p_CANTIDAD,v_PRECIO,p_ADUANA,p_PEDIMENTO,p_FECHAPEDIMENTO,p_PREDIAL);
+          END IF;
+    END IF;
+    
+   
+COMMIT;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_UM` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_UM`( p_UMEDIDA NVARCHAR(50))
+begin
+START TRANSACTION;
+ IF NOT EXISTS(SELECT 1 FROM unidad_medida WHERE unidad_medida=p_UMEDIDA)
+ THEN
+  INSERT INTO UNIDAD_MEDIDA(UNIDAD_MEDIDA)
+  VALUES(p_UMEDIDA);
+ ELSE
+  UPDATE UNIDAD_MEDIDA SET
+  UNIDAD_MEDIDA=p_UMEDIDA
+  WHERE UNIDAD_MEDIDA=p_UMEDIDA;
+ END IF;
+COMMIT;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_USERS` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_USERS`( p_USER_LOGIN NVARCHAR(50),
+   p_USER_PASSWORD VARCHAR(8000),
+   p_NOMBRE NVARCHAR(50),
+   p_ACTIVO TINYINT,
+   p_ADMINISTRACION TINYINT,
+   p_ALUMNOS TINYINT,
+   p_PROFESORES TINYINT, 
+   p_COBRANZA TINYINT,
+   p_BLOG TINYINT, 
+   p_AYUDA TINYINT,
+   p_IMAGEN NVARCHAR(50))
+begin
+START TRANSACTION;
+ IF NOT EXISTS(SELECT 1 FROM users WHERE user_login=p_USER_LOGIN)
+ THEN
+  INSERT INTO USERS
+
+(USEr_LOGIN,USER_PASSWORD,NOMBRE,activo,administrar,alumnos,profesores,cobranza,blog,ayuda,imagen)
+  VALUES
+
+(p_USER_LOGIN,p_USER_PASSWORD,p_NOMBRE,p_ACTIVO,p_ADMINISTRACION,p_ALUMNOS,p_PROFESORES,p_COBRANZA,p_BLOG,p_AYUDA,p_IMAGEN);
+ ELSE
+ UPDATE USERS SET
+  NOMBRE=p_NOMBRE,
+  activo=p_ACTIVO,
+  ADMINISTRAR=p_ADMINISTRACION,
+  alumnos=p_ALUMNOS,
+  profesores=p_PROFESORES,
+  cobranza = p_COBRANZA,
+  blog=p_BLOG,
+  ayuda=p_AYUDA,
+  imagen=p_IMAGEN
+  WHERE user_login=p_USER_LOGIN;
+ END IF;
+COMMIT;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_USERS_PERMISOS_MOSTRAR` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_USERS_PERMISOS_MOSTRAR`( p_USER_LOGIN NVARCHAR(50))
+begin
+SELECT U.* FROM USERS U WHERE U.`USER_LOGIN`=p_USER_LOGIN;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ZERO_IN_DATE,NO_ZERO_DATE,NO_ENGINE_SUBSTITUTION' */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `PROC_VENTA` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PROC_VENTA`( p_USER_LOGIN NVARCHAR(50),
+  p_SERIE VARCHAR(50),
+  p_NUMERO BIGINT,
+  p_DATE NVARCHAR(50),
+  p_TPODOC NVARCHAR(50),
+  p_RFCE NVARCHAR(13),
+  p_NMBE NVARCHAR(60),
+  p_RFCR NVARCHAR(13),
+  p_NMBR NVARCHAR(60),
+  p_MONEDA NVARCHAR(50),
+  p_SUBTOTAL DOUBLE,
+  p_IVA DOUBLE,
+  p_TOTAL DOUBLE,
+  p_COMENT NVARCHAR(300),
+  p_PALABRAS NVARCHAR(200),
+  p_METODO NVARCHAR(50),
+  p_CTAPAGO NVARCHAR(50),
+  p_LUGAREXP NVARCHAR(50),
+  p_TPOCAMBIO DOUBLE)
+begin
+  
+  DECLARE v_FOLIO_VENTA INT;
+START TRANSACTION;
+    
+   
+    -- GRA... SQLINES DEMO ***
+    --  SQLINES DEMO *** oat prmNUMERO,string prmDATE,string prmTPODOC,string prmRFCE,string prmNMBE,string prmRFCR,string prmNMBR,string prmMONEDA,float prmSUBTOTAL,float prmIVA,float prmTOTAL
+    INSERT INTO VENTA(user_login,fecha_registro,docSerie,docNumber,docDate,tpoDoc,rfcEmisor,nmbEmisor,rfcRecep,nmbRecep,moneda,subtotal,iva,total,comentarios,valorPalabras,metodo,ctaPago,lugarExp,tpoCambio) 
+    VALUES(p_USER_LOGIN,NOW(3),p_SERIE,p_NUMERO,p_DATE,p_TPODOC,p_RFCE,p_NMBE,p_RFCR,p_NMBR,p_MONEDA,p_SUBTOTAL,p_IVA,p_TOTAL,p_COMENT,p_PALABRAS,p_METODO,p_CTAPAGO,p_LUGAREXP,p_TPOCAMBIO);
+    --  SQLINES DEMO ***  DE LA VENTA
+    SET v_FOLIO_VENTA=LAST_INSERT_ID();
+    --  SQLINES DEMO *** MERACION RESPECTO A LA SERIE
+	UPDATE numeracion 
+    SET numeracion.NMBCURRENTNUMBER = p_NUMERO + 1
+    WHERE nmbSerie = p_SERIE AND nmbRFC = p_RFCE;
+    --  SQLINES DEMO *** LLE DE LA VENTA
+    INSERT INTO VENTA_DETALLE(id_venta,ID_PRODUCTO,CANTIDAD,P_VENTA,ADUANA,PEDIMENTO,F_PEDIMENTO,PREDIAL)
+    SELECT v_FOLIO_VENTA,ID_PRODUCTO,CANTIDAD,P_VENTA,ADUANA,PEDIMENTO,F_PEDIMENTO,PREDIAL 
+    FROM venta_detalle_tmp WHERE user_login=p_USER_LOGIN; 
+    --  SQLINES DEMO *** XISTENCIAS GENERALES
+    UPDATE venta_detalle_tmp 
+    SET productos.EXISTENCIA = 
+     productos.EXISTENCIA-venta_detalle_tmp.`CANTIDAD`
+     WHERE productos.ID_PRODUCTO = 
+     venta_detalle_tmp.ID_PRODUCTO 
+     AND venta_detalle_tmp.user_login= p_USER_LOGIN;
+    --  SQLINES DEMO *** TEMPORAL
+    DELETE FROM venta_detalle_tmp  WHERE user_login = p_USER_LOGIN;
+   
+    SELECT v_FOLIO_VENTA
+    
+COMMIT; 
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -750,4 +2522,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-10-21  6:43:40
+-- Dump completed on 2025-10-21 22:40:59
